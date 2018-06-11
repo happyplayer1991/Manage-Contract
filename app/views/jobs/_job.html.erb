@@ -1,0 +1,10 @@
+<tr>
+  <th scope="row"><%= job.id %></th>
+  <td><%= job.title %></td>
+  <td><%= job.job_type.title %></td>
+  <td><%= job.job_area.title %></td>
+  <td><%= job.created_at %></td>
+  <td><%= link_to truncate(job.description), job %></td>
+  <td><%= link_to '', edit_job_path(job), class: 'fa fa-edit fa-lg index-icons' %></td>
+  <td><%= link_to '', job_path(job), method: :delete, class: 'fa fa-trash fa-lg index-icons-tresh', data: { confirm: 'Are you sure?' } %></td>
+</tr>

@@ -57,6 +57,8 @@ class JobsController < ApplicationController
                                   :email,
                                   :address,
                                   :experience,
-                                  :job_type)
+                                  :job_type_id,
+                                  :job_area_id,
+                                  :education_id)
     end
 end

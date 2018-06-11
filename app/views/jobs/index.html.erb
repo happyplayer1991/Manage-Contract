@@ -1,2 +1,22 @@
+<br>
+<%= link_to 'New Job', new_job_path, class: 'btn btn-primary' %>
+<br>
 <h1>Jobs</h1>
-<p><%= @jobs.inspect %></p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Type of Job</th>
+      <th scope="col">Job Area</th>
+      <th scope="col">Posted</th>
+      <th scope="col">View</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody id="jobs">
+    <%= render @jobs %>
+  </tbody>
+</table>

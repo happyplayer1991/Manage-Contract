@@ -1,7 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+JobArea.create!(title: "Engineering")
+JobArea.create!(title: "Sales and Marketing")
+JobArea.create!(title: "Accounting and Finance")
+JobArea.create!(title: "Information Technology")
+JobArea.create!(title: "Human Resources")
+JobArea.create!(title: "Legal")
+JobArea.create!(title: "Logistic")
+JobArea.create!(title: "Supply Chain")
+JobArea.create!(title: "Procurement")
+JobArea.create!(title: "Project Management")
+
+JobType.create!(title: "full time")
+JobType.create!(title: "part time")
+JobType.create!(title: "temporary")
+JobType.create!(title: "contract")
+JobType.create!(title: "internship")
+JobType.create!(title: "commission")
+JobType.create!(title: "volunteer")
+JobType.create!(title: "permanent")
+
+Education.create!(title: 'GCE "O" Level or equivalent')
+Education.create!(title: "Professional Qualification or Diploma")
+Education.create!(title: "Bachelor's")
+Education.create!(title: "Master's")
+Education.create!(title: "Doctorate")

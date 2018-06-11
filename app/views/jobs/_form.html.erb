@@ -1,9 +1,9 @@
 
 <%= form_for(job) do |form| %>
   <% if job.errors.any? %>
-    <% job.errors.full_messages.each do |error| %>
-      <%= alert_generator error %>
-    <% end %>
+    <ul><% job.errors.full_messages.each do |error| %>
+      <li><%= error %><li>
+    <% end %></li>
   <% end %>
 
   <div class="form-group">
@@ -11,12 +11,25 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :job_type %>
-    <%= form.collection_select(:job_type, :as => :select, :collection => Job.job_types.keys.to_a) %>
+    <%= form.label :job_type_id %>
+    <%= form.collection_select(:job_type_id, JobType.all, :id, :title, {selected: job.job_type_id}, class: 'form-control') %>
   </div>
 
   <div class="form-group">
-    <%= form.text_area :description, rows:15, class: 'form-control', placeholder: 'Description' %>
+    <%= form.label :job_area_id %>
+    <%= form.collection_select(:job_area_id, JobArea.all, :id, :title, {selected: job.job_area_id}, class: 'form-control') %>
+  </div>
+
+  <div class="form-group">
+    <%= form.number_field :salary, class: 'form-control', placeholder: 'Salary per month' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.number_field :hires, class: 'form-control', placeholder: 'How many hires' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_area :description, rows:5, class: 'form-control', placeholder: 'Description' %>
   </div>
 
   <div class="form-group">
@@ -24,11 +37,16 @@
   </div>
 
   <div class="form-group">
-    <%= form.text_area :address, rows:5, class: 'form-control', placeholder: 'Address' %>
+    <%= form.text_area :address, rows:3, class: 'form-control', placeholder: 'Address' %>
   </div>
 
   <div class="form-group">
     <%= form.number_field :experience, class: 'form-control', placeholder: 'Requires Years of experience' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :education_id %>
+    <%= form.collection_select(:education_id, Education.all, :id, :title, {selected: job.education_id}, class: 'form-control') %>
   </div>
 
   <div class="form-group">

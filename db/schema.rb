@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180611113816) do
+ActiveRecord::Schema.define(version: 20180611173627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "educations", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_areas", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_types", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
@@ -25,7 +43,12 @@ ActiveRecord::Schema.define(version: 20180611113816) do
     t.integer "experience"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "job_type", default: 0
+    t.bigint "job_area_id"
+    t.bigint "job_type_id"
+    t.bigint "education_id"
+    t.index ["education_id"], name: "index_jobs_on_education_id"
+    t.index ["job_area_id"], name: "index_jobs_on_job_area_id"
+    t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +76,7 @@ ActiveRecord::Schema.define(version: 20180611113816) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "jobs", "educations"
+  add_foreign_key "jobs", "job_areas"
+  add_foreign_key "jobs", "job_types"
 end

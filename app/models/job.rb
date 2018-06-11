@@ -1,3 +1,7 @@
 class Job < ApplicationRecord
-  enum job_type: { full_time: 0, part_time: 1, temporary: 2, contract: 3, internship: 4, commission: 5, volunteer: 6, permanent: 7 }
+  validates_presence_of :title
+
+  belongs_to :job_area
+  belongs_to :job_type
+  belongs_to :education
 end

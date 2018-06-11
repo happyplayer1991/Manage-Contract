@@ -1,0 +1,27 @@
+<div class="logo">
+  <h1>Listing App</h1>
+</div>
+
+<% if user_signed_in? %>
+  <ul class="nav nav-tabs mr-auto custom-nav">
+    <li class="nav-item nav-link #{active? root_path}">
+      <%= link_to '', root_path, class: "fa fa-home fa-lg" %>
+    </li>
+
+    <li class="nav-item">
+  		<%= link_to 'Dashboard', jobs_path, class: "nav-link #{active? jobs_path}" %>
+		</li>
+
+		<li class="nav-item">
+  		<%= link_to 'New Job', new_job_path, id: 'new_job_from_nav', class: "nav-link #{active? new_job_path}" %>
+		</li>
+    
+
+    <li class="nav-item dropdown ml-auto">
+      <a class="nav-link  fa fa-cog fa-lg" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
+        <div class="dropdown-menu">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+        </div>
+    </li>
+  </ul>
+<% end %>

@@ -1,0 +1,23 @@
+<div>
+  <h2><%= @job.title %></h2>
+</div>
+
+<div class="card card-body bg-light">
+  <div>
+    <h4><span>Type of Job:</span> <%= @job.job_type_id %></h4>
+  </div>
+
+  <div>
+    <h4><span>Job Area:</span> <%= @job.job_area_id %></h4>
+  </div>
+
+  <div>
+    <h4><span>Date:</span> <%= @job.created_at %></h4>
+  </div>
+
+  <div>
+    <h4><span>Salary:</span> <%= @job.salary %></h4>
+  </div>
+</div>
+<br>
+<%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary' %>
