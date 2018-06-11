@@ -1,23 +1,37 @@
-<div>
-  <h2><%= @job.title %></h2>
-</div>
-
-<div class="card card-body bg-light">
-  <div>
-    <h4><span>Type of Job:</span> <%= @job.job_type_id %></h4>
-  </div>
-
-  <div>
-    <h4><span>Job Area:</span> <%= @job.job_area_id %></h4>
-  </div>
-
-  <div>
-    <h4><span>Date:</span> <%= @job.created_at %></h4>
-  </div>
-
-  <div>
-    <h4><span>Salary:</span> <%= @job.salary %></h4>
-  </div>
-</div>
 <br>
-<%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary' %>
+<div class="row">
+  <div class="col-md-4">
+    <h2>Job Title</h2>
+  </div>
+  <div class="col-md-8">
+    <h2><%= @job.title %></h2>
+  </div>
+</div>
+  <hr>
+<div class="row">
+  <div class="col-md-4">
+    <p>Type of Job</p>
+    <p>Job Area</p>
+    <p>Salary for this job per month</p>
+    <p>Number of hires for this position</p>
+    <p>Description</p>
+    <p>Email</p>
+    <p>Address</p>
+    <p>Requires Years of Experience<p>
+    <p>Requires level of Education<p>
+    <br>
+    <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary' %>
+  </div>
+
+  <div class="col-md-8">
+    <p><%= @job.job_type.title %></p>
+    <p><%= @job.job_area.title %></p>
+    <p><%= @job.salary %></p>
+    <p><%= @job.hires %></p>
+    <p><%= @job.description %></p>
+    <p><%= @job.email %></p>
+    <p><%= @job.address %></p>
+    <p><%= @job.experience %></p>
+    <p><%= @job.education.title %></p>
+  </div>
+</div>
