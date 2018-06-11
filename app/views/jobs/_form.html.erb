@@ -11,12 +11,12 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :job_type_id %>
+    <%= form.label :"Type" %>
     <%= form.collection_select(:job_type_id, JobType.all, :id, :title, {selected: job.job_type_id}, class: 'form-control') %>
   </div>
 
   <div class="form-group">
-    <%= form.label :job_area_id %>
+    <%= form.label :"Area" %>
     <%= form.collection_select(:job_area_id, JobArea.all, :id, :title, {selected: job.job_area_id}, class: 'form-control') %>
   </div>
 
