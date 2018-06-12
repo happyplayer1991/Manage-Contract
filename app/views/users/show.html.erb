@@ -1,40 +1,34 @@
-<div class="row">
-  <div class="col-md-2">
-  </div>
-  <div class="col-md-8">
-    <h2>Your Profile</h2>
-  <table class="table">
-    <tbody>
-      <tr>
-        <th scope="row">Company name</th>
-        <td><%= @user.company_name %></td>
-      </tr>
-      <tr>
-        <th scope="row">Hires per year</th>
-        <td><%= @user.hires_per_year %></td>
-      </tr>
-      <tr>
-        <th scope="row">Name</th>
-        <td><%= @user.name %></td>
-      </tr>
-      <tr>
-        <th scope="row">Phone number</th>
-        <td><%= @user.phone %></td>
-      </tr>
-      <tr>
-        <th scope="row">Country</th>
-        <td><%= @user.country %></td>
-      </tr>
-      <tr>
-        <th scope="row">City / postal code</th>
-        <td><%= @user.city %> / <%= @user.postal_code %></td>
-      </tr>
-      <tr>
-        <th scope="row">Payment info</th>
-        <td><%= @user.payment_info %></td>
-      </tr>
-    </tbody>
-  </table>
-  <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
-  </div>
-</div>
+<h2>Your Profile</h2>
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Company name</th>
+      <td><%= @user.company_name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Hires per year</th>
+      <td><%= @user.hires_per_year %></td>
+    </tr>
+    <tr>
+      <th scope="row">Name</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Phone number</th>
+      <td><%= @user.phone %></td>
+    </tr>
+    <tr>
+      <th scope="row">Country</th>
+      <td><%= @user.country %></td>
+    </tr>
+    <tr>
+      <th scope="row">City / postal code</th>
+      <td><%= @user.city %> / <%= @user.postal_code %></td>
+    </tr>
+    <tr>
+      <th scope="row">Payment info</th>
+      <td><%= @user.payment_info %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
