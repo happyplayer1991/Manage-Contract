@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180611173627) do
+ActiveRecord::Schema.define(version: 20180612073954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,8 @@ ActiveRecord::Schema.define(version: 20180611173627) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
-    t.integer "salary"
+    t.integer "salary_min"
+    t.integer "salary_max"
     t.integer "hires"
     t.text "description"
     t.string "email"
@@ -46,9 +47,11 @@ ActiveRecord::Schema.define(version: 20180611173627) do
     t.bigint "job_area_id"
     t.bigint "job_type_id"
     t.bigint "education_id"
+    t.bigint "user_id"
     t.index ["education_id"], name: "index_jobs_on_education_id"
     t.index ["job_area_id"], name: "index_jobs_on_job_area_id"
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,4 +82,5 @@ ActiveRecord::Schema.define(version: 20180611173627) do
   add_foreign_key "jobs", "educations"
   add_foreign_key "jobs", "job_areas"
   add_foreign_key "jobs", "job_types"
+  add_foreign_key "jobs", "users"
 end

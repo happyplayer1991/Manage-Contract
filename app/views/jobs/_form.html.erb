@@ -7,45 +7,55 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.text_field :title, class: 'form-control', placeholder: 'Title' %>
+    <%= form.label :"Job title" %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :"Type" %>
+    <%= form.label :"Type of Job" %>
     <%= form.collection_select(:job_type_id, JobType.all, :id, :title, {selected: job.job_type_id}, class: 'form-control') %>
   </div>
 
   <div class="form-group">
-    <%= form.label :"Area" %>
+    <%= form.label :"Job Area" %>
     <%= form.collection_select(:job_area_id, JobArea.all, :id, :title, {selected: job.job_area_id}, class: 'form-control') %>
   </div>
 
   <div class="form-group">
-    <%= form.number_field :salary, class: 'form-control', placeholder: 'Salary per month' %>
+    <%= form.label :"What is the salary for this job per month" %>
+    <div class="row">
+    <div class="col-md-6"><%= form.number_field :salary_min, class: 'form-control', placeholder: 'min' %></div>
+    <div class="col-md-6"><%= form.number_field :salary_max, class: 'form-control', placeholder: 'max' %></div>
+  </div>
   </div>
 
   <div class="form-group">
-    <%= form.number_field :hires, class: 'form-control', placeholder: 'How many hires' %>
+    <%= form.label :"How many hires do you want to make for this position" %>
+    <%= form.number_field :hires, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.text_area :description, rows:3, class: 'form-control', placeholder: 'Description' %>
+    <%= form.label :"Description (responsibilities of this job, work experience, skills and education)" %>
+    <%= form.text_area :description, rows:2, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.text_field :email, class: 'form-control', placeholder: 'E-mail' %>
+    <%= form.label :"Applicants will send to which emails" %>
+    <%= form.text_field :email, class: 'form-control', placeholder: 'E-mails separated by commas' %>
   </div>
 
   <div class="form-group">
-    <%= form.text_area :address, rows:2, class: 'form-control', placeholder: 'Address' %>
+    <%= form.label :"Applicants will send to which address" %>
+    <%= form.text_area :address, rows:2, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.number_field :experience, class: 'form-control', placeholder: 'Requires Years of experience' %>
+    <%= form.label :"Requires Years of experience" %>
+    <%= form.number_field :experience, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :education_id %>
+    <%= form.label :"Requires level of education" %>
     <%= form.collection_select(:education_id, Education.all, :id, :title, {selected: job.education_id}, class: 'form-control') %>
   </div>
 

@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:edit, :show, :update, :destroy]
 
   def index
-    @jobs = Job.all
+    @jobs = Job.posts_by(current_user)
   end
 
   def new
@@ -11,6 +11,7 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
+    @job.user_id = current_user.id
 
     respond_to do |format|
       if @job.save
@@ -59,6 +60,7 @@ class JobsController < ApplicationController
                                   :experience,
                                   :job_type_id,
                                   :job_area_id,
-                                  :education_id)
+                                  :education_id,
+                                  :user_id)
     end
 end
