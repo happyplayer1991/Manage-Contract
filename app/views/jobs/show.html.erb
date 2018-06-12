@@ -1,37 +1,52 @@
-<br>
 <div class="row">
-  <div class="col-md-4">
-    <h2>Job Title</h2>
+  <div class="col-md-2">
   </div>
   <div class="col-md-8">
     <h2><%= @job.title %></h2>
-  </div>
-</div>
-  <hr>
-<div class="row">
-  <div class="col-md-4">
-    <p>Type of Job</p>
-    <p>Job Area</p>
-    <p>Salary for this job per month</p>
-    <p>Number of hires for this position</p>
-    <p>Description</p>
-    <p>Email</p>
-    <p>Address</p>
-    <p>Requires Years of Experience<p>
-    <p>Requires level of Education<p>
-    <br>
-    <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary' %>
-  </div>
-
-  <div class="col-md-8">
-    <p><%= @job.job_type.title %></p>
-    <p><%= @job.job_area.title %></p>
-    <p><%= @job.salary_min %> - <%= @job.salary_max %></p>
-    <p><%= @job.hires %></p>
-    <p><%= @job.description %></p>
-    <p><%= @job.email %></p>
-    <p><%= @job.address %></p>
-    <p><%= @job.experience %></p>
-    <p><%= @job.education.title %></p>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th scope="row">Job Title</th>
+        <td><%= @job.title %></td>
+      </tr>
+      <tr>
+        <th scope="row">Type of Job</th>
+        <td><%= @job.job_type.title %></td>
+      </tr>
+      <tr>
+        <th scope="row">Job Area</th>
+        <td><%= @job.job_area.title %></td>
+      </tr>
+      <tr>
+        <th scope="row">Salary for this job per month</th>
+        <td><%= @job.salary_min %> - <%= @job.salary_max %></td>
+      </tr>
+      <tr>
+        <th scope="row">Number of hires for this position</th>
+        <td><%= @job.hires %></td>
+      </tr>
+      <tr>
+        <th scope="row">Description</th>
+        <td><%= @job.description %></td>
+      </tr>
+      <tr>
+        <th scope="row">Applicants will send to which emails</th>
+        <td><%= @job.email %></td>
+      </tr>
+      <tr>
+        <th scope="row">Applicants will send to which address</th>
+        <td><%= @job.address %></td>
+      </tr>
+      <tr>
+        <th scope="row">Requires Years of Experience</th>
+        <td><%= @job.experience %></td>
+      </tr>
+      <tr>
+        <th scope="row">Requires level of Education</th>
+        <td><%= @job.education.title %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to 'Edit Job', edit_job_path(@job), class: 'btn btn-primary' %>
   </div>
 </div>

@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   resources :jobs
 
+  resources :users, only: [:show]
+
   root to: "jobs#index"
 end

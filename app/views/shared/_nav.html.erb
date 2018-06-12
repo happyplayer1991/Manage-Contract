@@ -11,9 +11,13 @@
 		<li class="nav-item">
   		<%= link_to 'New Job', new_job_path, id: 'new_job_from_nav', class: "nav-link #{active? new_job_path}" %>
 		</li>
-    
+
     <li class="nav-item">
-      <%= link_to 'Profile Settings', edit_user_registration_path, class: "nav-link #{active? edit_user_registration_path}" %>
+      <%= link_to "Your Profile", user_path(current_user.id), class: "nav-link #{active? user_path(current_user.id)}" %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to 'Setup Profile', edit_user_registration_path, class: "nav-link #{active? edit_user_registration_path}" %>
     </li>
 
     <li class="nav-item ml-auto">
