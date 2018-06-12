@@ -17,6 +17,11 @@
   <% end %>
 
   <div class="form-group">
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
     <% if @minimum_password_length %>
