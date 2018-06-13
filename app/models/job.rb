@@ -1,5 +1,5 @@
 class Job < ApplicationRecord
-  validates_presence_of :title
+  validates_presence_of :title, :salary_min, :salary_max, :hires, :description, :experience
 
   belongs_to :user
   belongs_to :job_area
