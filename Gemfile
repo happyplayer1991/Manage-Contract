@@ -36,4 +36,4 @@ gem 'omniauth', '~> 1.8', '>= 1.8.1'
 gem 'omniauth-facebook', '~> 5.0'
 gem 'omniauth-oauth2', '~> 1.5'
 gem 'omniauth-google-oauth2', '~> 0.5.3'
-gem 'dotenv', '~> 2.4', groups: [:development, :test]
+gem 'dotenv-rails', '~> 2.4', groups: [:development, :test]
