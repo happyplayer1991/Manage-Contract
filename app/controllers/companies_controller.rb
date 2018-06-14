@@ -6,10 +6,10 @@ class CompaniesController < ApplicationController
   end
 
   def new
-    if current_user.company.count == 0
+    if current_user.companies.count == 0
       @company = Company.new
     else
-      redirect_to current_user.company, notice: 'You already have Company'
+      redirect_to companies_path, notice: 'You already have Company'
     end
   end
 

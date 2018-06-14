@@ -16,14 +16,14 @@
       <%= link_to "Your Profile", user_path(current_user.id), class: "nav-link #{active? user_path(current_user.id)}" %>
     </li>
 
-    <% if current_user.company.count == 0 %>
-    <li class="nav-item">
-      <%= link_to 'Setup your Company', new_company_path, class: "nav-link #{active? new_company_path}" %>
-    </li>
+    <% if current_user.companies.count == 0 %>
+      <li class="nav-item">
+        <%= link_to 'Setup your Company', new_company_path, class: "nav-link #{active? new_company_path}" %>
+      </li>
     <% else %>
-    <li class="nav-item">
-      <%= link_to 'View your Company', company_path(current_user.company.ids), class: "nav-link #{active? company_path(current_user.company)}" %>
-    </li>
+      <li class="nav-item">
+        <%= link_to 'View your Company', company_path(current_user.companies.ids), class: "nav-link #{active? company_path(current_user.companies)}" %>
+      </li>
     <% end %>
 
     <li class="nav-item">

@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
-  has_many :jobs
-  has_many :company
+  has_many :jobs, dependent: :destroy
+  has_many :companies, dependent: :destroy
 
   def self.new_with_session(params, session)
   	super.tap do |user|
