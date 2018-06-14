@@ -1,0 +1,8 @@
+<div class="col-md-4">
+  <div class="card mb-4 box-shadow">
+    <%= image_tag company.logo, class: 'card-img-top' %>
+    <div class="card-body">
+      <p class="card-text"><span><%= link_to company.title, company_path(company) %></span> <%= company.country %></p>
+    </div>
+  </div>
+</div>

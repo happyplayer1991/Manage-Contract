@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180612192650) do
+ActiveRecord::Schema.define(version: 20180614075737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "title"
+    t.integer "hires_per_year"
+    t.string "name"
+    t.string "phone"
+    t.string "country"
+    t.string "city"
+    t.integer "postal_code"
+    t.text "payment_info"
+    t.text "about"
+    t.text "why_join_us"
+    t.string "website"
+    t.string "industry"
+    t.integer "number_of_employee"
+    t.text "logo"
+    t.text "photo0"
+    t.text "photo1"
+    t.text "photo2"
+    t.text "photo3"
+    t.text "photo4"
+    t.text "photo5"
+    t.text "photo6"
+    t.text "photo7"
+    t.text "photo8"
+    t.text "photo9"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_companies_on_user_id"
+  end
 
   create_table "educations", force: :cascade do |t|
     t.string "title"
@@ -81,6 +112,7 @@ ActiveRecord::Schema.define(version: 20180612192650) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "companies", "users"
   add_foreign_key "jobs", "educations"
   add_foreign_key "jobs", "job_areas"
   add_foreign_key "jobs", "job_types"

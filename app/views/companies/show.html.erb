@@ -1,0 +1,62 @@
+<h2>Your Company</h2>
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Company logo</th>
+      <td><%= image_tag @company.logo %></td>
+    </tr>
+    <tr>
+      <th scope="row">Company name</th>
+      <td><%= @company.title %></td>
+    </tr>
+    <tr>
+      <th scope="row">Hires per year</th>
+      <td><%= @company.hires_per_year %></td>
+    </tr>
+    <tr>
+      <th scope="row">Name</th>
+      <td><%= @company.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Phone number</th>
+      <td><%= @company.phone %></td>
+    </tr>
+    <tr>
+      <th scope="row">Country</th>
+      <td><%= @company.country %></td>
+    </tr>
+    <tr>
+      <th scope="row">City / postal code</th>
+      <td><%= @company.city %> / <%= @company.postal_code %></td>
+    </tr>
+    <tr>
+      <th scope="row">Payment info</th>
+      <td><%= @company.payment_info %></td>
+    </tr>
+    <tr>
+      <th scope="row">About the company</th>
+      <td><%= @company.about %></td>
+    </tr>
+    <tr>
+      <th scope="row">Why join us</th>
+      <td><%= @company.why_join_us %></td>
+    </tr>
+    <tr>
+      <th scope="row">Website</th>
+      <td><%= @company.website %></td>
+    </tr>
+    <tr>
+      <th scope="row">Industry</th>
+      <td><%= @company.industry %></td>
+    </tr>
+    <tr>
+      <th scope="row">Number of employee</th>
+      <td><%= @company.number_of_employee %></td>
+    </tr>
+    <tr>
+      <th scope="row">Photo 1</th>
+      <td><%= image_tag @company.photo0 %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to 'Edit Company', edit_company_path(@company), class: 'btn btn-primary' %>

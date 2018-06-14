@@ -36,4 +36,7 @@ gem 'omniauth', '~> 1.8', '>= 1.8.1'
 gem 'omniauth-facebook', '~> 5.0'
 gem 'omniauth-oauth2', '~> 1.5'
 gem 'omniauth-google-oauth2', '~> 0.5.3'
+gem 'carrierwave', '~> 1.2', '>= 1.2.2'
+gem 'mini_magick', '~> 4.8'
+gem 'carrierwave-aws', '~> 1.3'
 gem 'dotenv-rails', '~> 2.4', groups: [:development, :test]
