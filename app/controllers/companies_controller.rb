@@ -50,12 +50,12 @@ class CompaniesController < ApplicationController
     end
   end
 
-  def destroy
-    @company.destroy
-    respond_to do |format|
-      format.html { redirect_to companies_url, notice: 'Company was removed.' }
-    end
-  end
+  #def destroy
+  #  @company.destroy
+  #  respond_to do |format|
+  #    format.html { redirect_to companies_url, notice: 'Company was removed.' }
+  #  end
+  #end
 
   private
     def set_company

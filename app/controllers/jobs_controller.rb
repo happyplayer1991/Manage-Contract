@@ -23,6 +23,10 @@ class JobsController < ApplicationController
   end
 
   def edit
+    if user_signed_in? && @job.user_id == current_user.id
+    else
+      redirect_to alljobs_path, notice: 'You do not have permission for this action!'
+    end
   end
 
   def update
@@ -39,9 +43,13 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @job.destroy
-    respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'Job was removed.' }
+    if @job.user_id == current_user.id
+      @job.destroy
+      respond_to do |format|
+        format.html { redirect_to jobs_url, notice: 'Job was removed.' }
+      end
+    else
+      redirect_to jobs_path, notice: 'You not right user'
     end
   end
 

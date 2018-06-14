@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   resources :jobs
 
-  root to: "jobs#index"
+  root to: "pages#index"
+
+  get  '/alljobs', to: 'pages#alljobs'
+  get  '/allcompanies', to: 'pages#allcompanies'
 
 end
