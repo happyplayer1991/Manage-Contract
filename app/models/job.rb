@@ -6,5 +6,5 @@ class Job < ApplicationRecord
   belongs_to :job_type
   belongs_to :education
 
-  scope :posts_by, ->(user) { where(user_id: user.id)}
+  scope :posts_by, ->(user) { where(user_id: user.id) }
 end

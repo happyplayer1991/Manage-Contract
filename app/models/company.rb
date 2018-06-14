@@ -3,7 +3,7 @@ class Company < ApplicationRecord
   #include Placeholder
   validates_presence_of :title
 
-  mount_uploader :logo, CompanyUploader
+  mount_uploader :logo,   CompanyUploader
   mount_uploader :photo0, CompanyUploader
   mount_uploader :photo1, CompanyUploader
   mount_uploader :photo2, CompanyUploader
@@ -15,6 +15,7 @@ class Company < ApplicationRecord
   mount_uploader :photo8, CompanyUploader
   mount_uploader :photo9, CompanyUploader
 
+  scope :setup_by, ->(user) { where(user_id: user.id) }
   #def set_defaults
   #  self.logo_image ||= Placeholder.image_generator(height: '350', width: '200')
   #  self.main_image ||= Placeholder.image_generator(height: '600', width: '400')

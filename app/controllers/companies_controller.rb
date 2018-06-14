@@ -2,11 +2,15 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:edit, :show, :update, :destroy]
 
   def index
-    @companies = Company.all
+    @companies = Company.setup_by(current_user)
   end
 
   def new
-    @company = Company.new
+    if current_user.company.count == 0
+      @company = Company.new
+    else
+      redirect_to current_user.company, notice: 'You already have Company'
+    end
   end
 
   def create
@@ -23,6 +27,10 @@ class CompaniesController < ApplicationController
   end
 
   def edit
+    if @company.user_id == current_user.id
+    else
+      redirect_to companies_path, notice: 'This is not your Company'
+    end
   end
 
   def update
@@ -36,6 +44,10 @@ class CompaniesController < ApplicationController
   end
 
   def show
+     if @company.user_id == current_user.id
+    else
+      redirect_to companies_path, notice: 'This is not your Company'
+    end
   end
 
   def destroy
