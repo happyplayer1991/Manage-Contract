@@ -1,14 +1,12 @@
-<h2>Your Company</h2>
-<table class="table">
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag @company.logo, width: '100%' %>
+  </div>
+
+  <div class="col-md-9">
+  <h1><%= @company.title %></h1>
+  <table class="table">
   <tbody>
-    <tr>
-      <th scope="row">Company logo</th>
-      <td><%= image_tag @company.logo %></td>
-    </tr>
-    <tr>
-      <th scope="row">Company name</th>
-      <td><%= @company.title %></td>
-    </tr>
     <tr>
       <th scope="row">Hires per year</th>
       <td><%= @company.hires_per_year %></td>
@@ -34,14 +32,6 @@
       <td><%= @company.payment_info %></td>
     </tr>
     <tr>
-      <th scope="row">About the company</th>
-      <td><%= @company.about %></td>
-    </tr>
-    <tr>
-      <th scope="row">Why join us</th>
-      <td><%= @company.why_join_us %></td>
-    </tr>
-    <tr>
       <th scope="row">Website</th>
       <td><%= @company.website %></td>
     </tr>
@@ -53,10 +43,26 @@
       <th scope="row">Number of employee</th>
       <td><%= @company.number_of_employee %></td>
     </tr>
-    <tr>
-      <th scope="row">Photo 1</th>
-      <td><%= image_tag @company.photo0 %></td>
-    </tr>
   </tbody>
 </table>
+</div>
+</div>
+<h4>Why join us:</h4>
+<div class="card">
+  <div class="card-body">
+    <%= @company.why_join_us %>
+  </div>
+</div>
+<br>
+<h4>About us:</h4>
+<div class="card">
+  <div class="card-body">
+    <%= @company.about %>
+  </div>
+</div>
+<br>
+<h4>Photos:</h4>
+<%= image_tag @company.photo0 %>
+
 <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn btn-primary' if user_signed_in? %>
+    

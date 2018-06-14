@@ -34,6 +34,6 @@ Job.create!(title: "Interesting", job_type_id: 3, job_area_id: 3, salary_min: 15
 Job.create!(title: "Super", job_type_id: 4, job_area_id: 4, salary_min: 1500, salary_max: 3500, hires: 1, description: "Some description", email: "seed@example.com", address: "Some Address", experience: 4, education_id: 4, user_id: 2)
 Job.create!(title: "Nice", job_type_id: 5, job_area_id: 5, salary_min: 4500, salary_max: 5000, hires: 3, description: "Some description", email: "seed@example.com", address: "Some Address", experience: 1, education_id: 5, user_id: 2)
 
-Company.create!(title: "Amazon", user_id: 1)
-Company.create!(title: "Google", user_id: 2)
-Company.create!(title: "NBA", user_id: 3)
+Company.create!(title: "Amazon", hires_per_year: 5, name: "Bill", phone: "1234567899", country: "USA", city: "Boston", postal_code: "12345", payment_info: "PayPal", about: "We are Great company", why_join_us: "Because we Great!", website: "google.com", industry: "Some Industry", number_of_employee: 150, user_id: 1)
+Company.create!(title: "Google", hires_per_year: 15, name: "Smith", phone: "1234567899", country: "Canada", city: "Toronto", postal_code: "12345", payment_info: "PayPal", about: "We are Great company", why_join_us: "Because we Great!", website: "camp.com", industry: "Some Industry", number_of_employee: 50, user_id: 2)
+Company.create!(title: "NBA", hires_per_year: 25, name: "Jack", phone: "1234567899", country: "Some Coutry", city: "Some City", postal_code: "12345", payment_info: "PayPal", about: "We are Great company", why_join_us: "Because we Great!", website: "bong.com", industry: "Some Industry", number_of_employee: 15, user_id: 3)
