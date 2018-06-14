@@ -59,4 +59,4 @@
     </tr>
   </tbody>
 </table>
-<%= link_to 'Edit Company', edit_company_path(@company), class: 'btn btn-primary' %>
+<%= link_to 'Edit Company', edit_company_path(@company), class: 'btn btn-primary' if user_signed_in? %>

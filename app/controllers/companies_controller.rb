@@ -6,10 +6,10 @@ class CompaniesController < ApplicationController
   end
 
   def new
-    if current_user.companies.count == 0
+    if user_signed_in? && current_user.companies.count == 0
       @company = Company.new
     else
-      redirect_to companies_path, notice: 'You already have Company'
+      redirect_to allcompanies_path, notice: 'You do not have permission for this action!'
     end
   end
 
@@ -27,9 +27,9 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    if @company.user_id == current_user.id
+    if user_signed_in? && @company.user_id == current_user.id
     else
-      redirect_to companies_path, notice: 'This is not your Company'
+      redirect_to allcompanies_path, notice: 'You do not have permission for this action!'
     end
   end
 
@@ -44,10 +44,10 @@ class CompaniesController < ApplicationController
   end
 
   def show
-     if @company.user_id == current_user.id
-    else
-      redirect_to companies_path, notice: 'This is not your Company'
-    end
+    #if @company.user_id == current_user.id
+    #else
+    #  redirect_to companies_path, notice: 'This is not your Company'
+    #end
   end
 
   #def destroy

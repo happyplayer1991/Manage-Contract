@@ -6,7 +6,11 @@ class JobsController < ApplicationController
   end
 
   def new
-    @job = Job.new
+    if user_signed_in?
+      @job = Job.new
+    else 
+      redirect_to alljobs_path, notice: 'You do not have permission for this action!'
+    end
   end
 
   def create

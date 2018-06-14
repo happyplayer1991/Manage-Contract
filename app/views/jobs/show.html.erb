@@ -43,6 +43,6 @@
     </tr>
   </tbody>
 </table>
-<%= link_to 'Edit Job', edit_job_path(@job), class: 'btn btn-primary' %>
+<%= link_to 'Edit Job', edit_job_path(@job), class: 'btn btn-primary' if user_signed_in? %>
 
 
