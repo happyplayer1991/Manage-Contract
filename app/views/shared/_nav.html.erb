@@ -1,13 +1,24 @@
-<div class="logo"
+<% if user_signed_in? %>
+  <div class="logo">
+  <h1>Recruiter Dashboard</h1>
+</div>
+<% else %>
+  <div class="logo"
   <% if current_page?(root_path) %>
     align="center"
   <% end %>
     >
-  <h1>Recruiter Dashboard</h1>
+  <h1>Job Listing</h1>
 </div>
+<% end %>
+
+
 
 <% if user_signed_in? %>
   <ul class="nav nav-tabs mr-auto custom-nav">
+    <li class="nav-item">
+      <%= link_to 'Homepage', root_path, class: "nav-link #{active? root_path}" %>
+    </li>
     <li class="nav-item">
   		<%= link_to 'Your Jobs', jobs_path, class: "nav-link #{active? jobs_path}" %>
 		</li>

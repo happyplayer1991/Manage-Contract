@@ -1,5 +1,17 @@
-<div>
-  <div>
+<h2>Your Company</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Company name</th>
+      <th scope="col">Industry</th>
+      <th scope="col">Country</th>
+      <th scope="col">City</th>
+      <th scope="col">Number of employee</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="jobs">
     <%= render partial: 'company', collection: @companies %>
-  </div>
-</div>
+  </tbody>
+</table>

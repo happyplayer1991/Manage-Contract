@@ -1,8 +1,9 @@
-<div class="col-md-4">
-  <div class="card mb-4 box-shadow">
-    <%= image_tag company.logo, class: 'card-img-top' %>
-    <div class="card-body">
-      <p class="card-text"><span><%= link_to company.title, company_path(company) %></span> <%= company.country %></p>
-    </div>
-  </div>
-</div>
+<tr>
+  <td><%= link_to company.title, company %></td>
+  <td><%= company.industry %></td>
+  <td><%= company.country %></td>
+  <td><%= company.city %></td>
+  <td><%= company.number_of_employee %></td>
+  <td><%= link_to '', company, class: 'fa fa-eye fa-lg' %></td>
+  <td><%= link_to '', edit_company_path(company), class: 'fa fa-edit fa-lg index-icons' %></td>
+</tr>
