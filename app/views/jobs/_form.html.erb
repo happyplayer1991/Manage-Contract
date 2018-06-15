@@ -3,7 +3,7 @@
   <% if job.errors.any? %>
     <ul><% job.errors.full_messages.each do |error| %>
       <li><%= error %><li>
-    <% end %></li>
+    <% end %></ul>
   <% end %>
 
   <div class="row">

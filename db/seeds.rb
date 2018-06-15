@@ -1,6 +1,7 @@
 User.create!(email: "test@test.com", password: "123123", password_confirmation: "123123")
 User.create!(email: "test2@test.com", password: "123123", password_confirmation: "123123")
 User.create!(email: "test3@test.com", password: "123123", password_confirmation: "123123")
+User.create!(email: "test4@test.com", password: "123123", password_confirmation: "123123")
 
 JobArea.create!(title: "Engineering")
 JobArea.create!(title: "Sales and Marketing")

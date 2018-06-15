@@ -1,19 +1,13 @@
 class Company < ApplicationRecord
   belongs_to :user
+  has_many :photos
+  accepts_nested_attributes_for :photos,
+                          allow_destroy: true,
+                          reject_if: lambda { |attrs| attrs['source'].blank? }
 
   validates_presence_of :title
 
   mount_uploader :logo,   CompanyUploader
-  mount_uploader :photo0, CompanyUploader
-  mount_uploader :photo1, CompanyUploader
-  mount_uploader :photo2, CompanyUploader
-  mount_uploader :photo3, CompanyUploader
-  mount_uploader :photo4, CompanyUploader
-  mount_uploader :photo5, CompanyUploader
-  mount_uploader :photo6, CompanyUploader
-  mount_uploader :photo7, CompanyUploader
-  mount_uploader :photo8, CompanyUploader
-  mount_uploader :photo9, CompanyUploader
 
   scope :setup_by, ->(user) { where(user_id: user.id) }
 end

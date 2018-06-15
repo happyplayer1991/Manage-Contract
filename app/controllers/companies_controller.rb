@@ -44,18 +44,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    #if @company.user_id == current_user.id
-    #else
-    #  redirect_to companies_path, notice: 'This is not your Company'
-    #end
   end
-
-  #def destroy
-  #  @company.destroy
-  #  respond_to do |format|
-  #    format.html { redirect_to companies_url, notice: 'Company was removed.' }
-  #  end
-  #end
 
   private
     def set_company
@@ -77,16 +66,7 @@ class CompaniesController < ApplicationController
                                   :industry,
                                   :number_of_employee,
                                   :logo,
-                                  :photo0,
-                                  :photo1,
-                                  :photo2,
-                                  :photo3,
-                                  :photo4,
-                                  :photo5,
-                                  :photo6,
-                                  :photo7,
-                                  :photo8,
-                                  :photo9,
-                                  :user_id)
+                                  :user_id,
+                                  photos_attributes: [:id, :source, :_destroy])
     end
 end
