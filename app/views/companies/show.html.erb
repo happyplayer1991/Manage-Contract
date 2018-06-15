@@ -62,7 +62,48 @@
 </div>
 <br>
 <h4>Photos:</h4>
-<%= image_tag @company.photo0 %>
-
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag @company.photo0, width: '100%' %>
+  </div>
+  <div class="col-md-4">
+    <%= image_tag @company.photo1, width: '100%' %>
+  </div>
+  <div class="col-md-4">
+    <%= image_tag @company.photo2, width: '100%' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag @company.photo3, width: '100%' %>
+  </div>
+  <div class="col-md-4">
+    <%= image_tag @company.photo4, width: '100%' %>
+  </div>
+  <div class="col-md-4">
+    <%= image_tag @company.photo5, width: '100%' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag @company.photo6, width: '100%' %>
+  </div>
+  <div class="col-md-4">
+    <%= image_tag @company.photo7, width: '100%' %>
+  </div>
+  <div class="col-md-4">
+    <%= image_tag @company.photo8, width: '100%' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag @company.photo9, width: '100%' %>
+  </div>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
+<hr>
 <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn btn-primary' if user_signed_in? %>
-    
+

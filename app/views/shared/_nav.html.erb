@@ -1,4 +1,8 @@
-<div class="logo">
+<div class="logo"
+  <% if current_page?(root_path) %>
+    align="center"
+  <% end %>
+    >
   <h1>Recruiter Dashboard</h1>
 </div>
 
@@ -27,7 +31,7 @@
       <a class="nav-link  fa fa-cog fa-lg" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
         <div class="dropdown-menu">
           <%= link_to 'Setup Profile', edit_user_registration_path, class: 'dropdown-item' %>
- 
+
           <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
         </div>
     </li>
