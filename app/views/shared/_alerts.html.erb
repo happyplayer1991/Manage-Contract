@@ -1,7 +1,7 @@
 <% if flash[:alert] %>
-  <%= js add_gritter(flash[:alert], image: :notice, title: "Listing App Alert!", sticky: false) %>
+  <%= js add_gritter(flash[:alert], image: :notice, title: "Job Listing Alert!", sticky: false) %>
 <% elsif flash[:error] %>
-  <%= js add_gritter(flash[:error], image: :error, title: "Listing App Error!", sticky: false) %>
+  <%= js add_gritter(flash[:error], image: :error, title: "Job Listing Error!", sticky: false) %>
 <% else %>
-  <%= js add_gritter(flash[:notice], image: :notice, title: "Listing App Notification!", sticky: false) %>
+  <%= js add_gritter(flash[:notice], image: :notice, title: "Job Listing Notification!", sticky: false) %>
 <% end %>

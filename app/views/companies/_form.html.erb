@@ -1,8 +1,10 @@
 <%= form_for(company) do |form| %>
   <% if company.errors.any? %>
-    <ul><% company.errors.full_messages.each do |error| %>
-      <li><%= error %><li>
-    <% end %></ul>
+    <ul>
+      <% company.errors.full_messages.each do |error| %>
+        <li><%= error %><li>
+      <% end %>
+    </ul>
   <% end %>
 
   <div class="row">

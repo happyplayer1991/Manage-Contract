@@ -1,29 +1,28 @@
 <% if user_signed_in? %>
   <div class="logo">
-  <h1>Recruiter Dashboard</h1>
-</div>
+    <h1>Recruiter Dashboard</h1>
+  </div>
 <% else %>
   <div class="logo"
-  <% if current_page?(root_path) %>
-    align="center"
-  <% end %>
+    <% if current_page?(root_path) %>
+      align="center"
+    <% end %>
     >
-  <h1>Job Listing</h1>
-</div>
+    <h1>Job Listing</h1>
+  </div>
 <% end %>
-
-
 
 <% if user_signed_in? %>
   <ul class="nav nav-tabs mr-auto custom-nav">
     <li class="nav-item">
       <%= link_to 'Homepage', root_path, class: "nav-link #{active? root_path}" %>
     </li>
+  
     <li class="nav-item">
   		<%= link_to 'Your Jobs', jobs_path, class: "nav-link #{active? jobs_path}" %>
 		</li>
-
-		<li class="nav-item">
+	
+  	<li class="nav-item">
   		<%= link_to 'New Job', new_job_path, id: 'new_job_from_nav', class: "nav-link #{active? new_job_path}" %>
 		</li>
 
@@ -37,7 +36,6 @@
       </li>
     <% end %>
 
-
     <li class="nav-item dropdown ml-auto">
       <a class="nav-link  fa fa-cog fa-lg" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
         <div class="dropdown-menu">
@@ -47,8 +45,6 @@
         </div>
     </li>
   </ul>
-
-
 <% elsif current_page?(root_path) %>
 <% else %>
   <ul class="nav nav-tabs mr-auto custom-nav">

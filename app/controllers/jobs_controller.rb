@@ -19,7 +19,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to jobs_path, notice: 'Your job was created.' }
+        format.html { redirect_to jobs_path, notice: 'Your Job was created.' }
       else
         format.html { render :new }
       end
@@ -50,10 +50,10 @@ class JobsController < ApplicationController
     if @job.user_id == current_user.id
       @job.destroy
       respond_to do |format|
-        format.html { redirect_to jobs_url, notice: 'Job was removed.' }
+        format.html { redirect_to jobs_url, notice: 'The Job was removed.' }
       end
     else
-      redirect_to jobs_path, notice: 'You not right user'
+      redirect_to jobs_path, notice: 'You do not have permission for this action!'
     end
   end
 

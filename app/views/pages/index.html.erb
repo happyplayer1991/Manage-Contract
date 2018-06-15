@@ -2,17 +2,14 @@
 	<div class="col-md-4">
 	</div>
 	<div class="col-md-4 custom-home">
-		
 		<% if !user_signed_in? %>
-		<h2 align="center">I am a recruiter</h2>
-		<%= link_to "Sign in / Sign up", new_user_session_path, class: 'btn btn-primary btn-block' %>
-		<hr>
+			<h2 align="center">I am a recruiter</h2>
+			<%= link_to "Sign in / Sign up", new_user_session_path, class: 'btn btn-primary btn-block' %>
+			<hr>
 		<% end %>
 
-
-		<%= link_to 'Browse Jobs', alljobs_path, class: 'btn btn-warning btn-block' %>
+		<%= link_to 'Browse Jobs', alljobs_path, class: 'btn btn-warning btn-block' %><br>
 		
-		<br>
 		<%= link_to 'Browse Companies', allcompanies_path, class: 'btn btn-secondary btn-block' %>
 	</div>
 </div>

@@ -4,49 +4,50 @@
   </div>
 
   <div class="col-md-9">
-  <h1><%= @company.title %></h1>
-  <table class="table">
-  <tbody>
-    <tr>
-      <th scope="row">Hires per year</th>
-      <td><%= @company.hires_per_year %></td>
-    </tr>
-    <tr>
-      <th scope="row">Name</th>
-      <td><%= @company.name %></td>
-    </tr>
-    <tr>
-      <th scope="row">Phone number</th>
-      <td><%= @company.phone %></td>
-    </tr>
-    <tr>
-      <th scope="row">Country</th>
-      <td><%= @company.country %></td>
-    </tr>
-    <tr>
-      <th scope="row">City / postal code</th>
-      <td><%= @company.city %> / <%= @company.postal_code %></td>
-    </tr>
-    <tr>
-      <th scope="row">Payment info</th>
-      <td><%= @company.payment_info %></td>
-    </tr>
-    <tr>
-      <th scope="row">Website</th>
-      <td><%= @company.website %></td>
-    </tr>
-    <tr>
-      <th scope="row">Industry</th>
-      <td><%= @company.industry %></td>
-    </tr>
-    <tr>
-      <th scope="row">Number of employee</th>
-      <td><%= @company.number_of_employee %></td>
-    </tr>
-  </tbody>
-</table>
+    <h1><%= @company.title %></h1>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Hires per year</th>
+          <td><%= @company.hires_per_year %></td>
+        </tr>
+        <tr>
+          <th scope="row">Name</th>
+          <td><%= @company.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">Phone number</th>
+          <td><%= @company.phone %></td>
+        </tr>
+        <tr>
+          <th scope="row">Country</th>
+          <td><%= @company.country %></td>
+        </tr>
+        <tr>
+          <th scope="row">City / postal code</th>
+          <td><%= @company.city %> / <%= @company.postal_code %></td>
+        </tr>
+        <tr>
+          <th scope="row">Payment info</th>
+          <td><%= @company.payment_info %></td>
+        </tr>
+        <tr>
+          <th scope="row">Website</th>
+          <td><%= @company.website %></td>
+        </tr>
+        <tr>
+          <th scope="row">Industry</th>
+          <td><%= @company.industry %></td>
+        </tr>
+        <tr>
+          <th scope="row">Number of employee</th>
+          <td><%= @company.number_of_employee %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-</div>
+
 <h4>Why join us:</h4>
 <div class="card">
   <div class="card-body">
@@ -62,17 +63,15 @@
 </div>
 <br>
 <h4>Photos:</h4>
-
 <div class="row">
-<% @company.photos.each do |photo| %>
-  <div class="col-md-4">
-  <%= image_tag photo.source, width: '100%' %>
-  <br>
-  <br>
-</div>
-<% end %>
+  <% @company.photos.each do |photo| %>
+    <div class="col-md-4">
+      <%= image_tag photo.source, width: '100%' %>
+      <br>
+      <br>
+    </div>
+  <% end %>
 </div>
 
 <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn btn-primary' if user_signed_in? %>
 <hr>
-

@@ -1,9 +1,10 @@
-
 <%= form_for(job) do |form| %>
   <% if job.errors.any? %>
-    <ul><% job.errors.full_messages.each do |error| %>
-      <li><%= error %><li>
-    <% end %></ul>
+    <ul>
+      <% job.errors.full_messages.each do |error| %>
+        <li><%= error %><li>
+      <% end %>
+    </ul>
   <% end %>
 
   <div class="row">
@@ -72,5 +73,4 @@
       </div>
     </div>
   </div>
-
 <% end %>
