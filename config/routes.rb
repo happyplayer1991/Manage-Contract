@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' },
-  :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  resources :users do
+    member do
+      get :toggle_interface
+    end
+  end
+
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout' },
+  :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 
   devise_scope :user do
-    get "/users/sign_up/:initial_role" => 'devise/registrations#new', :as => 'new_user_with_role'
+    get "/users/sign_up/:initial_interface" => 'devise/registrations#new', :as => 'new_user_with_interface'
   end
 
   resources :companies
@@ -12,6 +18,9 @@ Rails.application.routes.draw do
 
   get  '/alljobs', to: 'pages#alljobs'
   get  '/allcompanies', to: 'pages#allcompanies'
+
+
+
 
   root to: "pages#index"
 

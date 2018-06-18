@@ -15,7 +15,27 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   has_many :jobs, dependent: :destroy
   has_many :companies, dependent: :destroy
-  before_create :set_default_role
+  
+  #before_create :set_default_role
+
+  enum interface: { recruiter: 0, jobseeker: 1 }
+
+#start
+  attr_accessor :initial_interface
+
+  def initial_interface=(interface_name)
+      @initial_interface = interface_name
+      if interface_name == 'jobseeker'
+        self.jobseeker!
+      else
+        self.recruiter!
+      end
+  end
+
+  def initial_interface
+      @initial_interface
+  end
+#finish
 
   def self.new_with_session(params, session)
   	super.tap do |user|
@@ -35,9 +55,9 @@ class User < ApplicationRecord
   	end
 	end
 
-  private
-    def set_default_role
-      self.roles << :jobseeker
-      self.roles << :recruiter
-    end
+  #private
+  #  def set_default_role
+  #    self.roles << :jobseeker
+  #    self.roles << :recruiter
+  #  end
 end

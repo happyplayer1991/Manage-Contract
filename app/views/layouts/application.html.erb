@@ -12,7 +12,17 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <%= render 'shared/nav' %>
+          
+          <% if user_signed_in? %>
+            <%= link_to "I am #{current_user.interface.capitalize}", toggle_interface_user_path(current_user), class: 'btn btn-primary'  %>
+
+            <% if current_user.interface == "jobseeker" %>
+              <%= render 'shared/nav_jobseeker' %>
+            <% else %>
+              <%= render 'shared/nav' %>
+            <% end %>
+          <% end %>
+
           <%= yield %>
         </div>
       </div>

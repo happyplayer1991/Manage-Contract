@@ -13,3 +13,6 @@
 		<%= link_to 'Browse Companies', allcompanies_path, class: 'btn btn-secondary btn-block' %>
 	</div>
 </div>
+
+<%= link_to 'Sign up as Jobseeker', new_user_with_interface_path(:initial_interface => 'jobseeker') %>
+<%= link_to 'Sign up as Recruiter', new_user_with_interface_path(:initial_interface => 'recruiter') %>
