@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+  ############################################################################################
+  ## PeterGate Roles                                                                        ##
+  ## The :user role is added by default and shouldn't be included in this list.             ##
+  ## The :root_admin can access any page regardless of access settings. Use with caution!   ##
+  ## The multiple option can be set to true if you need users to have multiple roles.       ##
+  petergate(roles: [:superadmin, :jobseeker, :recruiter], multiple: true)                                      ##
+  ############################################################################################
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,6 +15,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   has_many :jobs, dependent: :destroy
   has_many :companies, dependent: :destroy
+  before_create :set_default_role
 
   def self.new_with_session(params, session)
   	super.tap do |user|
@@ -24,4 +34,10 @@ class User < ApplicationRecord
     	user.name = auth.info.name
   	end
 	end
+
+  private
+    def set_default_role
+      self.roles << :jobseeker
+      self.roles << :recruiter
+    end
 end
