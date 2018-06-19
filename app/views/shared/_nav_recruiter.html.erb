@@ -1,0 +1,32 @@
+<ul class="nav nav-tabs mr-auto custom-nav">
+  <li class="nav-item">
+    <%= link_to 'Homepage', root_path, class: "nav-link #{active? root_path}" %>
+  </li>
+
+  <li class="nav-item">
+		<%= link_to 'Your Jobs', jobs_path, class: "nav-link #{active? jobs_path}" %>
+	</li>
+
+	<li class="nav-item">
+		<%= link_to 'New Job', new_job_path, id: 'new_job_from_nav', class: "nav-link #{active? new_job_path}" %>
+	</li>
+
+  <% if current_user.companies.count == 0 %>
+    <li class="nav-item">
+      <%= link_to 'Setup your Company', new_company_path, class: "nav-link #{active? new_company_path}" %>
+    </li>
+  <% else %>
+    <li class="nav-item">
+      <%= link_to 'View your Company', company_path(current_user.companies.ids), class: "nav-link #{active? company_path(current_user.companies)}" %>
+    </li>
+  <% end %>
+
+  <li class="nav-item dropdown ml-auto">
+    <a class="nav-link  fa fa-cog fa-lg" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
+      <div class="dropdown-menu">
+        <%= link_to 'Setup Profile', edit_user_registration_path, class: 'dropdown-item' %>
+
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+      </div>
+  </li>
+</ul>

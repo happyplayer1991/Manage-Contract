@@ -1,4 +1,14 @@
-  <div class="logo">
-    <h1>Jobseeker Dashboard</h1>
-  </div>
+<ul class="nav nav-tabs mr-auto custom-nav">
+  <li class="nav-item">
+    <%= link_to 'Homepage', root_path, class: "nav-link #{active? root_path}" %>
+  </li>
 
+  <li class="nav-item dropdown ml-auto">
+    <a class="nav-link  fa fa-cog fa-lg" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
+      <div class="dropdown-menu">
+        <%= link_to 'Setup Profile', edit_user_registration_path, class: 'dropdown-item' %>
+
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+      </div>
+  </li>
+</ul>

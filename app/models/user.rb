@@ -4,7 +4,7 @@ class User < ApplicationRecord
   ## The :user role is added by default and shouldn't be included in this list.             ##
   ## The :root_admin can access any page regardless of access settings. Use with caution!   ##
   ## The multiple option can be set to true if you need users to have multiple roles.       ##
-  petergate(roles: [:superadmin, :jobseeker, :recruiter], multiple: true)                                      ##
+  petergate(roles: [:superadmin], multiple: false)                                      ##
   ############################################################################################
 
 
@@ -15,12 +15,12 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   has_many :jobs, dependent: :destroy
   has_many :companies, dependent: :destroy
-  
+
   #before_create :set_default_role
 
   enum interface: { recruiter: 0, jobseeker: 1 }
 
-#start
+  #link to sign up with interface start
   attr_accessor :initial_interface
 
   def initial_interface=(interface_name)
@@ -35,7 +35,7 @@ class User < ApplicationRecord
   def initial_interface
       @initial_interface
   end
-#finish
+  #finish
 
   def self.new_with_session(params, session)
   	super.tap do |user|

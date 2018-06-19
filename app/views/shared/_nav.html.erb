@@ -1,52 +1,25 @@
+<br>
 <% if user_signed_in? %>
-  <div class="logo">
-    <h1>Recruiter Dashboard</h1>
-  </div>
-<% else %>
-  <div class="logo"
-    <% if current_page?(root_path) %>
-      align="center"
-    <% end %>
-    >
-    <h1>Job Listing</h1>
-  </div>
-<% end %>
-
-<% if user_signed_in? %>
-  <ul class="nav nav-tabs mr-auto custom-nav">
-    <li class="nav-item">
-      <%= link_to 'Homepage', root_path, class: "nav-link #{active? root_path}" %>
-    </li>
-  
-    <li class="nav-item">
-  		<%= link_to 'Your Jobs', jobs_path, class: "nav-link #{active? jobs_path}" %>
-		</li>
-	
-  	<li class="nav-item">
-  		<%= link_to 'New Job', new_job_path, id: 'new_job_from_nav', class: "nav-link #{active? new_job_path}" %>
-		</li>
-
-    <% if current_user.companies.count == 0 %>
-      <li class="nav-item">
-        <%= link_to 'Setup your Company', new_company_path, class: "nav-link #{active? new_company_path}" %>
-      </li>
+  <ul class="nav mr-auto custom-nav">
+    <% if current_user.interface == "jobseeker" %>
+      <h1>Jobseeker Dashboard</h1>
     <% else %>
-      <li class="nav-item">
-        <%= link_to 'View your Company', company_path(current_user.companies.ids), class: "nav-link #{active? company_path(current_user.companies)}" %>
-      </li>
+      <h1>Recruiter Dashboard</h1>
     <% end %>
-
     <li class="nav-item dropdown ml-auto">
-      <a class="nav-link  fa fa-cog fa-lg" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
-        <div class="dropdown-menu">
-          <%= link_to 'Setup Profile', edit_user_registration_path, class: 'dropdown-item' %>
-
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-        </div>
+      <%= link_to "I am #{interface_button}", toggle_interface_user_path(current_user), class: 'btn btn-primary'  %>
     </li>
   </ul>
+
+  <% if current_user.interface == "jobseeker" %>
+    <%= render 'shared/nav_jobseeker' %>
+  <% else %>
+    <%= render 'shared/nav_recruiter' %>
+  <% end %>
+
 <% elsif current_page?(root_path) %>
 <% else %>
+  <h1>Job Listing</h1>
   <ul class="nav nav-tabs mr-auto custom-nav">
     <li class="nav-item">
       <%= link_to 'Homepage', root_path, class: "nav-link #{active? root_path}" %>
