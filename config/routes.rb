@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :resumes
   resources :users do
     member do
       get :toggle_interface

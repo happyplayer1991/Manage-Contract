@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180618165427) do
+ActiveRecord::Schema.define(version: 20180619135041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,29 @@ ActiveRecord::Schema.define(version: 20180618165427) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_photos_on_company_id"
+  end
+
+  create_table "resumes", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "country"
+    t.string "city"
+    t.text "contact_information"
+    t.string "phone"
+    t.string "degree"
+    t.string "school"
+    t.string "field_of_study"
+    t.string "education_country"
+    t.string "education_city"
+    t.date "education_start_date"
+    t.date "education_end_date"
+    t.string "desired_job_title"
+    t.boolean "relocation"
+    t.text "additional_information_step_4"
+    t.text "additional_information_step_5"
+    t.text "profile_pic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

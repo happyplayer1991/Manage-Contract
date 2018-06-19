@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @resume.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @resume.last_name %>
+</p>
+
+<div class="col-md-4">
+  <strong>Profile Pic:</strong>
+  <%= image_tag @resume.profile_pic, width: "100%" %>
+</div>
+
+<%= link_to 'Edit', edit_resume_path(@resume) %> |
+<%= link_to 'Back', resumes_path %>
