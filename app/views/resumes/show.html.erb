@@ -10,6 +10,12 @@
   <%= @resume.last_name %>
 </p>
 
+<h4>Work Experience</h4>
+<% @resume.work_experiences.each do |w| %>
+	<div><%= w.job_title %></div>
+	<div><%= w.company %></div>
+<% end %>
+
 <div class="col-md-4">
   <strong>Profile Pic:</strong>
   <%= image_tag @resume.profile_pic, width: "100%" %>

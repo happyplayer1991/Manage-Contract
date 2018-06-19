@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180619135041) do
+ActiveRecord::Schema.define(version: 20180619220421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20180619135041) do
     t.string "city"
     t.text "contact_information"
     t.string "phone"
+    t.boolean "resume_privacy"
     t.string "degree"
     t.string "school"
     t.string "field_of_study"
@@ -104,6 +105,8 @@ ActiveRecord::Schema.define(version: 20180619135041) do
     t.text "profile_pic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -128,10 +131,29 @@ ActiveRecord::Schema.define(version: 20180619135041) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "work_experiences", force: :cascade do |t|
+    t.string "job_title"
+    t.string "company"
+    t.string "country"
+    t.string "city"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "years_of_experience"
+    t.boolean "i_currently_work_here"
+    t.text "job_description"
+    t.integer "salary"
+    t.bigint "resume_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_work_experiences_on_resume_id"
+  end
+
   add_foreign_key "companies", "users"
   add_foreign_key "jobs", "educations"
   add_foreign_key "jobs", "job_areas"
   add_foreign_key "jobs", "job_types"
   add_foreign_key "jobs", "users"
   add_foreign_key "photos", "companies"
+  add_foreign_key "resumes", "users"
+  add_foreign_key "work_experiences", "resumes"
 end

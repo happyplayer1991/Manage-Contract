@@ -3,6 +3,16 @@
     <%= link_to 'Homepage', root_path, class: "nav-link #{active? root_path}" %>
   </li>
 
+  <% if current_user.resumes.count == 0 %>
+    <li class="nav-item">
+      <%= link_to 'Build your Resume', new_resume_path, class: "nav-link #{active? new_resume_path}" %>
+    </li>
+  <% else %>
+    <li class="nav-item">
+      <%= link_to 'View your Resume', resume_path(current_user.resumes.ids), class: "nav-link #{active? resume_path(current_user.resumes)}" %>
+    </li>
+  <% end %>
+
   <li class="nav-item dropdown ml-auto">
     <a class="nav-link  fa fa-cog fa-lg" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
       <div class="dropdown-menu">

@@ -11,75 +11,112 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, class: 'form-control' %>
-  </div>
+<hr>
 
-  <div class="form-group">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :country %>
-    <%= form.text_field :country, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :city %>
-    <%= form.text_field :city, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :contact_information %>
-    <%= form.text_area :contact_information, class: 'form-control', placeholder: "email:  etc." %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :phone %>
-    <%= form.text_field :phone, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :degree %>
-    <%= form.text_field :degree, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :school %>
-    <%= form.text_field :school, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :field_of_study %>
-    <%= form.text_field :field_of_study, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :education_country %>
-    <%= form.text_field :education_country, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :education_city %>
-    <%= form.text_field :education_city, class: 'form-control' %>
-  </div>
-
+  <h3>Personal details</h3>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <%= form.label :education_start_date %>
-        <%= form.date_field :education_start_date, class: 'form-control' %>
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :country %>
+        <%= form.text_field :country, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :city %>
+        <%= form.text_field :city, class: 'form-control' %>
       </div>
     </div>
+
     <div class="col-md-6">
       <div class="form-group">
-        <%= form.label :education_end_date %>
-        <%= form.date_field :education_end_date, class: 'form-control' %>
+        <%= form.label :contact_information %>
+        <%= form.text_area :contact_information, rows: 5, class: 'form-control', placeholder: "email:  etc." %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :phone %>
+        <%= form.text_field :phone, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :resume_privacy %>
+        <%= form.check_box :resume_privacy %>
       </div>
     </div>
   </div>
+
+<hr>
+
+  <h3>Education</h3>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :degree %>
+        <%= form.text_field :degree, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :school %>
+        <%= form.text_field :school, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :field_of_study %>
+        <%= form.text_field :field_of_study, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :education_country %>
+        <%= form.text_field :education_country, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :education_city %>
+        <%= form.text_field :education_city, class: 'form-control' %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :education_start_date %>
+            <%= form.date_field :education_start_date, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :education_end_date %>
+            <%= form.date_field :education_end_date, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<hr>
+
+  <h3>Work Experience</h3>
+  <div>
+    <%= form.fields_for :work_experiences do |work_experiences_form| %>
+      <%= render 'work_experience_fields', f: work_experiences_form %>
+    <% end %>
+    <div>
+      <%= link_to_add_association 'Add Work Experience', form, :work_experiences %>
+    </div>
+  </div>
+
+<hr>
 
   <div class="form-group">
     <%= form.label :desired_job_title %>

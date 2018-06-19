@@ -7,6 +7,7 @@ class CreateResumes < ActiveRecord::Migration[5.1]
       t.string :city
       t.text :contact_information
       t.string :phone
+      t.boolean :resume_privacy
       t.string :degree
       t.string :school
       t.string :field_of_study

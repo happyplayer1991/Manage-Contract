@@ -23,6 +23,7 @@ class ResumesController < ApplicationController
   # POST /resumes
   def create
     @resume = Resume.new(resume_params)
+    @resume.user_id = current_user.id
 
     if @resume.save
       redirect_to @resume, notice: 'Resume was successfully created.'
@@ -56,6 +57,18 @@ class ResumesController < ApplicationController
     def resume_params
       params.require(:resume).permit(:first_name,
                                      :last_name,
-                                     :profile_pic)
+                                     :profile_pic,
+                                     work_experiences_attributes: [:id,
+                                                                   :job_title,
+                                                                   :company,
+                                                                   :country,
+                                                                   :city,
+                                                                   :start_date,
+                                                                   :end_date,
+                                                                   :years_of_experience,
+                                                                   :i_currently_work_here,
+                                                                   :job_description,
+                                                                   :salary,
+                                                                   :_destroy])
     end
 end
