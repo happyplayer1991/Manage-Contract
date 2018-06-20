@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180620082735) do
+ActiveRecord::Schema.define(version: 20180620143026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "awards", force: :cascade do |t|
+    t.string "title"
+    t.date "date_awarded"
+    t.text "description"
+    t.bigint "resume_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_awards_on_resume_id"
+  end
+
+  create_table "certifications", force: :cascade do |t|
+    t.string "title"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "description"
+    t.bigint "resume_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_certifications_on_resume_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "title"
@@ -40,6 +61,18 @@ ActiveRecord::Schema.define(version: 20180620082735) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "title"
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "i_am_still_a_member"
+    t.text "description"
+    t.bigint "resume_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_groups_on_resume_id"
   end
 
   create_table "job_areas", force: :cascade do |t|
@@ -80,12 +113,50 @@ ActiveRecord::Schema.define(version: 20180620082735) do
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
+  create_table "militaries", force: :cascade do |t|
+    t.string "service_country"
+    t.string "branch"
+    t.string "rank"
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "i_am_currently_serving"
+    t.text "description"
+    t.text "commendations"
+    t.bigint "resume_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_militaries_on_resume_id"
+  end
+
+  create_table "patents", force: :cascade do |t|
+    t.integer "patent_number"
+    t.string "title"
+    t.string "url"
+    t.date "date_awarded"
+    t.text "description"
+    t.bigint "resume_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_patents_on_resume_id"
+  end
+
   create_table "photos", force: :cascade do |t|
     t.text "source"
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_photos_on_company_id"
+  end
+
+  create_table "publications", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+    t.date "date_published"
+    t.text "description"
+    t.bigint "resume_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_publications_on_resume_id"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -110,11 +181,24 @@ ActiveRecord::Schema.define(version: 20180620082735) do
     t.boolean "relocation"
     t.text "additional_information_step_4"
     t.text "additional_information_step_5"
+    t.string "blog_url"
+    t.string "personal_homepage"
+    t.string "facebook"
+    t.string "twitter"
     t.text "profile_pic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_resumes_on_user_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "title"
+    t.integer "experience"
+    t.bigint "resume_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_skills_on_resume_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -156,12 +240,19 @@ ActiveRecord::Schema.define(version: 20180620082735) do
     t.index ["resume_id"], name: "index_work_experiences_on_resume_id"
   end
 
+  add_foreign_key "awards", "resumes"
+  add_foreign_key "certifications", "resumes"
   add_foreign_key "companies", "users"
+  add_foreign_key "groups", "resumes"
   add_foreign_key "jobs", "educations"
   add_foreign_key "jobs", "job_areas"
   add_foreign_key "jobs", "job_types"
   add_foreign_key "jobs", "users"
+  add_foreign_key "militaries", "resumes"
+  add_foreign_key "patents", "resumes"
   add_foreign_key "photos", "companies"
+  add_foreign_key "publications", "resumes"
   add_foreign_key "resumes", "users"
+  add_foreign_key "skills", "resumes"
   add_foreign_key "work_experiences", "resumes"
 end

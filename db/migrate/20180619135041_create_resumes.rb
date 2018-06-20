@@ -22,6 +22,10 @@ class CreateResumes < ActiveRecord::Migration[5.1]
       t.boolean :relocation
       t.text :additional_information_step_4
       t.text :additional_information_step_5
+      t.string :blog_url
+      t.string :personal_homepage
+      t.string :facebook
+      t.string :twitter
       t.text :profile_pic
 
       t.timestamps
