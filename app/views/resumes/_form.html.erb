@@ -200,16 +200,12 @@
 
           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
-
-              <div>
                 <%= form.fields_for :skills do |skills_form| %>
                   <%= render partial: "/resumes/skill_fields", f: skills_form %>
                 <% end %>
                 <div>
-                  <%= link_to_add_association 'Add Skill', form, :work_experiences %>
+                  <%= link_to_add_association 'Add Skill', form, :skills %>
                 </div>
-              </div>
-
             </div>
           </div>
         </div>
@@ -223,7 +219,12 @@
           </div>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <%= form.fields_for :certifications do |certifications_form| %>
+                <%= render partial: "certification_fields", f: certifications_form %>
+              <% end %>
+              <div>
+                <%= link_to_add_association 'Add Certification / License', form, :certifications %>
+              </div>
             </div>
           </div>
         </div>
@@ -270,7 +271,12 @@
 
           <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <%= form.fields_for :militaries do |militaries_form| %>
+                <%= render partial: "military_fields", f: militaries_form %>
+              <% end %>
+              <div>
+                <%= link_to_add_association 'Add Military Service', form, :militaries %>
+              </div>
             </div>
           </div>
         </div>
@@ -279,19 +285,24 @@
 
 
     <div class="col-md-6">
-      <div class="accordion" id="accordionExample">
+      <div class="accordion" id="accordionExample2">
         <div class="card">
           <div class="card-header" id="headingFive">
             <h5 class="mb-0">
-              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
                 Awards
               </button>
             </h5>
           </div>
 
-          <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+          <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample2">
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <%= form.fields_for :awards do |awards_form| %>
+                <%= render partial: "award_fields", f: awards_form %>
+              <% end %>
+              <div>
+                <%= link_to_add_association 'Add Award', form, :awards %>
+              </div>
             </div>
           </div>
         </div>
@@ -303,9 +314,14 @@
               </button>
             </h5>
           </div>
-          <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+          <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample2">
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <%= form.fields_for :groups do |groups_form| %>
+                <%= render partial: "group_fields", f: groups_form %>
+              <% end %>
+              <div>
+                <%= link_to_add_association 'Add Group', form, :groups %>
+              </div>
             </div>
           </div>
         </div>
@@ -317,9 +333,14 @@
               </button>
             </h5>
           </div>
-          <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+          <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample2">
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <%= form.fields_for :patents do |patents_form| %>
+                <%= render partial: "patent_fields", f: patents_form %>
+              <% end %>
+              <div>
+                <%= link_to_add_association 'Add Patent', form, :patents %>
+              </div>
             </div>
           </div>
         </div>
@@ -332,9 +353,14 @@
             </h5>
           </div>
 
-          <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+          <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample2">
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <%= form.fields_for :publications do |publications_form| %>
+                <%= render partial: "publication_fields", f: publications_form %>
+              <% end %>
+              <div>
+                <%= link_to_add_association 'Add Publication', form, :publications %>
+              </div>
             </div>
           </div>
         </div>
