@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180619220421) do
+ActiveRecord::Schema.define(version: 20180620082735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,11 @@ ActiveRecord::Schema.define(version: 20180619220421) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "job_types_resumes", id: false, force: :cascade do |t|
+    t.bigint "resume_id", null: false
+    t.bigint "job_type_id", null: false
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -99,6 +104,9 @@ ActiveRecord::Schema.define(version: 20180619220421) do
     t.date "education_start_date"
     t.date "education_end_date"
     t.string "desired_job_title"
+    t.integer "desired_salary_per_month"
+    t.integer "desired_salary_per_year"
+    t.integer "employement_eligibility", default: 0
     t.boolean "relocation"
     t.text "additional_information_step_4"
     t.text "additional_information_step_5"

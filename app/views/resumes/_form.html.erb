@@ -71,6 +71,11 @@
       </div>
 
       <div class="form-group">
+        <%= form.label :school %>
+        <%= form.text_field :school, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
         <%= form.label :field_of_study %>
         <%= form.text_field :field_of_study, class: 'form-control' %>
       </div>
@@ -118,21 +123,67 @@
 
 <hr>
 
-  <div class="form-group">
-    <%= form.label :desired_job_title %>
-    <%= form.text_field :desired_job_title, class: 'form-control' %>
-  </div>
+  <h3>Additional information</h3>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :desired_job_title %>
+        <%= form.text_field :desired_job_title, class: 'form-control' %>
+      </div>
 
-  <div class="form-group">
-    <%= form.label :relocation %>
-    <%= form.check_box :relocation %>
-  </div>
+      <div class="form-group">
+        <%= form.label "Desired job types" %><br />
+        <%= form.collection_check_boxes :job_type_ids, JobType.all, :id, :title do |b| %>
+          <div class="collection-check-box">
+            <%= b.check_box %>
+            <%= b.label %>
+          </div>
+        <% end %>
+      </div>
 
-  <div class="form-group">
-    <%= form.label :additional_information_step_4 %>
-    <%= form.text_area :additional_information_step_4, class: 'form-control' %>
-  </div>
+      <h5>Desired salary</h5>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label "per month" %>
+            <%= form.number_field :desired_salary_per_month, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label "per year" %>
+            <%= form.number_field :desired_salary_per_year, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="col-md-6">
+      <h5>Employement eligibility</h5>
+        <div class="form-group">
+          <%= form.radio_button :employement_eligibility, 'authorized' %>
+          <%= form.label :employement_eligibility, 'Authorized to work in the country where you located' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.radio_button :employement_eligibility, 'sponsorhip' %>
+          <%= form.label :employement_eligibility, 'Sponsorhip required to work in the country' %>
+        </div>
+
+      <div class="form-group">
+        <%= form.label :relocation %>
+        <%= form.check_box :relocation %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label "Additional information (text)" %>
+        <%= form.text_area :additional_information_step_4, rows: 8, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+<hr>
+
+  <h3>Add more fields</h3>
   <div class="form-group">
     <%= form.label :additional_information_step_5 %>
     <%= form.text_area :additional_information_step_5, class: 'form-control' %>

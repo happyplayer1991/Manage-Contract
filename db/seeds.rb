@@ -40,6 +40,6 @@ Company.create!(title: "Amazon", hires_per_year: 5, name: "Bill", phone: "123456
 Company.create!(title: "Google", hires_per_year: 15, name: "Smith", phone: "1234567899", country: "Canada", city: "Toronto", postal_code: "12345", payment_info: "PayPal", about: "We are Great company", why_join_us: "Because we Great!", website: "camp.com", industry: "Some Industry", number_of_employee: 50, user_id: 2)
 Company.create!(title: "NBA", hires_per_year: 25, name: "Jack", phone: "1234567899", country: "Some Coutry", city: "Some City", postal_code: "12345", payment_info: "PayPal", about: "We are Great company", why_join_us: "Because we Great!", website: "bong.com", industry: "Some Industry", number_of_employee: 15, user_id: 3)
 
-Resume.create!(first_name: "Bill", last_name: "Roger")
+Resume.create!(first_name: "Bill", last_name: "Roger", user_id: 1)
 
 WorkExperience.create!(job_title: "RoR Developer", resume_id: 1)

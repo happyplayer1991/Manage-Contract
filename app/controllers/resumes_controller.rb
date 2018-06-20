@@ -58,6 +58,7 @@ class ResumesController < ApplicationController
       params.require(:resume).permit(:first_name,
                                      :last_name,
                                      :profile_pic,
+                                     job_type_ids:[],
                                      work_experiences_attributes: [:id,
                                                                    :job_title,
                                                                    :company,

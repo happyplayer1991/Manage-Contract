@@ -16,6 +16,9 @@ class CreateResumes < ActiveRecord::Migration[5.1]
       t.date :education_start_date
       t.date :education_end_date
       t.string :desired_job_title
+      t.integer :desired_salary_per_month
+      t.integer :desired_salary_per_year
+      t.integer :employement_eligibility, default: 0
       t.boolean :relocation
       t.text :additional_information_step_4
       t.text :additional_information_step_5
