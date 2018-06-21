@@ -33,7 +33,7 @@
 
 <hr>
 
-<h3>Education</h3>
+<h2>Education</h2>
 <table class="table">
   <tbody>
     <tr>
@@ -63,7 +63,9 @@
   </tbody>
 </table>
 
-<h3>Work Experience</h3>
+<hr>
+
+<h2>Work Experience</h2>
 <% @resume.work_experiences.each do |w| %>
   <table class="table">
   <tbody>
@@ -109,18 +111,96 @@
     </tr>
     <tr>
       <th scope="row">Job Type</th>
-      <td><%= w.job_type_work_exp %></td>
+      <td><%= JobType.find_by_id(w.job_type_work_exp).title %></td>
     </tr>
   </tbody>
 </table>
-	<div><%= w.job_title %></div>
-	<div><%= w.company %></div>
 <% end %>
 
-<div class="col-md-4">
-  <strong>Profile Pic:</strong>
+<hr>
 
-</div>
+<h2>Additional information</h2>
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Desired Job Title:</th>
+      <td><%= @resume.desired_job_title %></td>
+    </tr>
+    <tr>
+      <th scope="row">Desired Job Types</th>
+      <td>
+        <% @resume.job_type_ids.each do |j| %>
+          <%= JobType.find_by_id(j).title %><br>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Desired salary per month</th>
+      <td><%= @resume.desired_salary_per_month %></td>
+    </tr>
+    <tr>
+      <th scope="row">Desired salary per year:</th>
+      <td><%= @resume.desired_salary_per_year %></td>
+    </tr>
+    <tr>
+      <th scope="row">I am willing to relocate</th>
+      <td><%= @resume.relocation %></td>
+    </tr>
+    <tr>
+      <th scope="row">Employement eligibility</th>
+      <td><%= @resume.employement_eligibility %></td>
+    </tr>
+    <tr>
+      <th scope="row">Additional information (text)</th>
+      <td><%= @resume.additional_information_step_4 %></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<table class="table">
+  <h3>Skills</h3>
+  <tbody>
+  <% @resume.skills.each do |s| %>
+    <tr>
+      <th scope="row">Title:</th>
+      <td><%= s.title %></td>
+    </tr>
+    
+    <tr>
+      <th scope="row">Years of experience</th>
+      <td><%= s.experience %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<table class="table">
+  <h3>Certifications / Licenses</h3>
+  <% @resume.certifications.each do |c| %>
+  <tbody>
+    <tr>
+      <th scope="row">Title:</th>
+      <td><%= c.title %></td>
+    </tr>
+    <tr>
+      <th scope="row">Time Period</th>
+      <td><%= c.start_date %> - <%= c.end_date %></td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td><%= c.description %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+
+<hr>
+
+
 
 <%= link_to 'Edit', edit_resume_path(@resume) %> |
 <%= link_to 'Back', resumes_path %>

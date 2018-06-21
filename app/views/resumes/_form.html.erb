@@ -111,8 +111,8 @@
 
   <h3>Work Experience</h3>
   <div>
-    <%= form.fields_for :work_experiences do |work_experiences_form| %>
-      <%= render partial: "work_experience_fields", form: work_experiences_form %>
+    <%= form.fields_for :work_experiences do |work_experience_form| %>
+      <%= render 'work_experience_fields', f: work_experience_form %>
     <% end %>
     <div>
       <%= link_to_add_association 'Add Work Experience', form, :work_experiences %>
@@ -205,7 +205,7 @@
           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
                 <%= form.fields_for :skills do |skills_form| %>
-                  <%= render partial: "/resumes/skill_fields", f: skills_form %>
+                  <%= render "/resumes/skill_fields", f: skills_form %>
                 <% end %>
                 <div>
                   <%= link_to_add_association 'Add Skill', form, :skills %>
@@ -224,7 +224,7 @@
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
               <%= form.fields_for :certifications do |certifications_form| %>
-                <%= render partial: "certification_fields", f: certifications_form %>
+                <%= render "certification_fields", f: certifications_form %>
               <% end %>
               <div>
                 <%= link_to_add_association 'Add Certification / License', form, :certifications %>
