@@ -49,8 +49,11 @@
       </div>
 
       <div class="form-group">
-        <%= form.label :resume_privacy %>
-        <%= form.check_box :resume_privacy %>
+        <%= form.radio_button :status, 'private_resume' %>
+        <%= form.label :status, 'Private Resume' %>
+      <br>
+        <%= form.radio_button :status, 'public_resume' %>
+        <%= form.label :status, 'Public Resume' %>
       </div>
     </div>
   </div>
@@ -63,11 +66,6 @@
       <div class="form-group">
         <%= form.label :degree %>
         <%= form.text_field :degree, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= form.label :school %>
-        <%= form.text_field :school, class: 'form-control' %>
       </div>
 
       <div class="form-group">
@@ -160,18 +158,24 @@
 
     <div class="col-md-6">
       <h5>Employement eligibility</h5>
-        <div class="form-group">
-          <%= form.radio_button :employement_eligibility, 'authorized' %>
-          <%= form.label :employement_eligibility, 'Authorized to work in the country where you located' %>
+        <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <%= form.radio_button :employement_eligibility, 'employment' %>
+            <%= form.label :employement_eligibility, 'Employment' %>
+          </div>
         </div>
 
-        <div class="form-group">
-          <%= form.radio_button :employement_eligibility, 'sponsorhip' %>
-          <%= form.label :employement_eligibility, 'Sponsorhip required to work in the country' %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.radio_button :employement_eligibility, 'sponsorhip' %>
+            <%= form.label :employement_eligibility, 'Sponsorhip' %>
+          </div>
         </div>
+      </div>
 
       <div class="form-group">
-        <%= form.label :relocation %>
+        <%= form.label "I am willing to relocate" %>
         <%= form.check_box :relocation %>
       </div>
 
@@ -379,12 +383,13 @@
 
     <div class="col-md-6">
       <div class="form-group">
-        <%= form.label "Profile Picture" %>
-        <label class="btn btn-primary btn-block">
-          Upload <%= form.file_field :profile_pic, style: 'display:none;' %>
-        </label>
+          <%= form.label "Profile Picture" %>
+          <%= form.file_field :profile_pic, class: 'form-control' %>
       </div>
     </div>
+
+
+
   </div>
 
   <div class="form-group">

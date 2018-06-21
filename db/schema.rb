@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180620143026) do
+ActiveRecord::Schema.define(version: 20180621085413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 20180620143026) do
   end
 
   create_table "patents", force: :cascade do |t|
-    t.integer "patent_number"
+    t.string "patent_number"
     t.string "title"
     t.string "url"
     t.date "date_awarded"
@@ -166,7 +166,6 @@ ActiveRecord::Schema.define(version: 20180620143026) do
     t.string "city"
     t.text "contact_information"
     t.string "phone"
-    t.boolean "resume_privacy"
     t.string "degree"
     t.string "school"
     t.string "field_of_study"
@@ -189,6 +188,7 @@ ActiveRecord::Schema.define(version: 20180620143026) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.integer "status", default: 0
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
@@ -231,9 +231,12 @@ ActiveRecord::Schema.define(version: 20180620143026) do
     t.date "start_date"
     t.date "end_date"
     t.integer "years_of_experience"
+    t.boolean "less_than_one_year"
+    t.string "job_type_work_exp"
     t.boolean "i_currently_work_here"
     t.text "job_description"
     t.integer "salary"
+    t.integer "salary_status", default: 0
     t.bigint "resume_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

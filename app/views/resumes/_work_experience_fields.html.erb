@@ -4,7 +4,7 @@
 			<div class="form-group">
 			  <%= f.label :job_title %>
 			  <%= f.text_field :job_title, class: 'form-control' %>
-			</div> 
+			</div>
 
 			<div class="form-group">
 			  <%= f.label :company %>
@@ -20,6 +20,11 @@
 			  <%= f.label :city %>
 			  <%= f.text_field :city, class: 'form-control' %>
 			</div>
+
+			<div class="form-group">
+        <%= f.label "Job Type" %>
+        <%= f.collection_select(:job_type_work_exp, JobType.all, :id, :title, {}, class: 'form-control') %>
+      </div>
 
 			<div class="form-group">
 			  <%= f.label :i_currently_work_here %>
@@ -45,9 +50,21 @@
 				</div>
 			</div>
 
-			<div class="form-group">
-			  <%= f.label :years_of_experience %>
-			  <%= f.number_field :years_of_experience, class: 'form-control' %>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+					  <%= f.label :years_of_experience %>
+					  <%= f.number_field :years_of_experience, class: 'form-control' %>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<br>
+					<div class="form-group">
+					  <%= f.check_box :less_than_one_year %>
+					  <%= f.label :less_than_one_year %>
+					</div>
+				</div>
 			</div>
 
 			<div class="form-group">
@@ -55,10 +72,25 @@
 			  <%= f.text_area :job_description, row: 2, class: 'form-control' %>
 			</div>
 
-			<div class="form-group">
-			  <%= f.label :salary %>
-			  <%= f.number_field :salary, class: 'form-control' %>
-			</div>
+			<div class="row">
+				<div class="col-md-8">
+					<div class="form-group">
+					  <%= f.label "Salary per month" %>
+					  <%= f.number_field :salary, class: 'form-control' %>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<br>
+					<div class="form-group">
+		        <%= f.radio_button :salary_status, 'hide' %>
+		        <%= f.label :status, 'Hide' %>
+		      <br>
+		        <%= f.radio_button :salary_status, 'show' %>
+		        <%= f.label :status, 'Show' %>
+		      </div>
+		    </div>
+		  </div>
 
 		</div>
 	</div>

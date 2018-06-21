@@ -1,7 +1,7 @@
 class CreatePatents < ActiveRecord::Migration[5.1]
   def change
     create_table :patents do |t|
-      t.integer :patent_number
+      t.string :patent_number
       t.string :title
       t.string :url
       t.date :date_awarded
