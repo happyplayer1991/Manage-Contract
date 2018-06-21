@@ -1,24 +1,125 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-9">
+    <table class="table">
+      <h1><%= @resume.first_name %> <%= @resume.last_name %></h1>
+      <tbody>
+        <tr>
+          <th scope="row">City:</th>
+          <td><%= @resume.city %></td>
+        </tr>
+        <tr>
+          <th scope="row">Country:</th>
+          <td><%= @resume.country %></td>
+        </tr>
+        <tr>
+          <th scope="row">Contact information</th>
+          <td><%= @resume.contact_information %></td>
+        </tr>
+        <tr>
+          <th scope="row">Phone</th>
+          <td><%= @resume.phone %></td>
+        </tr>
+        <tr>
+          <th scope="row">Resume privacy:</th>
+          <td><%= @resume.status %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-3">
+    <%= image_tag placeholder_img(@resume.profile_pic, 'logo'), width: '100%' %>
+  </div>
+</div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @resume.first_name %>
-</p>
+<hr>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @resume.last_name %>
-</p>
+<h3>Education</h3>
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Degree:</th>
+      <td><%= @resume.degree %></td>
+    </tr>
+    <tr>
+      <th scope="row">School:</th>
+      <td><%= @resume.school %></td>
+    </tr>
+    <tr>
+      <th scope="row">Fields of study</th>
+      <td><%= @resume.field_of_study %></td>
+    </tr>
+    <tr>
+      <th scope="row">Country</th>
+      <td><%= @resume.education_country %></td>
+    </tr>
+    <tr>
+      <th scope="row">City:</th>
+      <td><%= @resume.education_city %></td>
+    </tr>
+    <tr>
+      <th scope="row">Time Period</th>
+      <td><%= @resume.education_start_date %> - <%= @resume.education_end_date %></td>
+    </tr>
+  </tbody>
+</table>
 
-<h4>Work Experience</h4>
+<h3>Work Experience</h3>
 <% @resume.work_experiences.each do |w| %>
+  <table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Job title:</th>
+      <td><%= w.job_title %></td>
+    </tr>
+    <tr>
+      <th scope="row">Company:</th>
+      <td><%= w.company %></td>
+    </tr>
+    <tr>
+      <th scope="row">Country</th>
+      <td><%= w.country %></td>
+    </tr>
+    <tr>
+      <th scope="row">City</th>
+      <td><%= w.city %></td>
+    </tr>
+    <tr>
+      <th scope="row">Time Period</th>
+      <td><%= w.start_date %> - <%= w.end_date %></td>
+    </tr>
+    <tr>
+      <th scope="row">Years of experience</th>
+      <td><%= w.years_of_experience %></td>
+    </tr>
+    <tr>
+      <th scope="row">Less then one year</th>
+      <td><%= w.less_than_one_year %></td>
+    </tr>
+    <tr>
+      <th scope="row">Job description</th>
+      <td><%= w.job_description %></td>
+    </tr>
+    <tr>
+      <th scope="row">Salaries</th>
+      <td><%= w.salary %></td>
+    </tr>
+    <tr>
+      <th scope="row">I currently work here</th>
+      <td><%= w.i_currently_work_here %></td>
+    </tr>
+    <tr>
+      <th scope="row">Job Type</th>
+      <td><%= w.job_type_work_exp %></td>
+    </tr>
+  </tbody>
+</table>
 	<div><%= w.job_title %></div>
 	<div><%= w.company %></div>
 <% end %>
 
 <div class="col-md-4">
   <strong>Profile Pic:</strong>
-  <%= image_tag @resume.profile_pic, width: "100%" %>
+
 </div>
 
 <%= link_to 'Edit', edit_resume_path(@resume) %> |

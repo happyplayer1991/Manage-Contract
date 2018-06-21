@@ -112,7 +112,7 @@
   <h3>Work Experience</h3>
   <div>
     <%= form.fields_for :work_experiences do |work_experiences_form| %>
-      <%= render partial: "work_experience_fields", f: work_experiences_form %>
+      <%= render partial: "work_experience_fields", form: work_experiences_form %>
     <% end %>
     <div>
       <%= link_to_add_association 'Add Work Experience', form, :work_experiences %>
