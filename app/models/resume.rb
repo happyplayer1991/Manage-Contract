@@ -6,8 +6,8 @@ class Resume < ApplicationRecord
 	belongs_to :user
   has_and_belongs_to_many :job_types
 
-  #has_many :resumes_users
-  #has_many :users, through: :resumes_users
+  has_many :resumes_users
+  has_many :bookmarked_by_users, through: :resumes_users, source: :user
 
   has_many :work_experiences, dependent: :destroy
 	accepts_nested_attributes_for :work_experiences,
