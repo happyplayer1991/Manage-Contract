@@ -167,7 +167,7 @@
       <th scope="row">Title:</th>
       <td><%= s.title %></td>
     </tr>
-    
+
     <tr>
       <th scope="row">Years of experience</th>
       <td><%= s.experience %></td>
@@ -180,8 +180,8 @@
 
 <table class="table">
   <h3>Certifications / Licenses</h3>
-  <% @resume.certifications.each do |c| %>
   <tbody>
+  <% @resume.certifications.each do |c| %>
     <tr>
       <th scope="row">Title:</th>
       <td><%= c.title %></td>
@@ -194,13 +194,169 @@
       <th scope="row">Description</th>
       <td><%= c.description %></td>
     </tr>
+<% end %>
   </tbody>
 </table>
-<% end %>
 
 <hr>
 
+  <h3>Links</h3>
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Blog:</th>
+      <td><%= @resume.blog_url %></td>
+    </tr>
+    <tr>
+      <th scope="row">Personal Homepage</th>
+      <td><%= @resume.personal_homepage %></td>
+    </tr>
+    <tr>
+      <th scope="row">Facebook</th>
+      <td><%= @resume.facebook %></td>
+    </tr>
+    <tr>
+      <th scope="row">Twitter</th>
+      <td><%= @resume.twitter %></td>
+    </tr>
+  </tbody>
+</table>
 
+<hr>
+
+<table class="table">
+  <h3>Military service</h3>
+  <tbody>
+    <% @resume.militaries.each do |m| %>
+      <tr>
+        <th scope="row">Service Country:</th>
+        <td><%= m.service_country %></td>
+      </tr>
+      <tr>
+        <th scope="row">Branch</th>
+        <td><%= m.branch %></td>
+      </tr>
+      <tr>
+        <th scope="row">Rank</th>
+        <td><%= m.rank %></td>
+      </tr>
+      <tr>
+        <th scope="row">Time Period</th>
+        <td><%= m.start_date %> - <%= m.end_date %></td>
+      </tr>
+      <tr>
+        <th scope="row">I am currently Serving</th>
+        <td><%= m.i_am_currently_serving %></td>
+      </tr>
+      <tr>
+        <th scope="row">Description</th>
+        <td><%= m.description %></td>
+      </tr>
+      <tr>
+        <th scope="row">Commendations</th>
+        <td><%= m.commendations %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<table class="table">
+  <h3>Awards</h3>
+  <tbody>
+    <% @resume.awards.each do |a| %>
+      <tr>
+        <th scope="row">Title:</th>
+        <td><%= a.title %></td>
+      </tr>
+      <tr>
+        <th scope="row">Date awarded</th>
+        <td><%= a.date_awarded %></td>
+      </tr>
+      <tr>
+        <th scope="row">Description</th>
+        <td><%= a.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="table">
+  <h3>Groups</h3>
+  <tbody>
+    <% @resume.groups.each do |g| %>
+      <tr>
+        <th scope="row">Title:</th>
+        <td><%= g.title %></td>
+      </tr>
+      <tr>
+        <th scope="row">Time Period</th>
+        <td><%= g.start_date %> - <%= g.end_date %></td>
+      </tr>
+      <tr>
+        <th scope="row">I am till a member</th>
+        <td><%= g.i_am_still_a_member %></td>
+      </tr>
+      <tr>
+        <th scope="row">Description</th>
+        <td><%= g.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="table">
+  <h3>Patents</h3>
+  <tbody>
+    <% @resume.patents.each do |p| %>
+      <tr>
+        <th scope="row">Patent Number:</th>
+        <td><%= p.patent_number %></td>
+      </tr>
+      <tr>
+        <th scope="row">Title:</th>
+        <td><%= p.title %></td>
+      </tr>
+      <tr>
+        <th scope="row">Url:</th>
+        <td><%= p.url %></td>
+      </tr>
+      <tr>
+        <th scope="row">Date Awarded</th>
+        <td><%= p.date_awarded %></td>
+      </tr>
+      <tr>
+        <th scope="row">Description</th>
+        <td><%= p.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="table">
+  <h3>Publications</h3>
+  <tbody>
+    <% @resume.publications.each do |p| %>
+      <tr>
+        <th scope="row">Title:</th>
+        <td><%= p.title %></td>
+      </tr>
+      <tr>
+        <th scope="row">Url:</th>
+        <td><%= p.url %></td>
+      </tr>
+      <tr>
+        <th scope="row">Date Published</th>
+        <td><%= p.date_published %></td>
+      </tr>
+      <tr>
+        <th scope="row">Description</th>
+        <td><%= p.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_resume_path(@resume) %> |
 <%= link_to 'Back', resumes_path %>

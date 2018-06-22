@@ -9,4 +9,8 @@ class PagesController < ApplicationController
 	def allcompanies
 		@all_companies = Company.all
 	end
+
+  def allresumes
+    @all_resumes = Resume.public_resume
+  end
 end

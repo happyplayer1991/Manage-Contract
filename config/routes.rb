@@ -17,9 +17,9 @@ Rails.application.routes.draw do
 
   resources :jobs
 
-  get  '/alljobs', to: 'pages#alljobs'
+  get  '/alljobs',      to: 'pages#alljobs'
   get  '/allcompanies', to: 'pages#allcompanies'
-
+  get  '/allresumes',   to: 'pages#allresumes'
 
 
 

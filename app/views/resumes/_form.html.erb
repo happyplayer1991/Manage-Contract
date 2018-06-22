@@ -276,7 +276,7 @@
           <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
             <div class="card-body">
               <%= form.fields_for :militaries do |militaries_form| %>
-                <%= render partial: "military_fields", f: militaries_form %>
+                <%= render "military_fields", f: militaries_form %>
               <% end %>
               <div>
                 <%= link_to_add_association 'Add Military Service', form, :militaries %>
@@ -302,7 +302,7 @@
           <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample2">
             <div class="card-body">
               <%= form.fields_for :awards do |awards_form| %>
-                <%= render partial: "award_fields", f: awards_form %>
+                <%= render "award_fields", f: awards_form %>
               <% end %>
               <div>
                 <%= link_to_add_association 'Add Award', form, :awards %>
@@ -321,7 +321,7 @@
           <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample2">
             <div class="card-body">
               <%= form.fields_for :groups do |groups_form| %>
-                <%= render partial: "group_fields", f: groups_form %>
+                <%= render "group_fields", f: groups_form %>
               <% end %>
               <div>
                 <%= link_to_add_association 'Add Group', form, :groups %>
@@ -340,7 +340,7 @@
           <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample2">
             <div class="card-body">
               <%= form.fields_for :patents do |patents_form| %>
-                <%= render partial: "patent_fields", f: patents_form %>
+                <%= render "patent_fields", f: patents_form %>
               <% end %>
               <div>
                 <%= link_to_add_association 'Add Patent', form, :patents %>
@@ -360,7 +360,7 @@
           <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample2">
             <div class="card-body">
               <%= form.fields_for :publications do |publications_form| %>
-                <%= render partial: "publication_fields", f: publications_form %>
+                <%= render "publication_fields", f: publications_form %>
               <% end %>
               <div>
                 <%= link_to_add_association 'Add Publication', form, :publications %>
