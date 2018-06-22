@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180621085413) do
+ActiveRecord::Schema.define(version: 20180622112437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,15 @@ ActiveRecord::Schema.define(version: 20180621085413) do
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
+  create_table "jobs_users", id: false, force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id", "user_id"], name: "index_jobs_users_on_job_id_and_user_id"
+    t.index ["user_id", "job_id"], name: "index_jobs_users_on_user_id_and_job_id"
+  end
+
   create_table "militaries", force: :cascade do |t|
     t.string "service_country"
     t.string "branch"
@@ -190,6 +199,15 @@ ActiveRecord::Schema.define(version: 20180621085413) do
     t.bigint "user_id"
     t.integer "status", default: 0
     t.index ["user_id"], name: "index_resumes_on_user_id"
+  end
+
+  create_table "resumes_users", id: false, force: :cascade do |t|
+    t.bigint "resume_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id", "user_id"], name: "index_resumes_users_on_resume_id_and_user_id"
+    t.index ["user_id", "resume_id"], name: "index_resumes_users_on_user_id_and_resume_id"
   end
 
   create_table "skills", force: :cascade do |t|

@@ -17,6 +17,13 @@ class User < ApplicationRecord
   has_many :companies, dependent: :destroy
   has_many :resumes, dependent: :destroy
 
+  #has_many :jobs_users
+  #has_many :jobs, through: :jobs_users
+
+  #has_many :resumes_users
+  #has_many :resumes, through: :resumes_users
+
+
   #before_create :set_default_role
 
   enum interface: { recruiter: 0, jobseeker: 1 }
