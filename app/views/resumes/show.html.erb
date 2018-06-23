@@ -21,7 +21,11 @@
         </tr>
         <tr>
           <th scope="row">Resume privacy:</th>
-          <td><%= @resume.status %></td>
+            <% if @resume.status == "private_resume" %>
+              <td>Privat Resume</td>
+            <% else %>
+              <td>Public Resume</td>
+            <% end %>
         </tr>
       </tbody>
     </table>

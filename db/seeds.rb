@@ -43,4 +43,39 @@ Company.create!(title: "NBA", hires_per_year: 25, name: "Jack", phone: "12345678
 #Resume.create!(first_name: "Bill", last_name: "Roger", user_id: 1, status: 1)
 
 #WorkExperience.create!(job_title: "RoR Developer", resume_id: 1)
-	
+
+Resume.create!(first_name: "Mike", last_name: "Tison", country: "Ukraine", city: "Poltava", contact_information: "taison@gmail.com",
+  phone: "0991231212", status: "public_resume", degree: "Master", school: "Technical", field_of_study: "Electromechanicl",
+  education_country: "Ukraine", education_city: "Poltava", education_start_date: "2002-02-01", education_end_date: "2007-06-01",
+  work_experiences_attributes: [{job_title: "System Administrator", company: "UCRF", country: "Ukraine", city: "Poltava",
+    job_type_work_exp: 1, i_currently_work_here: false, start_date: "2007-06-06", end_date: "2014-12-31", years_of_experience: 7,
+    less_than_one_year: false, job_description: "Good Job", salary: "400"}], desired_job_title: "RoR Developer", job_type_ids:["", "1", "2"],
+  desired_salary_per_month: 2000, desired_salary_per_year: 25000, employment_eligibility: "authorized", relocation: 0,
+  additional_information_step_4: "I want to find good work",
+  skills_attributes: [{title: "Ruby", experience: 1}],
+  certifications_attributes: [{title: "Cert", start_date: "2012-02-01", end_date: "2018-05-04", description: "Certificate"}],
+  blog_url:" blog.com", personal_homepage: "personal.com", facebook: "fecebook.com", twitter: "twitter.com",
+  militaries_attributes: [{service_country: "Ukraine", branch: "navi", rank: "major", start_date: "2006-05-01", end_date: "2014-03-02", i_am_currently_serving: false, description: "Army", commendations: "no"}],
+  awards_attributes: [{title: "Oskar", date_awarded: "2017-06-05", description: "Best Actor"}],
+  groups_attributes: [{title: "Metallica", start_date: "2001-06-04", end_date: "2018-06-23", i_am_still_a_member: true, description: "Rock"}],
+  patents_attributes: [{patent_number: "patent03567", title: "Water", url: "water.com", date_awarded: "2001-01-01", description: "All water"}],
+  publications_attributes: [{title: "Best article", url: "best.article.com", date_published: "2003-06-05", description: "Best Article"}],
+  additional_information_step_5: "Many interesting about me", user_id: 3)
+
+Resume.create!(first_name: "Pol", last_name: "Twen", country: "USA", city: "Boston", contact_information: "pol_twen@gmail.com",
+  phone: "0441231212", status: "public_resume", degree: "Master", school: "Some one", field_of_study: "Medical",
+  education_country: "USA", education_city: "Boston", education_start_date: "2005-02-01", education_end_date: "2010-06-01",
+  work_experiences_attributes: [{job_title: "Administrator", company: "Amazon", country: "USA", city: "Boston",
+    job_type_work_exp: 2, i_currently_work_here: true, start_date: "2014-06-06", end_date: "2018-06-23", years_of_experience: 4,
+    less_than_one_year: false, job_description: "Good Job forever", salary: "4000"}], desired_job_title: "JS Developer", job_type_ids:["", "1", "2"],
+  desired_salary_per_month: 8000, desired_salary_per_year: 100000, employment_eligibility: "authorized", relocation: 0,
+  additional_information_step_4: "I want to find good work",
+  skills_attributes: [{title: "JavaScript", experience: 4}],
+  certifications_attributes: [{title: "Cert 2", start_date: "2016-02-01", end_date: "2018-05-04", description: "Certificate of earth"}],
+  blog_url:" blog2.com", personal_homepage: "personal2.com", facebook: "fecebook2.com", twitter: "twitter2.com",
+  militaries_attributes: [{service_country: "USA", branch: "navi", rank: "major", start_date: "2009-05-01", end_date: "2016-03-02", i_am_currently_serving: false, description: "Army2", commendations: "many"}],
+  awards_attributes: [{title: "Oskar2", date_awarded: "2017-09-05", description: "Best Music"}],
+  groups_attributes: [{title: "Some group", start_date: "2011-06-04", end_date: "2015-06-23", i_am_still_a_member: false, description: "Proramming"}],
+  patents_attributes: [{patent_number: "patent044559877", title: "Some title", url: "some.url.com", date_awarded: "2011-01-01", description: "Some description"}],
+  publications_attributes: [{title: "Best article 2", url: "best2.article.com", date_published: "2013-06-05", description: "Best Article ever"}],
+  additional_information_step_5: "Many interesting about me and more", user_id: 4)
