@@ -1,5 +1,5 @@
 class Resume < ApplicationRecord
-  enum employement_eligibility: { employment: 0, sponsorhip: 1 }
+  enum employment_eligibility: { authorized: 0, sponsorship: 1 }
   enum status: { private_resume: 0, public_resume: 1 }
   enum salary_status: { hide: 0, show: 1 }
 

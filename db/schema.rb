@@ -185,7 +185,7 @@ ActiveRecord::Schema.define(version: 20180622112437) do
     t.string "desired_job_title"
     t.integer "desired_salary_per_month"
     t.integer "desired_salary_per_year"
-    t.integer "employement_eligibility", default: 0
+    t.integer "employment_eligibility", default: 0
     t.boolean "relocation"
     t.text "additional_information_step_4"
     t.text "additional_information_step_5"

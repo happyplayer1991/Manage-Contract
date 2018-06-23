@@ -147,8 +147,12 @@
       <td><%= @resume.relocation %></td>
     </tr>
     <tr>
-      <th scope="row">Employement eligibility</th>
-      <td><%= @resume.employement_eligibility %></td>
+      <th scope="row">Employment eligibility</th>
+      <% if @resume.employment_eligibility == "authorized" %>
+        <td>Authorized to work in the country where you located</td>
+      <% else %>
+        <td>Sponsorship required to work in the country</td>
+      <% end %>
     </tr>
     <tr>
       <th scope="row">Additional information (text)</th>

@@ -71,7 +71,7 @@ class ResumesController < ApplicationController
                                      :desired_job_title,
                                      :desired_salary_per_month,
                                      :desired_salary_per_year,
-                                     :employement_eligibility,
+                                     :employment_eligibility,
                                      :relocation,
                                      :additional_information_step_4,
                                      :additional_information_step_5,
