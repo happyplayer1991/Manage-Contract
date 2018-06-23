@@ -17,10 +17,10 @@ class User < ApplicationRecord
   has_many :companies, dependent: :destroy
   has_many :resumes, dependent: :destroy
 
-  has_many :jobs_users
+  has_many :jobs_users, dependent: :destroy
   has_many :bookmark_jobs, through: :jobs_users, source: :job
 
-  has_many :resumes_users
+  has_many :resumes_users, dependent: :destroy
   has_many :bookmark_resumes, through: :resumes_users, source: :resume
 
 
@@ -68,4 +68,18 @@ class User < ApplicationRecord
   #    self.roles << :jobseeker
   #    self.roles << :recruiter
   #  end
+
+  def bookmark_resume!(resume)
+    self.resumes_users.create(resume_id: resume.id)
+  end
+
+  def unbookmark_resume!(resume)
+    bookmark_resume = self.resumes_users.find_by_resume_id(resume.id)
+    bookmark_resume.destroy!
+  end
+
+  def bookmark_resume?(resume)
+    self.resumes_users.find_by_resume_id(resume.id)
+  end
+
 end

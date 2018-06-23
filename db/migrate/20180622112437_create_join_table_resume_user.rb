@@ -1,4 +1,4 @@
-class CreateJoinTableResumeUser < ActiveRecord::Migration[5.1]
+class CreateJoinTableResumesUser < ActiveRecord::Migration[5.1]
   def change
     create_join_table :resumes, :users do |t|
       t.index [:resume_id, :user_id]

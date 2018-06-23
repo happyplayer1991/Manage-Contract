@@ -1,3 +1,11 @@
+<%# render 'resumes_users/cool', locals: { @resume: resume } %>
+
+<% if current_user.bookmark_resume?(@resume) %>
+  <%= link_to "Unbookmark", unbookmark_resume_path(resume_id: @resume.id), remote: true, method: :delete  %>
+<% else %>
+  <%= link_to "Bookmark", bookmark_resume_path(resume_id: @resume.id), remote: true  %>
+<% end %>
+
 <div class="row">
   <div class="col-md-9">
     <table class="table">

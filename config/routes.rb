@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get  '/allcompanies', to: 'pages#allcompanies'
   get  '/allresumes',   to: 'pages#allresumes'
 
+  get  'bookmark_resume', to: 'resumes_users#bookmark_resume'
+  delete  'unbookmark_resume', to: 'resumes_users#unbookmark_resume'
 
 
   root to: "pages#index"
