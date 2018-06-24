@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:edit, :show, :update, :destroy]
+  before_action :set_job, only: [:edit, :show, :update, :destroy, :applicants]
 
   def index
     if user_signed_in?
@@ -10,7 +10,28 @@ class JobsController < ApplicationController
   end
 
   def bookmarked_jobs
-    @bookmarked_jobs = current_user.bookmarked_by_user_jobs
+    if user_signed_in?
+      @bookmarked_jobs = current_user.bookmarked_by_user_jobs
+    else
+      redirect_to root_path, notice: 'You do not have permission for this action!'
+    end
+  end
+
+  # Jobseeker looks for jobs he (she) applied
+  def applied_jobs
+    if user_signed_in? && current_user.resumes.count > 0
+      @applied_jobs = current_user.resumes[0].jobs
+    else
+      redirect_to root_path, notice: 'You do not have Applied Jobs!'
+    end
+  end
+
+  def applicants
+    if user_signed_in? && @job.user_id == current_user.id
+      #@applicants = @job.resumes
+    else
+      redirect_to root_path, notice: 'You do not have permission for this action!'
+    end
   end
 
   def new

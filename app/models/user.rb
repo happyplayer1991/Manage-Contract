@@ -94,4 +94,17 @@ class User < ApplicationRecord
     self.bookmarked_jobs.find_by_job_id(job.id)
   end
 
+  def apply_job!(job)
+    apply_job = self.resumes[0].applied_jobs.create(job_id: job.id)
+  end
+
+  def unapply_job!(job)
+    applied_job = self.resumes[0].applied_jobs.find_by_job_id(job.id)
+    applied_job.destroy!
+  end
+
+  def applied_job?(job)
+    self.resumes[0].applied_jobs.find_by_job_id(job.id)
+  end
+
 end

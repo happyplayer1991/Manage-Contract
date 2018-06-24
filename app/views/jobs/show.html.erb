@@ -1,6 +1,9 @@
 <div class="row">
   <div class="col-md-3">
     <%= image_tag placeholder_img(@job.user.companies[0].logo, 'logo'), width: '100%' %>
+<br>
+<br>
+  <%= render 'button' %>
   </div>
 
   <div class="col-md-9">
@@ -13,7 +16,7 @@
           <% if current_user.bookmark_job?(@job) %>
             <%= link_to '', unbookmark_job_path(job_id: @job.id), class: 'fa fa-star fa-2x unbookmark', title: 'Unbookmark!', method: :delete %>
           <% else %>
-            <%= link_to '', bookmark_job_path(job_id: @job.id), class: 'fa fa-star fa-2x bookmark', alt: 'Bookmark!', title: 'Bookmark!' %>
+            <%= link_to '', bookmark_job_path(job_id: @job.id), class: 'fa fa-star fa-2x bookmark', title: 'Bookmark!' %>
           <% end %>
         <% end %>
       </div>
@@ -62,7 +65,14 @@
     <strong>Description: </strong><%= @job.description %>
   </div>
 </div>
-
+<br>
 <h5 align="center">Contact: (<%= @job.email %> / <%= @job.address %>)</h5>
 
 <%= link_to 'Edit Job', edit_job_path(@job), class: 'btn btn-primary' if user_signed_in? && @job.user_id == current_user.id %>
+<div class="row">
+  <div class="col-md-9">
+  </div>
+  <div class="col-md-3">
+    <%= render 'button' %>
+  </div>
+</div>

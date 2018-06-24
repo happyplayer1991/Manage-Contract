@@ -29,6 +29,10 @@ Rails.application.routes.draw do
   delete  'unbookmark_job',    to: 'bookmarked_jobs#unbookmark_job'
   get 'bookmarked_jobs',       to: 'jobs#bookmarked_jobs'
 
+  get 'apply_job',             to: 'applied_jobs#apply_job'
+  get 'applied_jobs',          to: 'jobs#applied_jobs'
+  get 'applicants/:id',             to: 'jobs#applicants', as: 'job_applicants'
+
   root to: "pages#index"
 
 end

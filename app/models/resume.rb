@@ -9,6 +9,9 @@ class Resume < ApplicationRecord
   has_many :bookmarked_resumes, dependent: :destroy
   has_many :bookmarked_by_users, through: :bookmarked_resumes, source: :user
 
+  has_many :applied_jobs, dependent: :destroy
+  has_many :jobs, through: :applied_jobs, source: :job
+
   has_many :work_experiences, dependent: :destroy
 	accepts_nested_attributes_for :work_experiences,
 																allow_destroy: true,

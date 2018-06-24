@@ -1,0 +1,5 @@
+<% if user_signed_in? && current_user.resumes.count > 0 %>
+  <% if !current_user.applied_job?(@job) %>
+  <%= link_to 'Apply Job', apply_job_path(job_id: @job.id), class: 'btn btn-primary btn-block', data: { confirm: 'Do you want to submit your resume?' } %>
+  <% end %>
+<% end %>

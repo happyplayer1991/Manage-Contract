@@ -1,0 +1,30 @@
+<h2>Job # <%= @job.id %> (<%= @job.title %>)</h2> 
+<h3>Applicants list</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Applicant Name</th>
+      <th scope="col">Years of experience</th>
+      <th scope="col">Level of education</th>
+      <th scope="col">Desired Salary (per month / per year)</th>
+      <th scope="col">Date of application</th>
+      <th scope="col">View Resume</th>
+
+    </tr>
+  </thead>
+  <tbody id="jobs">
+  	<% @job.resumes.each do |resume| %>
+
+	  	<tr>
+			  <th scope="row"><%= resume.first_name %> <%= resume.last_name %></th>
+			  <td><%= resume.work_experiences[0].years_of_experience if resume.work_experiences.count > 0 %></td>
+			  <td><%= resume.degree %></td>
+			  <td><%= resume.desired_salary_per_month %> / <%= resume.desired_salary_per_year %></td>
+			  <td><%= AppliedJob.find_by_resume_id(resume.id).created_at %></td>
+			  <td><%= link_to '', resume, class: 'fa fa-eye fa-lg' %></td>
+			</tr>
+
+    <% end %>
+  </tbody>
+</table>

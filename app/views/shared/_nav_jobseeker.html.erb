@@ -14,6 +14,10 @@
   <% end %>
 
   <li class="nav-item">
+    <%= link_to 'Applied Jobs', applied_jobs_path, class: "nav-link #{active? applied_jobs_path}" %>
+  </li>
+
+  <li class="nav-item">
     <%= link_to 'Bookmarked Jobs', bookmarked_jobs_path, class: "nav-link #{active? bookmarked_jobs_path}" %>
   </li>
 

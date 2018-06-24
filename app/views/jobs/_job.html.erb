@@ -3,6 +3,7 @@
   <td><%= job.title %></td>
   <td><%= job.job_type.title %></td>
   <td><%= job.job_area.title %></td>
+  <td><%= link_to job.resumes.count, job_applicants_path(job.id) %></td>
   <td><%= job.created_at %></td>
   <td><%= link_to '', job, class: 'fa fa-eye fa-lg' %></td>
   <td><%= link_to '', edit_job_path(job), class: 'fa fa-edit fa-lg index-icons' %></td>
