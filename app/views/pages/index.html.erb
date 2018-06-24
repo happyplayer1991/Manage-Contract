@@ -18,12 +18,18 @@
 			<%= link_to 'Log in', new_user_session_path, class: 'btn btn-primary btn-block' %>
 			<hr>
 		<% end %>
-
-		<%= link_to 'Browse Jobs', alljobs_path, class: 'btn btn-warning btn-block' %><br>
-
-		<%= link_to 'Browse Companies', allcompanies_path, class: 'btn btn-info btn-block' %><br>
-
-		<%= link_to 'Browse Resumes', allresumes_path, class: 'btn btn-success btn-block' %>
 	</div>
 </div>
+
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+			<%= link_to 'Browse Jobs', alljobs_path, class: 'btn btn-warning btn-block' %><br>
+
+			<%= link_to 'Browse Companies', allcompanies_path, class: 'btn btn-info btn-block' %><br>
+
+			<%= link_to 'Browse Resumes', allresumes_path, class: 'btn btn-success btn-block' %>
+		</div>
+	</div>
 
