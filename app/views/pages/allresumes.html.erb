@@ -7,6 +7,10 @@
       <th scope="col">Education Level</th>
       <th scope="col">Desired Job Title</th>
       <th scope="col">Posted at</th>
+      <th></th>
+      <% if user_signed_in? %>
+      <th></th>
+      <% end %>
     </tr>
   </thead>
   <tbody id="jobs">

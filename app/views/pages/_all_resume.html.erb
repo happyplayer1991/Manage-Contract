@@ -1,7 +1,17 @@
 <tr>
-  <td><%= link_to (all_resume.first_name + " " + all_resume.last_name), all_resume %></td>
+  <td><%= all_resume.first_name + " " + all_resume.last_name %></td>
   <td><%= all_resume.work_experiences[0].job_title %></td>
   <td><%= all_resume.degree %></td>
   <td><%= all_resume.desired_job_title %></td>
   <td><%= all_resume.created_at %></td>
+  <td><%= link_to '', all_resume, class: 'fa fa-eye fa-lg' %></td>
+  <td>
+	  <% if user_signed_in? %>
+	    <% if current_user.bookmark_resume?(all_resume) %>
+	      <%= link_to '', unbookmark_resume_path(resume_id: all_resume.id), class: 'fa fa-star fa-2x unbookmark', title: 'Unbookmark!', method: :delete %>
+	    <% else %>
+	      <%= link_to '', bookmark_resume_path(resume_id: all_resume.id), class: 'fa fa-star fa-2x bookmark', alt: 'Bookmark!', title: 'Bookmark!' %>
+	    <% end %>
+	  <% end %>
+	</td>
 </tr>
