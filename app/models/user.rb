@@ -17,12 +17,11 @@ class User < ApplicationRecord
   has_many :companies, dependent: :destroy
   has_many :resumes, dependent: :destroy
 
-  has_many :jobs_users, dependent: :destroy
-  has_many :bookmark_jobs, through: :jobs_users, source: :job
+  has_many :bookmarked_resumes, dependent: :destroy
+  has_many :bookmarked_by_user_resumes, through: :bookmarked_resumes, source: :resume
 
-  has_many :resumes_users, dependent: :destroy
-  has_many :bookmark_resumes, through: :resumes_users, source: :resume
-
+  has_many :bookmarked_jobs, dependent: :destroy
+  has_many :bookmarked_by_user_jobs, through: :bookmarked_jobs, source: :job
 
   #before_create :set_default_role
 
@@ -70,16 +69,29 @@ class User < ApplicationRecord
   #  end
 
   def bookmark_resume!(resume)
-    self.resumes_users.create(resume_id: resume.id)
+    self.bookmarked_resumes.create(resume_id: resume.id)
   end
 
   def unbookmark_resume!(resume)
-    bookmark_resume = self.resumes_users.find_by_resume_id(resume.id)
+    bookmark_resume = self.bookmarked_resumes.find_by_resume_id(resume.id)
     bookmark_resume.destroy!
   end
-
+  
   def bookmark_resume?(resume)
-    self.resumes_users.find_by_resume_id(resume.id)
+    self.bookmarked_resumes.find_by_resume_id(resume.id)
+  end
+
+  def bookmark_job!(job)
+    self.bookmarked_jobs.create(job_id: job.id)
+  end
+
+  def unbookmark_job!(job)
+    bookmark_job = self.bookmarked_jobs.find_by_job_id(job.id)
+    bookmark_job.destroy!
+  end
+
+  def bookmark_job?(job)
+    self.bookmarked_jobs.find_by_job_id(job.id)
   end
 
 end

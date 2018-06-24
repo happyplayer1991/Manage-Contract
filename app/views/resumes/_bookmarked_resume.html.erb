@@ -1,0 +1,8 @@
+<tr>
+  <th scope="row"><%= bookmarked_resume.first_name %> <%= bookmarked_resume.last_name %></th>
+  <td><%= bookmarked_resume.desired_job_title %></td>
+  <td><%= bookmarked_resume.desired_salary_per_month %> / <%= bookmarked_resume.desired_salary_per_year %></td>
+  <td><%= bookmarked_resume.degree %></td>
+  <td><%= bookmarked_resume.created_at %></td>
+  <td><%= link_to '', bookmarked_resume, class: 'fa fa-eye fa-lg' %></td>
+</tr>

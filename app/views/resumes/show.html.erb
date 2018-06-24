@@ -1,15 +1,20 @@
-<%# render 'resumes_users/cool', locals: { @resume: resume } %>
-
-<% if current_user.bookmark_resume?(@resume) %>
-  <%= link_to "Unbookmark", unbookmark_resume_path(resume_id: @resume.id), remote: true, method: :delete  %>
-<% else %>
-  <%= link_to "Bookmark", bookmark_resume_path(resume_id: @resume.id), remote: true  %>
-<% end %>
-
+<div class="row">
+  <div class="col-md-10">
+    <h1><%= @resume.first_name %> <%= @resume.last_name %></h1>
+  </div>
+  <div class="col-md-2">
+    <% if user_signed_in? %>
+      <% if current_user.bookmark_resume?(@resume) %>
+        <%= link_to '', unbookmark_resume_path(resume_id: @resume.id), class: 'fa fa-star fa-2x unbookmark', title: 'Unbookmark!', method: :delete %>
+      <% else %>
+        <%= link_to '', bookmark_resume_path(resume_id: @resume.id), class: 'fa fa-star fa-2x bookmark', alt: 'Bookmark!', title: 'Bookmark!' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-9">
     <table class="table">
-      <h1><%= @resume.first_name %> <%= @resume.last_name %></h1>
       <tbody>
         <tr>
           <th scope="row">City:</th>

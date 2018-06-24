@@ -6,8 +6,8 @@ class Job < ApplicationRecord
   belongs_to :job_type
   belongs_to :education
 
-  has_many :jobs_users
-  has_many :bookmarked_by_users, through: :jobs_users, source: :user
+  has_many :bookmarked_jobs, dependent: :destroy
+  has_many :bookmarked_by_users, through: :bookmarked_jobs, source: :user
 
   scope :posts_by, ->(user) { where(user_id: user.id) }
 end

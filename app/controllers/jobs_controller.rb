@@ -2,7 +2,15 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:edit, :show, :update, :destroy]
 
   def index
-    @jobs = Job.posts_by(current_user)
+    if user_signed_in?
+      @jobs = Job.posts_by(current_user)
+    else
+      redirect_to root_path, notice: 'You do not have permission for this action!'
+    end
+  end
+
+  def bookmarked_jobs
+    @bookmarked_jobs = current_user.bookmarked_by_user_jobs
   end
 
   def new

@@ -6,8 +6,8 @@ class Resume < ApplicationRecord
 	belongs_to :user
   has_and_belongs_to_many :job_types
 
-  has_many :resumes_users, dependent: :destroy
-  has_many :bookmarked_by_users, through: :resumes_users, source: :user
+  has_many :bookmarked_resumes, dependent: :destroy
+  has_many :bookmarked_by_users, through: :bookmarked_resumes, source: :user
 
   has_many :work_experiences, dependent: :destroy
 	accepts_nested_attributes_for :work_experiences,
@@ -50,4 +50,6 @@ class Resume < ApplicationRecord
                                 reject_if: lambda { |attrs| attrs['title'].blank? }
 
   mount_uploader :profile_pic,   CompanyUploader
+  
+  scope :build_by, ->(user) { where(user_id: user.id) }
 end

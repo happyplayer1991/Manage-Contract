@@ -13,3 +13,21 @@
 .logo {
   margin-top: 15px;
 }
+
+.bookmark {
+	color: gray;
+}
+
+.bookmark:hover {
+	color: #ff9900;
+	text-decoration: none;
+}
+
+.unbookmark {
+	color: #ff9900;
+}
+
+.unbookmark:hover {
+	color: gray;
+	text-decoration: none;
+}

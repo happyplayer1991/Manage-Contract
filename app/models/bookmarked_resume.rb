@@ -1,4 +1,4 @@
-class ResumesUser < ApplicationRecord
+class BookmarkedResume < ApplicationRecord
   belongs_to :user
   belongs_to :resume
 

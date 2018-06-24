@@ -1,0 +1,27 @@
+<h2>Bookmarked Jobs</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Type of Job</th>
+      <th scope="col">Job Area</th>
+      <th scope="col">Posted</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody id="jobs">
+    <% @bookmarked_jobs.each do |bookmarked_job| %>
+
+    <tr>
+		  <th scope="row"><%= bookmarked_job.id %></th>
+		  <td><%= bookmarked_job.title %></td>
+		  <td><%= bookmarked_job.job_type.title %></td>
+		  <td><%= bookmarked_job.job_area.title %></td>
+		  <td><%= bookmarked_job.created_at %></td>
+		  <td><%= link_to '', bookmarked_job, class: 'fa fa-eye fa-lg' %></td>
+		</tr>
+		<% end %>
+  </tbody>
+</table>

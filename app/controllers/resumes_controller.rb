@@ -2,25 +2,26 @@ class ResumesController < ApplicationController
   before_action :set_resume, only: [:show, :edit, :update, :destroy]
   access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
 
-  # GET /resumes
   def index
-    @resumes = Resume.all
+    if user_signed_in?
+      @resumes = Resume.build_by(current_user)
+    else
+      redirect_to root_path, notice: 'You do not have permission for this action!'
+    end
   end
 
-  # GET /resumes/1
-  def show
+  def bookmarked_resumes
+    @bookmarked_resumes = current_user.bookmarked_by_user_resumes
   end
-
-  # GET /resumes/new
+  
   def new
-    @resume = Resume.new
+    if user_signed_in?
+      @resume = Resume.new
+    else
+      redirect_to allresumes_path, notice: 'You do not have permission for this action!'
+    end
   end
 
-  # GET /resumes/1/edit
-  def edit
-  end
-
-  # POST /resumes
   def create
     @resume = Resume.new(resume_params)
     @resume.user_id = current_user.id
@@ -32,7 +33,13 @@ class ResumesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /resumes/1
+  def edit
+    if user_signed_in? && @resume.user_id == current_user.id
+    else
+      redirect_to allresumes_path, notice: 'You do not have permission for this action!'
+    end
+  end
+
   def update
     if @resume.update(resume_params)
       redirect_to @resume, notice: 'Resume was successfully updated.'
@@ -41,10 +48,16 @@ class ResumesController < ApplicationController
     end
   end
 
-  # DELETE /resumes/1
+  def show
+  end
+
   def destroy
-    @resume.destroy
-    redirect_to resumes_url, notice: 'Resume was successfully destroyed.'
+    if @resume.user_id == current_user.id
+      @resume.destroy
+      redirect_to resumes_url, notice: 'Resume was successfully destroyed.'
+    else
+      redirect_to resumes_path, notice: 'You do not have permission for this action!'
+    end
   end
 
   private

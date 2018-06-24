@@ -4,7 +4,20 @@
   </div>
 
   <div class="col-md-9">
-    <h1><%= @job.title %></h1>
+    <div class="row">
+      <div class="col-md-10">
+        <h1><%= @job.title %></h1>
+      </div>
+      <div class="col-md-2">
+        <% if user_signed_in? %>
+          <% if current_user.bookmark_job?(@job) %>
+            <%= link_to '', unbookmark_job_path(job_id: @job.id), class: 'fa fa-star fa-2x unbookmark', title: 'Unbookmark!', method: :delete %>
+          <% else %>
+            <%= link_to '', bookmark_job_path(job_id: @job.id), class: 'fa fa-star fa-2x bookmark', alt: 'Bookmark!', title: 'Bookmark!' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
     <table class="table">
       <tbody>
         <tr>

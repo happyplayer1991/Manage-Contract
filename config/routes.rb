@@ -21,9 +21,13 @@ Rails.application.routes.draw do
   get  '/allcompanies', to: 'pages#allcompanies'
   get  '/allresumes',   to: 'pages#allresumes'
 
-  get  'bookmark_resume', to: 'resumes_users#bookmark_resume'
-  delete  'unbookmark_resume', to: 'resumes_users#unbookmark_resume'
+  get  'bookmark_resume',      to: 'bookmarked_resumes#bookmark_resume'
+  delete  'unbookmark_resume', to: 'bookmarked_resumes#unbookmark_resume'
+  get 'bookmarked_resumes',    to: 'resumes#bookmarked_resumes'
 
+  get  'bookmark_job',         to: 'bookmarked_jobs#bookmark_job'
+  delete  'unbookmark_job',    to: 'bookmarked_jobs#unbookmark_job'
+  get 'bookmarked_jobs',       to: 'jobs#bookmarked_jobs'
 
   root to: "pages#index"
 
