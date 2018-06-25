@@ -17,7 +17,7 @@ class ResumesController < ApplicationController
       redirect_to root_path, notice: 'You do not have permission for this action!'
     end
   end
-  
+
   def new
     if user_signed_in? && current_user.resumes.count == 0
       @resume = Resume.new
@@ -53,7 +53,7 @@ class ResumesController < ApplicationController
   end
 
   def show
-    if @resume.public_resume? #todo applied jobs can see
+    if @resume.public_resume? || @resume.user_id == current_user.id || !((@resume.job_ids & current_user.job_ids).empty?)
     else
       redirect_to root_path, notice: 'This is privat Resume'
     end

@@ -79,3 +79,16 @@ Resume.create!(first_name: "Pol", last_name: "Twen", country: "USA", city: "Bost
   patents_attributes: [{patent_number: "patent044559877", title: "Some title", url: "some.url.com", date_awarded: "2011-01-01", description: "Some description"}],
   publications_attributes: [{title: "Best article 2", url: "best2.article.com", date_published: "2013-06-05", description: "Best Article ever"}],
   additional_information_step_5: "Many interesting about me and more", user_id: 4)
+
+Resume.create!(first_name: "Some name", last_name: "Good", country: "Poland", city: "Warshava", contact_information: "cool_boss@gmail.com",
+  phone: "0321231212", status: "private_resume", degree: "Master", school: "Some two", field_of_study: "Some",
+  education_country: "Some country", education_city: "some city", education_start_date: "2003-02-01", education_end_date: "2011-06-01",
+  work_experiences_attributes: [{job_title: "Great worker", company: "Google", country: "USA", city: "Some city",
+    job_type_work_exp: 4, i_currently_work_here: true, start_date: "2013-06-06", end_date: "2018-06-23", years_of_experience: 5,
+    less_than_one_year: false, job_description: "Good Job forever and more", salary: "5000"}], desired_job_title: "Best Job", job_type_ids:["", "1"],
+  desired_salary_per_month: 6000, desired_salary_per_year: 72000, employment_eligibility: "authorized", relocation: 1,
+  additional_information_step_4: "I want to find good work",
+  skills_attributes: [{title: "Some skill", experience: 2}, {title: "Some other skill", experience: 4}],
+  certifications_attributes: [{title: "Cert 4", start_date: "2017-02-01", end_date: "2018-09-04", description: "Certificate of everything"}],
+  blog_url:" blog3.com", personal_homepage: "personal3.com", facebook: "fecebook3.com", twitter: "twitter3.com",
+  additional_information_step_5: "Many interesting about me and more and more", user_id: 5)
