@@ -1,23 +1,33 @@
 <br>
 <% if user_signed_in? %>
   <ul class="nav mr-auto custom-nav">
-    <% if current_user.interface == "jobseeker" %>
-      <h1>Jobseeker Dashboard</h1>
+    <% if current_user.has_roles?(:superadmin) %>
+      <h1>Superadmin Dashboard</h1>
     <% else %>
-      <h1>Recruiter Dashboard</h1>
-    <% end %>
+      <% if current_user.interface == "jobseeker" %>
+        <h1>Jobseeker Dashboard</h1>
+      <% else %>
+        <h1>Recruiter Dashboard</h1>
+      <% end %>
     <li class="nav-item dropdown ml-auto">
       <%= link_to "I am #{interface_button}", toggle_interface_user_path(current_user), class: 'btn btn-primary'  %>
     </li>
+    <% end %>
   </ul>
 
-  <% if current_user.interface == "jobseeker" %>
-    <%= render 'shared/nav_jobseeker' %>
+  <% if current_user.has_roles?(:superadmin) %>
+    <%= render 'shared/nav_superadmin' %>
   <% else %>
-    <%= render 'shared/nav_recruiter' %>
+    <% if current_user.interface == "jobseeker" %>
+      <%= render 'shared/nav_jobseeker' %>
+    <% else %>
+      <%= render 'shared/nav_recruiter' %>
+    <% end %>
   <% end %>
 
 <% elsif current_page?(root_path) %>
+<% elsif current_page?(admin_path) %>
+  <h1 align="center">Job Listing</h1>
 <% else %>
   <h1>Job Listing</h1>
   <ul class="nav nav-tabs mr-auto custom-nav">

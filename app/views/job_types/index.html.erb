@@ -1,0 +1,23 @@
+<h1>Job Types</h1>
+<div class="card">
+  <div class="card-body">
+    Current job types.
+
+<% @job_types.each do |job_type| %>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+  <%= job_type.title %>
+    <span>
+  <%= link_to '', job_type_path(job_type), method: :delete, class: 'fa fa-trash fa-lg index-icons-tresh', data: { confirm: 'Are you sure?' } %>
+    </span>
+  </li>
+<% end %>
+  </div>
+</div>
+<div class="row">
+<div class="col-md-10">
+</div>
+
+<div class="col-md-2">
+<%= link_to 'Add more', new_job_type_path, class: 'btn btn-primary btn-block' %>
+</div>
+</div>

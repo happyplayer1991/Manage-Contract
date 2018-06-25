@@ -3,6 +3,7 @@ User.create!(email: "test2@test.com", password: "123123", password_confirmation:
 User.create!(email: "test3@test.com", password: "123123", password_confirmation: "123123", interface: 1)
 User.create!(email: "test4@test.com", password: "123123", password_confirmation: "123123", interface: 1)
 User.create!(email: "test5@test.com", password: "123123", password_confirmation: "123123", interface: 1)
+User.create!(email: "admin@test.com", password: "123123", password_confirmation: "123123", interface: nil, role: 'superadmin')
 
 JobArea.create!(title: "Engineering")
 JobArea.create!(title: "Sales and Marketing")

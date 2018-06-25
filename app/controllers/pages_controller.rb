@@ -13,4 +13,11 @@ class PagesController < ApplicationController
   def allresumes
     @all_resumes = Resume.public_resume
   end
+
+  def admin
+    if !user_signed_in?
+    else
+      redirect_to root_path, notice: 'You already in the system'
+    end
+  end
 end

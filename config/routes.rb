@@ -17,9 +17,14 @@ Rails.application.routes.draw do
 
   resources :jobs
 
+  resources :job_types
+
+  resources :job_areas
+
   get  '/alljobs',      to: 'pages#alljobs'
   get  '/allcompanies', to: 'pages#allcompanies'
   get  '/allresumes',   to: 'pages#allresumes'
+  get  '/admin',        to: 'pages#admin'
 
   get  'bookmark_resume',      to: 'bookmarked_resumes#bookmark_resume'
   delete  'unbookmark_resume', to: 'bookmarked_resumes#unbookmark_resume'
