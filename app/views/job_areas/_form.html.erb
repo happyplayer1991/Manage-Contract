@@ -1,17 +1,17 @@
 <div class="row">
   
   <div class="col-md-4">
-    <%= form_for(job_type) do |form| %>
-      <% if job_type.errors.any? %>
+    <%= form_for(job_area) do |form| %>
+      <% if job_area.errors.any? %>
         <ul>
-          <% job_type.errors.full_messages.each do |error| %>
+          <% job_area.errors.full_messages.each do |error| %>
             <li><%= error %></li>
           <% end %>
         </ul>
       <% end %>
 
           <div class="form-group">
-            <%= form.label :"Job Type Title" %>
+            <%= form.label "Job Area Title" %>
             <%= form.text_field :title, class: 'form-control' %>
           </div>
 

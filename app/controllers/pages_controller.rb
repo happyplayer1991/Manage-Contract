@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  access all: {except: [:settings]}, user: {except: [:settings]}, superadmin: :all
+  
 	def index
 	end
 
@@ -19,5 +21,10 @@ class PagesController < ApplicationController
     else
       redirect_to root_path, notice: 'You already in the system'
     end
+  end
+
+  def settings
+    @job_types = JobType.all
+    @job_areas = JobArea.all
   end
 end

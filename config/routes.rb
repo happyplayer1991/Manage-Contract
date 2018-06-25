@@ -17,14 +17,15 @@ Rails.application.routes.draw do
 
   resources :jobs
 
-  resources :job_types
+  resources :job_types, except: :index
 
-  resources :job_areas
+  resources :job_areas, except: :index
 
   get  '/alljobs',      to: 'pages#alljobs'
   get  '/allcompanies', to: 'pages#allcompanies'
   get  '/allresumes',   to: 'pages#allresumes'
   get  '/admin',        to: 'pages#admin'
+  get  '/settings',        to: 'pages#settings'
 
   get  'bookmark_resume',      to: 'bookmarked_resumes#bookmark_resume'
   delete  'unbookmark_resume', to: 'bookmarked_resumes#unbookmark_resume'

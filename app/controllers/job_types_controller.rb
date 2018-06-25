@@ -2,9 +2,9 @@ class JobTypesController < ApplicationController
   access all: [], user: [], superadmin: :all
   before_action :set_job_type, only: [:edit, :show, :update, :destroy]
 
-  def index
-    @job_types = JobType.all
-  end
+  #def index
+  #  @job_types = JobType.all
+  #end
 
   def new
     @job_type = JobType.new
@@ -15,7 +15,7 @@ class JobTypesController < ApplicationController
 
     respond_to do |format|
       if @job_type.save
-        format.html { redirect_to job_types_path, notice: 'Your Job Type was created.' }
+        format.html { redirect_to settings_path, notice: 'Your Job Type was created.' }
       else
         format.html { render :new }
       end
@@ -28,7 +28,7 @@ class JobTypesController < ApplicationController
   def update
     respond_to do |format|
       if @job_type.update(job_type_params)
-        format.html { redirect_to job_types_path, notice: 'The Job Type was successfully updated.' }
+        format.html { redirect_to settings_path, notice: 'The Job Type was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -41,7 +41,7 @@ class JobTypesController < ApplicationController
   def destroy
     @job_type.destroy
     respond_to do |format|
-      format.html { redirect_to job_types_path, notice: 'The Job Type was removed.' }
+      format.html { redirect_to settings_path, notice: 'The Job Type was removed.' }
     end
   end
 
