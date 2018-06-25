@@ -2,9 +2,9 @@ class JobAreasController < ApplicationController
   access all: [], user: [], superadmin: :all
   before_action :set_job_area, only: [:edit, :show, :update, :destroy]
 
-  def index
-    @job_areas = JobArea.all
-  end
+  #def index
+  #  @job_areas = JobArea.all
+  #end
 
   def new
     @job_area = JobArea.new
