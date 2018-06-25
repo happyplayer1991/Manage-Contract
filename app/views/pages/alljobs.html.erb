@@ -8,6 +8,9 @@
       <th scope="col">Job Area</th>
       <th scope="col">Pay range</th>
       <th scope="col">Posted at</th>
+      <% if user_signed_in? %>
+        <th></th>
+      <% end %>
     </tr>
   </thead>
   <tbody id="jobs">

@@ -5,4 +5,13 @@
   <td><%= all_job.job_area.title %></td>
   <td><%= all_job.salary_min %> - <%= all_job.salary_max %></td>
   <td><%= all_job.updated_at %></td>
+  <% if user_signed_in? %>
+    <td>
+      <% if current_user.bookmark_job?(all_job) %>
+        <%= link_to '', unbookmark_job_path(job_id: all_job.id), class: 'fa fa-star fa-2x unbookmark', title: 'Unbookmark!', method: :delete %>
+      <% else %>
+        <%= link_to '', bookmark_job_path(job_id: all_job.id), class: 'fa fa-star fa-2x bookmark', title: 'Bookmark!' %>
+      <% end %>
+    </td>
+  <% end %>
 </tr>
