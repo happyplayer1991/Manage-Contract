@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180624182351) do
+ActiveRecord::Schema.define(version: 20180626111604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,14 @@ ActiveRecord::Schema.define(version: 20180624182351) do
     t.index ["job_area_id"], name: "index_jobs_on_job_area_id"
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "keywords", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_keywords_on_user_id"
   end
 
   create_table "militaries", force: :cascade do |t|
@@ -272,6 +280,7 @@ ActiveRecord::Schema.define(version: 20180624182351) do
   add_foreign_key "jobs", "job_areas"
   add_foreign_key "jobs", "job_types"
   add_foreign_key "jobs", "users"
+  add_foreign_key "keywords", "users"
   add_foreign_key "militaries", "resumes"
   add_foreign_key "patents", "resumes"
   add_foreign_key "photos", "companies"

@@ -21,6 +21,14 @@
     <%= link_to 'Bookmarked Jobs', bookmarked_jobs_path, class: "nav-link #{active? bookmarked_jobs_path}" %>
   </li>
 
+  <li class="nav-item">
+    <%= link_to 'Subscribed Jobs', subscribed_jobs_path, class: "nav-link #{active? subscribed_jobs_path}" %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to 'Job Alert', alert_path, class: "nav-link #{active? alert_path}" %>
+  </li>
+
   <li class="nav-item dropdown ml-auto">
     <a class="nav-link  fa fa-cog fa-lg" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
       <div class="dropdown-menu">

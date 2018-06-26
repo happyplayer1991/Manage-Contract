@@ -1,0 +1,37 @@
+<h2>Subscribed Jobs for keyword: "<%= @keywords[0].title %>"</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Company</th>
+      <th scope="col">Type of Job</th>
+      <th scope="col">Job Area</th>
+      <th scope="col">Pay range</th>
+      <th scope="col">Posted Date</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody id="jobs">
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result.id %></td>
+        <td><%= result.title %></td>
+        <td><%= link_to result.user.companies[0].title, company_path(result.user.companies[0]) %></td>
+        <td><%=result.job_type.title %></td>
+        <td><%= result.job_area.title %></td>
+        <td><%= result.salary_min %> - <%= result.salary_max %></td>
+        <td><%= result.created_at %></td>
+        <td><%= link_to '', job_path(result), class: 'fa fa-eye fa-lg' %></td>
+        <td>
+          <% if current_user.bookmark_job?(result) %>
+            <%= link_to '', unbookmark_job_path(job_id: result.id), class: 'fa fa-star fa-2x unbookmark', title: 'Unbookmark!', method: :delete %>
+          <% else %>
+            <%= link_to '', bookmark_job_path(job_id: result.id), class: 'fa fa-star fa-2x bookmark', title: 'Bookmark!' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

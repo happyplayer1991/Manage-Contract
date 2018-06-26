@@ -21,11 +21,15 @@ Rails.application.routes.draw do
 
   resources :job_areas, except: :index
 
-  get  '/alljobs',      to: 'pages#alljobs'
-  get  '/allcompanies', to: 'pages#allcompanies'
-  get  '/allresumes',   to: 'pages#allresumes'
-  get  '/admin',        to: 'pages#admin'
+  resources :keywords, except: :index
+
+  get  '/alljobs',         to: 'pages#alljobs'
+  get  '/allcompanies',    to: 'pages#allcompanies'
+  get  '/allresumes',      to: 'pages#allresumes'
+  get  '/admin',           to: 'pages#admin'
   get  '/settings',        to: 'pages#settings'
+  get  '/alert',           to: 'pages#alert'
+  get  '/subscribed_jobs', to: 'pages#subscribed_jobs'
 
   get  'bookmark_resume',      to: 'bookmarked_resumes#bookmark_resume'
   delete  'unbookmark_resume', to: 'bookmarked_resumes#unbookmark_resume'
@@ -37,7 +41,7 @@ Rails.application.routes.draw do
 
   get 'apply_job',             to: 'applied_jobs#apply_job'
   get 'applied_jobs',          to: 'jobs#applied_jobs'
-  get 'applicants/:id',             to: 'jobs#applicants', as: 'job_applicants'
+  get 'applicants/:id',        to: 'jobs#applicants', as: 'job_applicants'
 
   root to: "pages#index"
 

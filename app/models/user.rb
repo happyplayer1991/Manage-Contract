@@ -23,6 +23,8 @@ class User < ApplicationRecord
   has_many :bookmarked_jobs, dependent: :destroy
   has_many :bookmarked_by_user_jobs, through: :bookmarked_jobs, source: :job
 
+  has_many :keyword
+
   #before_create :set_default_role
 
   enum interface: { recruiter: 0, jobseeker: 1 }
@@ -76,7 +78,7 @@ class User < ApplicationRecord
     bookmark_resume = self.bookmarked_resumes.find_by_resume_id(resume.id)
     bookmark_resume.destroy!
   end
-  
+
   def bookmark_resume?(resume)
     self.bookmarked_resumes.find_by_resume_id(resume.id)
   end
