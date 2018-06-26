@@ -119,8 +119,8 @@
       <td><%= w.job_description %></td>
     </tr>
     <tr>
-      <th scope="row">Salaries</th>
-      <td><%= w.salary %></td>
+      <th scope="row">Salaries USD</th>
+      <td><%= w.salary if w.salary_status == 'show' %></td>
     </tr>
     <tr>
       <th scope="row">I currently work here</th>
@@ -152,11 +152,11 @@
       </td>
     </tr>
     <tr>
-      <th scope="row">Desired salary per month</th>
+      <th scope="row">Desired salary per month USD</th>
       <td><%= @resume.desired_salary_per_month %></td>
     </tr>
     <tr>
-      <th scope="row">Desired salary per year:</th>
+      <th scope="row">Desired salary per year USD</th>
       <td><%= @resume.desired_salary_per_year %></td>
     </tr>
     <tr>

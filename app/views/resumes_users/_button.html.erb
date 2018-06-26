@@ -1,5 +1,0 @@
-<% if current_user.bookmark_resume?(resume) %>
-  <%= link_to "Unbookmark", unbookmark_resume_path(resume_id: resume.id), remote: true, method: :delete  %>
-<% else %>
-  <%= link_to "Bookmark", bookmark_resume_path(resume_id: resume.id), remote: true  %>
-<% end %>

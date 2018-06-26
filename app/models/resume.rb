@@ -1,7 +1,7 @@
 class Resume < ApplicationRecord
-  enum employment_eligibility: { authorized: 0, sponsorship: 1 }
-  enum status: { private_resume: 0, public_resume: 1 }
-  enum salary_status: { hide: 0, show: 1 }
+  enum employment_eligibility:  { authorized: 0, sponsorship: 1 }
+  enum status:                  { private_resume: 0, public_resume: 1 }
+  
 
 	belongs_to :user
   has_and_belongs_to_many :job_types
