@@ -25,11 +25,9 @@ class User < ApplicationRecord
 
   has_many :keyword
 
-  #before_create :set_default_role
-
   enum interface: { recruiter: 0, jobseeker: 1 }
 
-  #link to sign up with interface start
+  # Start. Link to sign up with interface
   attr_accessor :initial_interface
 
   def initial_interface=(interface_name)
@@ -44,7 +42,7 @@ class User < ApplicationRecord
   def initial_interface
       @initial_interface
   end
-  #finish
+  # Finish
 
   def self.new_with_session(params, session)
   	super.tap do |user|
@@ -63,12 +61,6 @@ class User < ApplicationRecord
     	user.name = auth.info.name
   	end
 	end
-
-  #private
-  #  def set_default_role
-  #    self.roles << :jobseeker
-  #    self.roles << :recruiter
-  #  end
 
   def bookmark_resume!(resume)
     self.bookmarked_resumes.create(resume_id: resume.id)

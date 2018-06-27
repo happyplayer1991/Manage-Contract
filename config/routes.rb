@@ -14,35 +14,31 @@ Rails.application.routes.draw do
   end
 
   resources :companies
-
   resources :jobs
-
   resources :job_types, except: :index
-
   resources :job_areas, except: :index
+  resources :keywords,  except: :index
 
-  resources :keywords, except: :index
+  get     '/alljobs',           to: 'pages#alljobs'
+  get     '/allcompanies',      to: 'pages#allcompanies'
+  get     '/allresumes',        to: 'pages#allresumes'
+  get     '/admin',             to: 'pages#admin'
+  get     '/settings',          to: 'pages#settings'
+  get     '/alert',             to: 'pages#alert'
+  get     '/subscribed_jobs',   to: 'pages#subscribed_jobs'
 
-  get  '/alljobs',         to: 'pages#alljobs'
-  get  '/allcompanies',    to: 'pages#allcompanies'
-  get  '/allresumes',      to: 'pages#allresumes'
-  get  '/admin',           to: 'pages#admin'
-  get  '/settings',        to: 'pages#settings'
-  get  '/alert',           to: 'pages#alert'
-  get  '/subscribed_jobs', to: 'pages#subscribed_jobs'
+  get     'bookmark_resume',    to: 'bookmarked_resumes#bookmark_resume'
+  delete  'unbookmark_resume',  to: 'bookmarked_resumes#unbookmark_resume'
+  get     'bookmarked_resumes', to: 'resumes#bookmarked_resumes'
 
-  get  'bookmark_resume',      to: 'bookmarked_resumes#bookmark_resume'
-  delete  'unbookmark_resume', to: 'bookmarked_resumes#unbookmark_resume'
-  get 'bookmarked_resumes',    to: 'resumes#bookmarked_resumes'
+  get     'bookmark_job',       to: 'bookmarked_jobs#bookmark_job'
+  delete  'unbookmark_job',     to: 'bookmarked_jobs#unbookmark_job'
+  get     'bookmarked_jobs',    to: 'jobs#bookmarked_jobs'
 
-  get  'bookmark_job',         to: 'bookmarked_jobs#bookmark_job'
-  delete  'unbookmark_job',    to: 'bookmarked_jobs#unbookmark_job'
-  get 'bookmarked_jobs',       to: 'jobs#bookmarked_jobs'
+  get     'apply_job',          to: 'applied_jobs#apply_job'
+  get     'applied_jobs',       to: 'jobs#applied_jobs'
+  get     'applicants/:id',     to: 'jobs#applicants', as: 'job_applicants'
 
-  get 'apply_job',             to: 'applied_jobs#apply_job'
-  get 'applied_jobs',          to: 'jobs#applied_jobs'
-  get 'applicants/:id',        to: 'jobs#applicants', as: 'job_applicants'
-
-  root to: "pages#index"
+  root                          to: 'pages#index'
 
 end

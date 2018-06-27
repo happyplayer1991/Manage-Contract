@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-md-3">
     <%= image_tag placeholder_img(@job.user.companies[0].logo, 'logo'), width: '100%' %>
-<br>
-<br>
-  <%= render 'button' %>
+    <br>
+    <br>
+    <%= render 'button' %>
   </div>
 
   <div class="col-md-9">
@@ -57,7 +57,7 @@
         </tr>
         <tr>
           <th scope="row">Expiry Date</th>
-          <td><%= @job.expiry_date.strftime("%B %d, %Y") %></td>
+          <td><%= @job.expiry_date.strftime("%B %d, %Y") if !@job.expiry_date.blank? %></td>
         </tr>
       </tbody>
     </table>
@@ -71,7 +71,6 @@
 </div>
 <br>
 <h5 align="center">Contact: (<%= @job.email %> / <%= @job.address %>)</h5>
-
 <%= link_to 'Edit Job', edit_job_path(@job), class: 'btn btn-primary' if user_signed_in? && @job.user_id == current_user.id %>
 <div class="row">
   <div class="col-md-9">

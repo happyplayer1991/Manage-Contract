@@ -17,7 +17,7 @@ module ApplicationHelper
 
   def placeholder_img img, type
     if img.model.class.name == "Resume"
-      if img.model.profile_pic? #|| img.model.logo?
+      if img.model.profile_pic?
         img
       else type == 'logo'
         image_generator(height: '300', width: '300')

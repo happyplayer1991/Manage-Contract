@@ -17,7 +17,6 @@ class JobsController < ApplicationController
     end
   end
 
-  # Jobseeker looks for jobs he (she) applied
   def applied_jobs
     if user_signed_in? && current_user.resumes.count > 0
       @applied_jobs = current_user.resumes[0].jobs
@@ -28,7 +27,6 @@ class JobsController < ApplicationController
 
   def applicants
     if user_signed_in? && @job.user_id == current_user.id
-      #@applicants = @job.resumes
     else
       redirect_to root_path, notice: 'You do not have permission for this action!'
     end

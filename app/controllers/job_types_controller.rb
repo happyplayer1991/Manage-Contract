@@ -2,10 +2,6 @@ class JobTypesController < ApplicationController
   access all: [], user: [], superadmin: :all
   before_action :set_job_type, only: [:edit, :show, :update, :destroy]
 
-  #def index
-  #  @job_types = JobType.all
-  #end
-
   def new
     @job_type = JobType.new
   end

@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  access all: [:show], user: :all, superadmin: :all
   before_action :set_company, only: [:edit, :show, :update, :destroy]
 
   def index
