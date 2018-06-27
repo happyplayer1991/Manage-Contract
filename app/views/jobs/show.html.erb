@@ -29,7 +29,7 @@
         </tr>
         <tr>
           <th scope="row">Date Posted:</th>
-          <td><%= @job.created_at %></td>
+          <td><%= @job.created_at.strftime("%B %d, %Y") %></td>
         </tr>
         <tr>
           <th scope="row">Type of Job</th>
@@ -54,6 +54,10 @@
         <tr>
           <th scope="row">Requires level of Education</th>
           <td><%= @job.education.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">Expiry Date</th>
+          <td><%= @job.expiry_date.strftime("%B %d, %Y") %></td>
         </tr>
       </tbody>
     </table>

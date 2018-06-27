@@ -7,6 +7,7 @@
       <th scope="col">Desired Salary (per month / per year) USD</th>
       <th scope="col">Degree</th>
       <th scope="col">Posted</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody id="jobs">
@@ -19,6 +20,14 @@
 			  <td><%= bookmarked_resume.degree %></td>
 			  <td><%= bookmarked_resume.created_at %></td>
 			  <td><%= link_to '', bookmarked_resume, class: 'fa fa-eye fa-lg' %></td>
+        <td><% if user_signed_in? %>
+          <% if current_user.bookmark_resume?(bookmarked_resume) %>
+            <%= link_to '', unbookmark_resume_path(resume_id: bookmarked_resume.id), class: 'fa fa-star fa-2x unbookmark', title: 'Unbookmark!', method: :delete %>
+          <% else %>
+            <%= link_to '', bookmark_resume_path(resume_id: bookmarked_resume.id), class: 'fa fa-star fa-2x bookmark', alt: 'Bookmark!', title: 'Bookmark!' %>
+          <% end %>
+        <% end %>
+        </td>
 			</tr>
 
     <% end %>

@@ -9,6 +9,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.string :email
       t.text :address
       t.integer :experience
+      t.date  :expiry_date
 
       t.timestamps
     end

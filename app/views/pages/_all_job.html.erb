@@ -4,7 +4,8 @@
   <td><%= all_job.job_type.title %></td>
   <td><%= all_job.job_area.title %></td>
   <td><%= all_job.salary_min %> - <%= all_job.salary_max %></td>
-  <td><%= all_job.updated_at %></td>
+  <td><%= all_job.updated_at.strftime("%B %d, %Y") %></td>
+  <td><%= all_job.expiry_date.strftime("%B %d, %Y") if !all_job.expiry_date.blank? %></td>
   <% if user_signed_in? %>
     <td>
       <% if current_user.bookmark_job?(all_job) %>

@@ -14,14 +14,20 @@
         <%= form.text_field :title, class: 'form-control' %>
       </div>
 
-      <div class="form-group">
-        <%= form.label :"Type of Job" %>
-        <%= form.collection_select(:job_type_id, JobType.all, :id, :title, {selected: job.job_type_id}, class: 'form-control') %>
-      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :"Type of Job" %>
+            <%= form.collection_select(:job_type_id, JobType.all, :id, :title, {selected: job.job_type_id}, class: 'form-control') %>
+          </div>
+        </div>
 
-      <div class="form-group">
-        <%= form.label :"Job Area" %>
-        <%= form.collection_select(:job_area_id, JobArea.all, :id, :title, {selected: job.job_area_id}, class: 'form-control') %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :"Job Area" %>
+            <%= form.collection_select(:job_area_id, JobArea.all, :id, :title, {selected: job.job_area_id}, class: 'form-control') %>
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
@@ -45,6 +51,11 @@
         <%= form.label :"Requires Years of experience" %>
         <%= form.number_field :experience, class: 'form-control' %>
       </div>
+
+      <div class="form-group">
+        <%= form.label :"Requires level of education" %>
+        <%= form.collection_select(:education_id, Education.all, :id, :title, {selected: job.education_id}, class: 'form-control') %>
+      </div>
     </div>
 
     <div class="col-md-6">
@@ -64,8 +75,8 @@
       </div>
 
       <div class="form-group">
-        <%= form.label :"Requires level of education" %>
-        <%= form.collection_select(:education_id, Education.all, :id, :title, {selected: job.education_id}, class: 'form-control') %>
+        <%= form.label :expiry_date %>
+        <%= form.date_field :expiry_date, class: 'form-control' %>
       </div>
 
       <div class="form-group">

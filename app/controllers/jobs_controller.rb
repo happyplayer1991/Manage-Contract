@@ -37,7 +37,7 @@ class JobsController < ApplicationController
   def new
     if user_signed_in?
       @job = Job.new
-    else 
+    else
       redirect_to alljobs_path, notice: 'You do not have permission for this action!'
     end
   end
@@ -103,6 +103,7 @@ class JobsController < ApplicationController
                                   :job_type_id,
                                   :job_area_id,
                                   :education_id,
+                                  :expiry_date,
                                   :user_id)
     end
 end

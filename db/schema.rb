@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20180626111604) do
     t.string "email"
     t.text "address"
     t.integer "experience"
+    t.date "expiry_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "job_area_id"

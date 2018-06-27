@@ -3,7 +3,7 @@
   <td><%= all_resume.work_experiences[0].job_title if all_resume.work_experiences.count > 0 %></td>
   <td><%= all_resume.degree %></td>
   <td><%= all_resume.desired_job_title %></td>
-  <td><%= all_resume.created_at %></td>
+  <td><%= all_resume.created_at.strftime("%B %d, %Y") %></td>
   <td><%= link_to '', all_resume, class: 'fa fa-eye fa-lg' %></td>
   <td>
 	  <% if user_signed_in? %>
