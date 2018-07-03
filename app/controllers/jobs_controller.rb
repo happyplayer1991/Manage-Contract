@@ -34,7 +34,11 @@ class JobsController < ApplicationController
 
   def new
     if user_signed_in?
-      @job = Job.new
+      if current_user.companies.count > 0
+        @job = Job.new
+      else
+        redirect_to new_company_path, notice: 'You must have the company before creating Job!'
+      end
     else
       redirect_to alljobs_path, notice: 'You do not have permission for this action!'
     end
