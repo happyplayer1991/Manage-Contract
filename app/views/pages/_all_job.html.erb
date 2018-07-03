@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to all_job.title, all_job %></td>
-  <td><%= link_to all_job.user.companies[0].title, company_path(all_job.user.companies[0].id) %></td>
+  <td><%= link_to all_job.user.companies[0].title, company_path(all_job.user.companies[0].id) if all_job.user.companies.count > 0 %></td>
   <td><%= all_job.job_type.title %></td>
   <td><%= all_job.job_area.title %></td>
   <td><%= all_job.salary_min %> - <%= all_job.salary_max %></td>
