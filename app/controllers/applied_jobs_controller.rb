@@ -14,4 +14,7 @@ class AppliedJobsController < ApplicationController
     @user.unbookmark_job!(@job)
     redirect_to job_path(@job), notice: 'Delete bookmark successful'
   end
+
+  def invite_to_job
+  end
 end

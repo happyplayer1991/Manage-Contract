@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180626111604) do
   create_table "applied_jobs", force: :cascade do |t|
     t.integer "resume_id"
     t.integer "job_id"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
