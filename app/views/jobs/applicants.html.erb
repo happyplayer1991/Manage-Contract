@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody id="jobs">
-  	<% @job.resumes.each do |resume| %>
+  	<% @resumes.each do |resume| %>
 	  	<tr>
 			  <th scope="row"><%= resume.first_name %> <%= resume.last_name %></th>
 			  <td><%= resume.work_experiences[0].years_of_experience if resume.work_experiences.count > 0 %></td>

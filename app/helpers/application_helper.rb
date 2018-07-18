@@ -30,4 +30,13 @@ module ApplicationHelper
       end
     end
   end
+
+  # Count of jobs that applies by jobseeker (from invite or by self)
+  def applied_count(job)
+    job.applied_jobs.where(status: 0).count
+  end
+
+  def not_aplied_count(job)
+    job.applied_jobs.where.not(status: 0).count
+  end
 end

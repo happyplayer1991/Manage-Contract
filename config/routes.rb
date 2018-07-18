@@ -37,8 +37,9 @@ Rails.application.routes.draw do
 
   get     'apply_job',          to: 'applied_jobs#apply_job'
   get     'applied_jobs',       to: 'jobs#applied_jobs'
-  get     'applicants/:id',     to: 'jobs#applicants', as: 'job_applicants'
-  get     'invite_to_job',      to: 'applied_jobs#invite_to_job'
+  get     'jobs/:id/applicants/',     to: 'jobs#applicants', as: 'job_applicants'
+  post    '/resumes/:id/invite_to_job/', to: 'applied_jobs#invite_to_job', as: :invite_to_job
+  get     'jobs/:id/invites/',     to: 'jobs#invites', as: 'job_invites'
 
   root                          to: 'pages#index'
 

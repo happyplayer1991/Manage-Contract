@@ -16,5 +16,14 @@ class AppliedJobsController < ApplicationController
   end
 
   def invite_to_job
+    @user = current_user
+    @job = Job.find(params[:job_id])
+    @resume = Resume.find(params[:id])
+    @resume.applied_jobs.create(job_id: @job.id, status: 1)
+    if AppliedJob.where(job_id: @job.id).exists?
+      redirect_to resume_path(@resume), notice: 'You already Invite this jobseeker'
+    else
+      redirect_to resume_path(@resume), notice: 'Invite to Job was send'
+    end
   end
 end

@@ -1,29 +1,30 @@
 <% if user_signed_in? && current_user.jobs.count > 0 && @resume.user_id != current_user.id %>
-  <%= link_to 'Invite to Job', invite_to_job_path(resume_id: @resume.id), class: 'btn btn-primary btn-block', data: { confirm: 'Do you want to invite this jobseeker?' } %>
-<% end %>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+    Invite to Job
+  </button>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Job Invite</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          To which Job would you like to invite this candidate?
+        </div>
+        <div class="modal-footer">
+          <%= form_tag invite_to_job_path do %>
+            <%= select_tag "job_id", options_from_collection_for_select(current_user.jobs, "id", "title"), prompt: "Select Your Job", class: 'form-control' %>
+            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
+            <%= submit_tag "Invite to Job", class: 'btn btn-primary btn-block', data: { confirm: 'Do you want to invite this jobseeker?' } %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:edit, :show, :update, :destroy, :applicants]
+  before_action :set_job, only: [:edit, :show, :update, :destroy, :applicants, :invites]
 
   def index
     if user_signed_in?
@@ -27,6 +27,23 @@ class JobsController < ApplicationController
 
   def applicants
     if user_signed_in? && @job.user_id == current_user.id
+      applied_resumes = @job.applied_jobs.where(status: 0)
+      @resumes = []
+      applied_resumes.each do |r|
+        @resumes << Resume.find(r.resume_id)
+      end
+    else
+      redirect_to root_path, notice: 'You do not have permission for this action!'
+    end
+  end
+
+  def invites
+    if user_signed_in? && @job.user_id == current_user.id
+      invite_resumes = @job.applied_jobs.where.not(status: 0)
+      @resumes = []
+      invite_resumes.each do |r|
+        @resumes << Resume.find(r.resume_id)
+      end
     else
       redirect_to root_path, notice: 'You do not have permission for this action!'
     end
