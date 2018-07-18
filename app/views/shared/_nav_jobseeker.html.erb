@@ -38,3 +38,6 @@
       </div>
   </li>
 </ul>
+<% if current_user.resumes.count > 0 && current_user.has_invites? %>
+  <%= render 'shared/invites' %>
+<% end %>

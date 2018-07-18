@@ -27,7 +27,7 @@ class JobsController < ApplicationController
 
   def applicants
     if user_signed_in? && @job.user_id == current_user.id
-      applied_resumes = @job.applied_jobs.where(status: 0)
+      applied_resumes = @job.applied_jobs.applied
       @resumes = []
       applied_resumes.each do |r|
         @resumes << Resume.find(r.resume_id)

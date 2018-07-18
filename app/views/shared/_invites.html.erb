@@ -1,0 +1,11 @@
+<h1>You have invites!</h1>
+<% submitted_relations = current_user.resumes[0].applied_jobs.submitted %>
+<% @jobs = [] %>
+<% submitted_relations.each do |j| %>
+	<%  @jobs << Job.find(j.job_id) %>
+<% end %>
+<% @jobs.each do |job| %>
+	<%= link_to job.title, job_path(job) %> <%= Company.find_by_user_id(job.user_id).title %>
+	<br>
+<% end %>
+

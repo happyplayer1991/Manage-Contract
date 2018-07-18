@@ -21,6 +21,7 @@
         <td><%= resume.desired_salary_per_month %> / <%= resume.desired_salary_per_year %></td>
         <td><%= AppliedJob.find_by_resume_id(resume.id).created_at %></td>
         <td><%= link_to '', resume, class: 'fa fa-eye fa-lg' %></td>
+        <td><%= resume.applied_jobs.find_by_job_id(@job.id).status %></td>
       </tr>
     <% end %>
   </tbody>

@@ -100,4 +100,9 @@ class User < ApplicationRecord
   def applied_job?(job)
     self.resumes[0].applied_jobs.find_by_job_id(job.id)
   end
+
+
+  def has_invites?
+    self.resumes[0].applied_jobs.submitted.count > 0
+  end
 end

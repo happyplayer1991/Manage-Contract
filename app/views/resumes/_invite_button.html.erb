@@ -16,12 +16,18 @@
         </div>
         <div class="modal-body">
           To which Job would you like to invite this candidate?
-        </div>
-        <div class="modal-footer">
+          <br>
+          <br>
           <%= form_tag invite_to_job_path do %>
-            <%= select_tag "job_id", options_from_collection_for_select(current_user.jobs, "id", "title"), prompt: "Select Your Job", class: 'form-control' %>
-            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
-            <%= submit_tag "Invite to Job", class: 'btn btn-primary btn-block', data: { confirm: 'Do you want to invite this jobseeker?' } %>
+                <%= select_tag "job_id", options_from_collection_for_select(current_user.jobs, "id", "title"), prompt: "Select Your Job", class: 'form-control' %><br>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= submit_tag "Invite to Job", class: 'btn btn-primary btn-block', data: { confirm: 'Do you want to invite this jobseeker?' } %>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal" align="right">Close</button>
+                  </div>
+                </div>
           <% end %>
         </div>
       </div>
