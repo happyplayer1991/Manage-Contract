@@ -1,10 +1,10 @@
 class AppliedJobsController < ApplicationController
 	before_action :authenticate_user!
 
-  def apply_job
+  def apply_by_self_job
     @user = current_user
     @job = Job.find(params[:job_id])
-    @user.apply_job!(@job)
+    @user.apply_by_self_job!(@job)
     redirect_to job_path(@job), notice: 'Job was applied!'
   end
 
@@ -13,6 +13,20 @@ class AppliedJobsController < ApplicationController
     @job = Job.find(params[:job_id])
     @user.unbookmark_job!(@job)
     redirect_to job_path(@job), notice: 'Delete bookmark successful'
+  end
+
+  def declined_job
+    @user = current_user
+    @job = Job.find(params[:id])
+    @user.declined_job!(@job)
+    redirect_to job_path(@job), notice: 'Job invite was declined!'
+  end
+
+  def apply_job
+    @user = current_user
+    @job = Job.find(params[:job_id])
+    @user.apply_job!(@job)
+    redirect_to job_path(@job), notice: 'Job was applied!'
   end
 
   def invite_to_job

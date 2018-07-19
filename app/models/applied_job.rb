@@ -1,5 +1,5 @@
 class AppliedJob < ApplicationRecord
-  enum status: { applied: 0, submitted: 1, declined: 2 }
+  enum status: { applied_by_self: 0, submitted: 1, declined: 2, applied: 3 }
 
 	belongs_to :resume
 	belongs_to :job

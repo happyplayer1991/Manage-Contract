@@ -5,7 +5,8 @@
 	<%  @jobs << Job.find(j.job_id) %>
 <% end %>
 <% @jobs.each do |job| %>
-	<%= link_to job.title, job_path(job) %> <%= Company.find_by_user_id(job.user_id).title %>
+	<%= link_to job.title, job_path(job) %> <%= link_to Company.find_by_user_id(job.user_id).title, company_path(Company.find_by_user_id(job.user_id)) %>
+  <%= link_to "Decline invitation", decline_job_path(job.id), class: 'btn btn-primary btn-block', data: { confirm: 'Do you want to decline invitation to this job?' } %>
 	<br>
 <% end %>
 

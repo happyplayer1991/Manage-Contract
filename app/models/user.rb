@@ -88,8 +88,16 @@ class User < ApplicationRecord
     self.bookmarked_jobs.find_by_job_id(job.id)
   end
 
+  def apply_by_self_job!(job)
+    apply_job = self.resumes[0].applied_jobs.create(job_id: job.id, status: 0)
+  end
+
   def apply_job!(job)
-    apply_job = self.resumes[0].applied_jobs.create(job_id: job.id)
+    apply_job = self.resumes[0].applied_jobs.create(job_id: job.id, status: 3)
+  end
+
+  def declined_job!(job)
+    apply_job = self.resumes[0].applied_jobs.find_by_job_id(job.id).update(status: 2)
   end
 
   def unapply_job!(job)
@@ -98,7 +106,7 @@ class User < ApplicationRecord
   end
 
   def applied_job?(job)
-    self.resumes[0].applied_jobs.find_by_job_id(job.id)
+    self.resumes[0].applied_jobs.find_by_job_id(job.id).present?
   end
 
 
