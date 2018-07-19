@@ -28,7 +28,7 @@
 
 			<div class="form-group">
 			  <%= f.label :i_currently_work_here %>
-			  <%= f.check_box :i_currently_work_here %>
+			  <%= f.check_box :i_currently_work_here, id: "i_currently_work_here" %>
 			</div>
 		</div>
 
@@ -42,7 +42,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-6">
+				<div class="col-md-6" id="end_date_work" style="display:block;">
 					<div class="form-group">
 					  <%= f.label :end_date %>
 					  <%= f.date_field :end_date, class: 'form-control' %>
@@ -96,3 +96,14 @@
 	<%= link_to_remove_association 'Remove Work Experience', f, class: "badge badge-danger" %>
 	<hr>
 </div>
+<script type="text/javascript">
+  var checkbox = document.getElementById('i_currently_work_here');
+  var details_div = document.getElementById('end_date_work');
+  checkbox.onchange = function() {
+     if(this.checked) {
+       details_div.style['display'] = 'none';
+     } else {
+       details_div.style['display'] = 'block';
+     }
+  };
+</script>

@@ -85,7 +85,7 @@
         </tr>
         <tr>
           <th scope="row">Time Period:</th>
-          <td><%= @resume.education_start_date.strftime("%B %d, %Y") %><br><%= @resume.education_end_date.strftime("%B %d, %Y") %></td>
+          <td><%= @resume.education_start_date.strftime("%B %d, %Y") if @resume.education_start_date.present? %><br><%= @resume.education_end_date.strftime("%B %d, %Y") if @resume.education_end_date.present? %></td>
         </tr>
       </tbody>
     </table>
@@ -137,7 +137,7 @@
         <tbody>
           <tr>
             <th scope="row">Time Period:</th>
-            <td><%= w.start_date.strftime("%B %d, %Y") %><br><%= w.end_date.strftime("%B %d, %Y") %></td>
+            <td><%= w.start_date.strftime("%B %d, %Y") if w.start_date.present? %><br><%= w.end_date.strftime("%B %d, %Y") if w.end_date.present? %></td>
           </tr>
           <tr>
             <th scope="row">Job description:</th>

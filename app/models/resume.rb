@@ -1,7 +1,10 @@
 class Resume < ApplicationRecord
   enum employment_eligibility:  { authorized: 0, sponsorship: 1 }
   enum status:                  { private_resume: 0, public_resume: 1 }
-  
+
+  validates_presence_of :first_name, :last_name
+  validates :first_name, uniqueness: true
+  validates :last_name, uniqueness: true
 
 	belongs_to :user
   has_and_belongs_to_many :job_types
@@ -53,6 +56,6 @@ class Resume < ApplicationRecord
                                 reject_if: lambda { |attrs| attrs['title'].blank? }
 
   mount_uploader :profile_pic,   CompanyUploader
-  
+
   scope :build_by, ->(user) { where(user_id: user.id) }
 end
