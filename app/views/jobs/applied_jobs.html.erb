@@ -6,26 +6,26 @@
       <th scope="col">#</th>
       <th scope="col">Title</th>
       <th scope="col">Company</th>
-      <th scope="col">Type of Job</th>
+      <th scope="col">Job Type</th>
       <th scope="col">Job Area</th>
       <th scope="col">Pay range USD</th>
       <th scope="col">Posted Date</th>
       <th scope="col">Applied Date</th>
-      <th scope="col"></th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
   <tbody id="jobs">
     <% @applied_jobs.each do |applied_job| %>
 	    <tr>
 			  <th scope="row"><%= applied_job.id %></th>
-	      <td><%= applied_job.title %></td>
+	      <td><%= link_to applied_job.title, applied_job %></td>
 			  <td><%= applied_job.user.companies[0].title %></td>
 			  <td><%= applied_job.job_type.title %></td>
 			  <td><%= applied_job.job_area.title %></td>
 	      <td><%= applied_job.salary_min %> - <%= applied_job.salary_max %></td>
 			  <td><%= applied_job.created_at %></td>
 			  <td><%= AppliedJob.find_by_job_id(applied_job.id).created_at %></td>
-			  <td><%= link_to '', applied_job, class: 'fa fa-eye fa-lg' %></td>
+			  <td><%= status_badge(AppliedJob.find_by_job_id(applied_job.id).status) %></td>
 			</tr>
 		<% end %>
   </tbody>

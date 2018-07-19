@@ -1,12 +1,30 @@
-<h1>You have invites!</h1>
+<h2 style="color: red;">You have invites!</h2>
 <% submitted_relations = current_user.resumes[0].applied_jobs.submitted %>
 <% @jobs = [] %>
 <% submitted_relations.each do |j| %>
 	<%  @jobs << Job.find(j.job_id) %>
 <% end %>
+
 <% @jobs.each do |job| %>
-	<%= link_to job.title, job_path(job) %> <%= link_to Company.find_by_user_id(job.user_id).title, company_path(Company.find_by_user_id(job.user_id)) %>
-  <%= link_to "Decline invitation", decline_job_path(job.id), class: 'btn btn-primary btn-block', data: { confirm: 'Do you want to decline invitation to this job?' } %>
-	<br>
+	<div class="card border-success">
+		<div class="card-body">
+			<h4 class="card-text">
+				<%= link_to Company.find_by_user_id(job.user_id).title, company_path(Company.find_by_user_id(job.user_id)) %>
+				has inviteed you to apply for <%= link_to job.title, job_path(job) %>.
+  			Want do you want to do?<br><br>
+			  <div class="row">
+			  	<div class="col-md-6">
+			  	</div>
+			  	<div class="col-md-3">
+			  		<%= link_to "Accept and Apply", apply_job_path(job.id), class: 'btn btn-success btn-block', data: { confirm: 'Do you want to accept invitation and apply to this job?' } %>
+					</div>
+					<div class="col-md-3"> 
+			  		<%= link_to "Decline invitation", decline_job_path(job.id), class: 'btn btn-danger btn-block', data: { confirm: 'Do you want to decline invitation to this job?' } %>
+			  	</div> 
+				</div>
+			</h4>
+		</div>
+	</div>
+<br>	
 <% end %>
 

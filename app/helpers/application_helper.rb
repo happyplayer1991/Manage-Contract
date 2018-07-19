@@ -33,10 +33,31 @@ module ApplicationHelper
 
   # Count of jobs that applies by jobseeker (from invite or by self)
   def applied_count(job)
-    job.applied_jobs.where(status: 0).count
+    job.applied_jobs.where(status: 0).count +
+    job.applied_jobs.where(status: 3).count
   end
 
   def not_aplied_count(job)
     job.applied_jobs.where.not(status: 0).count
   end
+
+  # Bages for status
+  def status_badge status
+    status_span_generator status
+  end
+
+  private
+
+    def status_span_generator status
+      case status
+      when 'submitted'
+        content_tag(:span, status.titleize, class: 'badge badge-primary')
+      when 'applied'
+        content_tag(:span, status.titleize, class: 'badge badge-success')
+      when 'declined'
+        content_tag(:span, status.titleize, class: 'badge badge-danger')
+      when 'applied_by_self'
+        content_tag(:span, status.titleize, class: 'badge badge-warning')
+      end
+    end
 end

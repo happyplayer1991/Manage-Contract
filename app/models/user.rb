@@ -93,7 +93,7 @@ class User < ApplicationRecord
   end
 
   def apply_job!(job)
-    apply_job = self.resumes[0].applied_jobs.create(job_id: job.id, status: 3)
+    apply_job = self.resumes[0].applied_jobs.find_by_job_id(job.id).update(status: 3)
   end
 
   def declined_job!(job)
