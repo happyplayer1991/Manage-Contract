@@ -35,11 +35,11 @@ Rails.application.routes.draw do
   delete  'unbookmark_job',     to: 'bookmarked_jobs#unbookmark_job'
   get     'bookmarked_jobs',    to: 'jobs#bookmarked_jobs'
 
-  get     'apply_by_self_job',           to: 'applied_jobs#apply_by_self_job'
+  get     'jobs/:id/apply_by_self_job',  to: 'applied_jobs#apply_by_self_job', as: :apply_by_self_job
   get     'jobs/:id/apply_job',          to: 'applied_jobs#apply_job',     as: :apply_job
   get     'jobs/:id/decline_job',        to: 'applied_jobs#declined_job',  as: :decline_job
   post    '/resumes/:id/invite_to_job/', to: 'applied_jobs#invite_to_job', as: :invite_to_job
-  
+
   get     'applied_jobs',         to: 'jobs#applied_jobs'
   get     'jobs/:id/applicants/', to: 'jobs#applicants', as: 'job_applicants'
   get     'jobs/:id/invites/',    to: 'jobs#invites', as: 'job_invites'

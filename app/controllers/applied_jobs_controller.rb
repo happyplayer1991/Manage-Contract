@@ -25,7 +25,7 @@ class AppliedJobsController < ApplicationController
   def apply_job
     @user = current_user
     @job = Job.find(params[:id])
-    @user.apply_by_self_job!(@job)
+    @user.apply_job!(@job)
     redirect_to job_path(@job), notice: 'Job invite was applied!'
   end
 
