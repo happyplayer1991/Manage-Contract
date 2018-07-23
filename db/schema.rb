@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180626111604) do
+ActiveRecord::Schema.define(version: 20180723125110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20180626111604) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "average_caches", force: :cascade do |t|
+    t.bigint "rater_id"
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
   end
 
   create_table "awards", force: :cascade do |t|
@@ -159,6 +170,15 @@ ActiveRecord::Schema.define(version: 20180626111604) do
     t.index ["resume_id"], name: "index_militaries_on_resume_id"
   end
 
+  create_table "overall_averages", force: :cascade do |t|
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "overall_avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
+  end
+
   create_table "patents", force: :cascade do |t|
     t.string "patent_number"
     t.string "title"
@@ -188,6 +208,31 @@ ActiveRecord::Schema.define(version: 20180626111604) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["resume_id"], name: "index_publications_on_resume_id"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.bigint "rater_id"
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "stars", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
+    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_rates_on_rater_id"
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string "cacheable_type"
+    t.bigint "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -221,6 +266,21 @@ ActiveRecord::Schema.define(version: 20180626111604) do
     t.bigint "user_id"
     t.integer "status", default: 0
     t.index ["user_id"], name: "index_resumes_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "question1"
+    t.integer "question2"
+    t.integer "question3"
+    t.integer "question4"
+    t.integer "question5"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.bigint "user_id"
+    t.index ["company_id"], name: "index_reviews_on_company_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -288,6 +348,8 @@ ActiveRecord::Schema.define(version: 20180626111604) do
   add_foreign_key "photos", "companies"
   add_foreign_key "publications", "resumes"
   add_foreign_key "resumes", "users"
+  add_foreign_key "reviews", "companies"
+  add_foreign_key "reviews", "users"
   add_foreign_key "skills", "resumes"
   add_foreign_key "work_experiences", "resumes"
 end

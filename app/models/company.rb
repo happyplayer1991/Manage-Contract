@@ -1,6 +1,7 @@
 class Company < ApplicationRecord
   belongs_to :user
   has_many :photos
+  has_many :reviews
   accepts_nested_attributes_for :photos,
                           allow_destroy: true,
                           reject_if: lambda { |attrs| attrs['source'].blank? }

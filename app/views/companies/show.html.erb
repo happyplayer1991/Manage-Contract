@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-md-3">
     <%= image_tag placeholder_img(@company.logo, 'logo'), width: '100%' %><br><br>
-    <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn btn-primary btn-block' if user_signed_in? && current_user.company_ids[0] == @company.id %>
+    <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn btn-primary btn-block' if user_signed_in? && current_user.company_ids[0] == @company.id %><br>
+    <%= link_to (@company.reviews.count.to_s + " reviews"), company_reviews_path(@company), class: 'btn btn-primary btn-block' %>
+    <%= link_to "Review this Company", new_company_review_path(@company), class: 'btn btn-primary btn-block' %>
   </div>
 
   <div class="col-md-9">

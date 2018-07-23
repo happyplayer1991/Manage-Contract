@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   resources :resumes
   resources :users do
     member do
@@ -13,7 +14,10 @@ Rails.application.routes.draw do
     get "/users/sign_up/:initial_interface" => 'devise/registrations#new', :as => 'new_user_with_interface'
   end
 
-  resources :companies
+  resources :companies do
+    resources :reviews
+  end
+
   resources :jobs
   resources :job_types, except: :index
   resources :job_areas, except: :index
@@ -43,6 +47,8 @@ Rails.application.routes.draw do
   get     'applied_jobs',         to: 'jobs#applied_jobs'
   get     'jobs/:id/applicants/', to: 'jobs#applicants', as: 'job_applicants'
   get     'jobs/:id/invites/',    to: 'jobs#invites', as: 'job_invites'
+
+  #get     'companies/:company_id/reviews/new', to: 'reviews#new', as: 'new_review'
 
   root to: 'pages#index'
 

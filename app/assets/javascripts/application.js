@@ -16,5 +16,7 @@
 //= require gritter
 //= require bootstrap-sprockets
 //= require cocoon
+//= require jquery.raty
+//= require ratyrate
 //= require turbolinks
 //= require_tree .
