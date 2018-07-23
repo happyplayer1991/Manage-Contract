@@ -1,0 +1,20 @@
+<h3>Reviews of company <%= @company.title %></h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Question 1:</th>
+      <th scope="col">Question 2:</th>
+      <th scope="col">Question 3:</th>
+      <th scope="col">Question 4:</th>
+      <th scope="col">Question 5:</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @reviews %>
+  </tbody>
+</table>

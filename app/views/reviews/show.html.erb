@@ -1,0 +1,35 @@
+Management  : <%= rating_for @review, 'management' %>
+
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <th scope="row">Would you recommend working at "<%= @company.title %>" to a friend?</th>
+      <td><%= @review.question1 %></td>
+    </tr>
+    <tr>
+      <th scope="row">How likely is it that you would recommend "<%= @company.title %>" as a place to work? (0 = Not at all likely; 10 = Extremely likely)</th>
+      <td><%= @review.question2 %></td>
+    </tr>
+    <tr>
+      <th scope="row">How would you describe the working culture at "<%= @company.title %>"?</th>
+      <td><%= @review.question3 %></td>
+    </tr>
+    <tr>
+      <th scope="row">Do you think you are paid fairly at "<%= @company.title %>"?</th>
+      <td><%= @review.question4 %></td>
+    </tr>
+    <tr>
+      <th scope="row">What was your employment status at "<%= @company.title %>"?</th>
+      <td><%= @review.question5 %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="card">
+  <div class="card-body">
+    <strong>Review: </strong><%= @review.description %>
+  </div>
+</div>
+<br>
+<%= link_to 'Edit Review', edit_company_review_path(@review, @review.id), class: 'btn btn-primary' if user_signed_in? && @review.user_id == current_user.id %>
+

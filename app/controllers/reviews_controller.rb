@@ -3,12 +3,14 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
   def index
-    @reviews = Review.all
+    @company = Company.find_by(params[:id])
+    @reviews = @company.reviews
   end
 
   def new
     if user_signed_in?
       @review = Review.new
+      @company = Company.find(params[:company_id])
     else
       redirect_to allcompanies_path, notice: 'You do not have permission for this action!'
     end
@@ -47,6 +49,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @company = Company.find(params[:company_id])
   end
 
   def destroy
