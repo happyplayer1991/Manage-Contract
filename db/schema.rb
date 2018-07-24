@@ -23,17 +23,6 @@ ActiveRecord::Schema.define(version: 20180723125110) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "average_caches", force: :cascade do |t|
-    t.bigint "rater_id"
-    t.string "rateable_type"
-    t.bigint "rateable_id"
-    t.float "avg", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
-    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
-  end
-
   create_table "awards", force: :cascade do |t|
     t.string "title"
     t.date "date_awarded"
@@ -170,15 +159,6 @@ ActiveRecord::Schema.define(version: 20180723125110) do
     t.index ["resume_id"], name: "index_militaries_on_resume_id"
   end
 
-  create_table "overall_averages", force: :cascade do |t|
-    t.string "rateable_type"
-    t.bigint "rateable_id"
-    t.float "overall_avg", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
-  end
-
   create_table "patents", force: :cascade do |t|
     t.string "patent_number"
     t.string "title"
@@ -208,31 +188,6 @@ ActiveRecord::Schema.define(version: 20180723125110) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["resume_id"], name: "index_publications_on_resume_id"
-  end
-
-  create_table "rates", force: :cascade do |t|
-    t.bigint "rater_id"
-    t.string "rateable_type"
-    t.bigint "rateable_id"
-    t.float "stars", null: false
-    t.string "dimension"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
-    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id"
-    t.index ["rater_id"], name: "index_rates_on_rater_id"
-  end
-
-  create_table "rating_caches", force: :cascade do |t|
-    t.string "cacheable_type"
-    t.bigint "cacheable_id"
-    t.float "avg", null: false
-    t.integer "qty", null: false
-    t.string "dimension"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
-    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
   end
 
   create_table "resumes", force: :cascade do |t|

@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  access all: [:show], user: :all, superadmin: :all
+  access all: [:show, :index], user: :all, superadmin: :all
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
   def index

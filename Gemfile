@@ -42,4 +42,3 @@ gem 'carrierwave-aws', '~> 1.3'
 gem 'dotenv-rails', '~> 2.4', groups: [:development, :test]
 gem 'cocoon', '~> 1.2', '>= 1.2.11'
 gem 'petergate', '~> 1.8', '>= 1.8.1'
-gem 'ratyrate', '~> 1.2.2.alpha'
