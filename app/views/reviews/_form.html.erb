@@ -1,6 +1,4 @@
-Management  : <%= rating_for @review, 'management' %>
-
-<%= form_for review, url: company_reviews_path do |form| %>
+<%= form_for [@company, review] do |form| %>
   <% if review.errors.any? %>
     <ul>
       <% review.errors.full_messages.each do |error| %>
@@ -10,28 +8,77 @@ Management  : <%= rating_for @review, 'management' %>
   <% end %>
 
   <div class="form-group">
-    <%= form.label :"Would you recommend working at '#{@company.title}' to a friend?" %>
-    <%= form.number_field :question1, class: 'form-control' %>
+    <%= form.label :"Would you recommend working at '#{@company.title}' to a friend?" %><br>
+    <%= form.radio_button :question1, 'yes' %>
+    <%= form.label :question1, 'Yes' %>
+    <%= form.radio_button :question1, 'no' %>
+    <%= form.label :question1, 'No' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :"How likely is it that you would recommend '#{@company.title}' as a place to work? (0 = Not at all likely; 10 = Extremely likely)" %>
-    <%= form.number_field :question2, class: 'form-control' %>
+    <%= form.label :"How likely is it that you would recommend '#{@company.title}' as a place to work? (0 = Not at all likely; 10 = Extremely likely)" %><br>
+    <%= form.radio_button :question2, '0' %>
+    <%= form.label :question2, '0' %>
+    <%= form.radio_button :question2, '1' %>
+    <%= form.label :question2, '1' %>
+    <%= form.radio_button :question2, '2' %>
+    <%= form.label :question2, '2' %>
+    <%= form.radio_button :question2, '3' %>
+    <%= form.label :question2, '3' %>
+    <%= form.radio_button :question2, '4' %>
+    <%= form.label :question2, '4' %>
+    <%= form.radio_button :question2, '5' %>
+    <%= form.label :question2, '5' %>
+    <%= form.radio_button :question2, '6' %>
+    <%= form.label :question2, '6' %>
+    <%= form.radio_button :question2, '7' %>
+    <%= form.label :question2, '7' %>
+    <%= form.radio_button :question2, '8' %>
+    <%= form.label :question2, '8' %>
+    <%= form.radio_button :question2, '9' %>
+    <%= form.label :question2, '9' %>
+    <%= form.radio_button :question2, '10' %>
+    <%= form.label :question2, '10' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :"How would you describe the working culture at '#{@company.title}'?" %>
-    <%= form.number_field :question3, class: 'form-control' %>
+    <%= form.label :"How would you describe the working culture at '#{@company.title}'?" %><br>
+    <%= form.radio_button :question3, 'relaxed' %>
+    <%= form.label :question3, 'Relaxed' %>
+    <%= form.radio_button :question3, 'quick_paced' %>
+    <%= form.label :question3, 'Quick-paced' %>
+    <%= form.radio_button :question3, 'stressful' %>
+    <%= form.label :question3, 'Stressful' %>
+    <%= form.radio_button :question3, 'collaborative' %>
+    <%= form.label :question3, 'Collaborative' %>
+    <%= form.radio_button :question3, 'competitive' %>
+    <%= form.label :question3, 'Competitive' %>
+    <%= form.radio_button :question3, 'slow_paced' %>
+    <%= form.label :question3, 'Slow-paced' %>
+    <%= form.radio_button :question3, 'cut_throat' %>
+    <%= form.label :question3, 'Cut-throat' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :"Do you think you are paid fairly at '#{@company.title}'?" %>
-    <%= form.number_field :question4, class: 'form-control' %>
+    <%= form.label :"Do you think you are paid fairly at '#{@company.title}'?" %><br>
+    <%= form.radio_button :question4, 'yes!' %>
+    <%= form.label :question4, 'Yes' %>
+    <%= form.radio_button :question4, 'no!' %>
+    <%= form.label :question4, 'No' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :"What was your employment status at '#{@company.title}'?" %>
-    <%= form.number_field :question5, class: 'form-control' %>
+    <%= form.label :"What was your employment status at '#{@company.title}'?" %><br>
+    <%= form.radio_button :question5, 'full_time' %>
+    <%= form.label :question5, 'Full-time' %>
+    <%= form.radio_button :question5, 'part_time' %>
+    <%= form.label :question5, 'Part-time' %>
+    <%= form.radio_button :question5, 'contract' %>
+    <%= form.label :question5, 'Contract' %>
+    <%= form.radio_button :question5, 'intern' %>
+    <%= form.label :question5, 'Intern' %>
+    <%= form.radio_button :question5, 'nothing' %>
+    <%= form.label :question5, 'Nothing is applicable' %>
   </div>
 
   <div class="form-group">

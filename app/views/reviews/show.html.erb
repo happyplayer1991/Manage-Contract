@@ -1,5 +1,3 @@
-Management  : <%= rating_for @review, 'management' %>
-
 <table class="table table-striped">
   <tbody>
     <tr>
@@ -31,5 +29,5 @@ Management  : <%= rating_for @review, 'management' %>
   </div>
 </div>
 <br>
-<%= link_to 'Edit Review', edit_company_review_path(@review, @review.id), class: 'btn btn-primary' if user_signed_in? && @review.user_id == current_user.id %>
+<%= link_to 'Edit Review', edit_company_review_path(@company, @review.id), class: 'btn btn-primary' if user_signed_in? && @review.user_id == current_user.id %>
 

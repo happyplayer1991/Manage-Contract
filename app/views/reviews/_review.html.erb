@@ -5,7 +5,7 @@
   <td><%= review.question3 %></td>
   <td><%= review.question4 %></td>
   <td><%= review.question5 %></td>
-  <td><%= link_to '', company_review_path(review, review.id), class: 'fa fa-eye fa-lg' %></td>
-  <td><%= link_to '', edit_company_review_path(review, review.id), class: 'fa fa-edit fa-lg index-icons' if user_signed_in? && review.user_id == current_user.id %></td>
-  <td><%= link_to '', company_review_path(review, review.id), method: :delete, class: 'fa fa-trash fa-lg index-icons-tresh', data: { confirm: 'Are you sure?' } if user_signed_in? && review.user_id == current_user.id %></td>
+  <td><%= link_to '', company_review_path(@company, review.id), class: 'fa fa-eye fa-lg' %></td>
+  <td><%= link_to '', edit_company_review_path(@company, review.id), class: 'fa fa-edit fa-lg index-icons' if user_signed_in? && review.user_id == current_user.id %></td>
+  <td><%= link_to '', company_review_path(@company, review.id), method: :delete, class: 'fa fa-trash fa-lg index-icons-tresh', data: { confirm: 'Are you sure?' } if user_signed_in? && review.user_id == current_user.id %></td>
 </tr>

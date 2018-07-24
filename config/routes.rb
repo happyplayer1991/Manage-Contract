@@ -48,8 +48,6 @@ Rails.application.routes.draw do
   get     'jobs/:id/applicants/', to: 'jobs#applicants', as: 'job_applicants'
   get     'jobs/:id/invites/',    to: 'jobs#invites', as: 'job_invites'
 
-  #get     'companies/:company_id/reviews/new', to: 'reviews#new', as: 'new_review'
-
   root to: 'pages#index'
 
 end

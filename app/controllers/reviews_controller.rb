@@ -3,8 +3,10 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
   def index
-    @company = Company.find_by(params[:id])
+    @company = Company.find(params[:company_id])
     @reviews = @company.reviews
+    #@reviews = Review.find_by_company_id(params[:company_id])
+    #@company = @review.company
   end
 
   def new
@@ -17,7 +19,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @company = Company.find_by(params[:id])
+    @company = Company.find(params[:company_id])
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.company_id = @company.id
@@ -32,6 +34,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @company = @review.company
     if user_signed_in? && @review.user_id == current_user.id
     else
       redirect_to allcompanies_path, notice: 'You do not have permission for this action!'
@@ -39,9 +42,11 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    @company = Company.find(params[:company_id])
+    #@review.company_id = @company.id
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to companies_path, notice: 'The Company was successfully updated.' }
+        format.html { redirect_to company_review_path(@company, @review), notice: 'The Company was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -56,7 +61,7 @@ class ReviewsController < ApplicationController
     if @review.user_id == current_user.id
       @review.destroy
       respond_to do |format|
-        format.html { redirect_to jobs_url, notice: 'The Job was removed.' }
+        format.html { redirect_to company_reviews_path, notice: 'The Job was removed.' }
       end
     else
       redirect_to jobs_path, notice: 'You do not have permission for this action!'
