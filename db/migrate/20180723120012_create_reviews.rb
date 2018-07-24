@@ -1,6 +1,7 @@
 class CreateReviews < ActiveRecord::Migration[5.1]
   def change
     create_table :reviews do |t|
+      t.integer :management
       t.integer :question1
       t.integer :question2
       t.integer :question3

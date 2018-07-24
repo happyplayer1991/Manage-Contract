@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery3
+//= require jquery.raty
 //= require rails-ujs
 //= require popper
 //= require gritter

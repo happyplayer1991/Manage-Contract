@@ -45,6 +45,12 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @reviews = @company.reviews.to_a
+    @avg_rating = if @reviews.blank?
+      0
+    else
+      @company.reviews.average(:management).round(2)
+    end
   end
 
   private
