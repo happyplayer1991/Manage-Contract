@@ -23,6 +23,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.company_id = @company.id
+    @review.average = ((@review.balance.to_f + @review.benefits.to_f + @review.advancement.to_f + @review.management.to_f + @review.culture.to_f) / 5).round(2)
 
     respond_to do |format|
       if @review.save
@@ -74,7 +75,12 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:question1,
+      params.require(:review).permit(:balance,
+                                  :benefits,
+                                  :advancement,
+                                  :management,
+                                  :culture,
+                                  :question1,
                                   :question2,
                                   :question3,
                                   :question4,

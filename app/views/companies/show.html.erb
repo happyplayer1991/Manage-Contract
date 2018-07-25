@@ -2,15 +2,15 @@
   <div class="col-md-3">
     <%= image_tag placeholder_img(@company.logo, 'logo'), width: '100%' %><br><br>
 
-    <% @reviews.each do |review| %>
-      <div class="reviews" align="center">
-        <div class="star-rating" data-score= <%= @avg_rating %> ></div>
-        <em><%= "#{@reviews.size} reviews" %></em>
+    <div class="reviews" align="center">
+      <div class="row">
+        <div class="col-md-5" align="right"><h4><%= @avg_rating %></h4></div>
+        <div class="star-rating col-md-7" data-score= <%= @avg_rating %> align="left"></div>
       </div>
-    <% end %>
+    </div>
 
     <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn btn-primary btn-block' if user_signed_in? && current_user.company_ids[0] == @company.id %><br>
-    <%= link_to (@company.reviews.count.to_s + " reviews"), company_reviews_path(@company), class: 'btn btn-primary btn-block' %>
+    <em><%= link_to (@company.reviews.count.to_s + " reviews"), company_reviews_path(@company), class: 'btn btn-primary btn-block' %></em><br>
     <%= link_to "Review this Company", new_company_review_path(@company), class: 'btn btn-primary btn-block' if user_signed_in? && current_user.company_ids[0] != @company.id && current_user.reviews.where(company_id: @company.id).count < 1 %>
   </div>
 

@@ -8,8 +8,28 @@
   <% end %>
 
   <div class="form-group row">
+    <%= form.label :balance, class: 'col-sm-2 form-control-label' %>
+    <div class="col-sm-6" id="balance"></div>
+  </div>
+
+   <div class="form-group row">
+    <%= form.label :benefits, class: 'col-sm-2 form-control-label' %>
+    <div class="col-sm-6" id="benefits"></div>
+  </div>
+
+   <div class="form-group row">
+    <%= form.label :advancement, class: 'col-sm-2 form-control-label' %>
+    <div class="col-sm-6" id="advancement"></div>
+  </div>
+
+   <div class="form-group row">
     <%= form.label :management, class: 'col-sm-2 form-control-label' %>
-    <div class="col-sm-6" id="star-rating"></div>
+    <div class="col-sm-6" id="management"></div>
+  </div>
+
+   <div class="form-group row">
+    <%= form.label :culture, class: 'col-sm-2 form-control-label' %>
+    <div class="col-sm-6" id="culture"></div>
   </div>
 
   <div class="form-group">
@@ -97,8 +117,24 @@
 <% end %>
 
 <script>
-$('#star-rating').raty({
+$('#balance').raty({
     path: '/assets',
-    scoreName: 'review[rating]'
+    scoreName: 'review[balance]'
+});
+$('#benefits').raty({
+    path: '/assets',
+    scoreName: 'review[benefits]'
+});
+$('#advancement').raty({
+    path: '/assets',
+    scoreName: 'review[advancement]'
+});
+$('#management').raty({
+    path: '/assets',
+    scoreName: 'review[management]'
+});
+$('#culture').raty({
+    path: '/assets',
+    scoreName: 'review[culture]'
 });
 </script>

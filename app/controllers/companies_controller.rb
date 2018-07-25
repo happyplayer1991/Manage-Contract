@@ -49,7 +49,7 @@ class CompaniesController < ApplicationController
     @avg_rating = if @reviews.blank?
       0
     else
-      @company.reviews.average(:management).round(2)
+      @company.reviews.average(:average).round(2)
     end
   end
 

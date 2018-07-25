@@ -224,7 +224,12 @@ ActiveRecord::Schema.define(version: 20180723125110) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "balance"
+    t.integer "benefits"
+    t.integer "advancement"
     t.integer "management"
+    t.integer "culture"
+    t.decimal "average"
     t.integer "question1"
     t.integer "question2"
     t.integer "question3"
