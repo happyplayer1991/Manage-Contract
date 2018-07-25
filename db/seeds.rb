@@ -4,6 +4,7 @@ User.create!(email: "test3@test.com", password: "123123", password_confirmation:
 User.create!(email: "test4@test.com", password: "123123", password_confirmation: "123123", interface: 1)
 User.create!(email: "test5@test.com", password: "123123", password_confirmation: "123123", interface: 1)
 User.create!(email: "admin@test.com", password: "123123", password_confirmation: "123123", interface: nil, role: 'superadmin')
+User.create!(email: "recruiter2@gmail.com", password: "123123", password_confirmation: "123123", interface: 0)
 
 JobArea.create!(title: "Engineering")
 JobArea.create!(title: "Sales and Marketing")
@@ -40,10 +41,12 @@ Job.create!(title: "Ruby on Rails programmer", job_type_id: 1, job_area_id: 1, s
 Job.create!(title: "Rails Developer", job_type_id: 1, job_area_id: 1, salary_min: 500, salary_max: 1000, hires: 1, description: "Some description", email: "seed@example.com", address: "Some Address", experience: 2, education_id: 3, user_id: 2, expiry_date: Time.now + 30.days)
 Job.create!(title: "Talent Rails proger", job_type_id: 1, job_area_id: 1, salary_min: 4500, salary_max: 5000, hires: 2, description: "Some description", email: "seed@example.com", address: "Some Address", experience: 4, education_id: 4, user_id: 2, expiry_date: Time.now + 30.days)
 Job.create!(title: "Senior Ruby on Rails", job_type_id: 1, job_area_id: 1, salary_min: 14500, salary_max: 15000, hires: 1, description: "Some description", email: "seed@example.com", address: "Some Address", experience: 3, education_id: 5, user_id: 2, expiry_date: Time.now + 30.days)
+Job.create!(title: "Finance Manager", job_type_id: 1, job_area_id: 3, salary_min: 5000, salary_max: 6000, hires: 1, description: "Taking care of all the finances activities", email: "", address: "", experience: 5, education_id: 3, user_id: 7, expiry_date: Time.now + 30.days)
 
 Company.create!(title: "Amazon", hires_per_year: 5, name: "Bill", phone: "1234567899", country: "USA", city: "Boston", postal_code: "12345", payment_info: "PayPal", about: "We are Great company", why_join_us: "Because we Great!", website: "google.com", industry: "Some Industry", number_of_employee: 150, user_id: 1)
 Company.create!(title: "Google", hires_per_year: 15, name: "Smith", phone: "1234567899", country: "Canada", city: "Toronto", postal_code: "12345", payment_info: "PayPal", about: "We are Great company", why_join_us: "Because we Great!", website: "camp.com", industry: "Some Industry", number_of_employee: 50, user_id: 2)
 Company.create!(title: "NBA", hires_per_year: 25, name: "Jack", phone: "1234567899", country: "Some Coutry", city: "Some City", postal_code: "12345", payment_info: "PayPal", about: "We are Great company", why_join_us: "Because we Great!", website: "bong.com", industry: "Some Industry", number_of_employee: 15, user_id: 3)
+Company.create!(title: "Pecka Pte Ltd", hires_per_year: 1, name: "", phone: "", country: "", city: "", postal_code: "12345", payment_info: "", about: "", why_join_us: "", website: "", industry: "Water Industry", number_of_employee: 2000, user_id: 7)
 
 #Resume.create!(first_name: "Bill", last_name: "Roger", user_id: 1, status: 1)
 
