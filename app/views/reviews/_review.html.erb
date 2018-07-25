@@ -4,7 +4,7 @@
 <div class="col-md-9">
   </div>
 </div>
-<em><%= review.name %> (<%= review.job_title %>) - <%= review.location %> - <%= review.start_date.strftime("%B %d, %Y") if review.start_date.present? %> - <%= review.end_date.strftime("%B %d, %Y") if review.end_date.present? %></em>
+<em><%= review.name %> (<%= review.job_title %>) - <%= review.location %> - <%= review.create_at.strftime("%B %d, %Y") if review.create_at.present? %></em>
 <br>
 <%= review.description %>
 <%= link_to '', company_review_path(@company, review.id), class: 'fa fa-eye fa-lg' %>
