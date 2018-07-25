@@ -11,7 +11,7 @@
 
     <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn btn-primary btn-block' if user_signed_in? && current_user.company_ids[0] == @company.id %><br>
     <em><%= link_to (@company.reviews.count.to_s + " reviews"), company_reviews_path(@company), class: 'btn btn-primary btn-block' %></em><br>
-    <%= link_to "Review this Company", new_company_review_path(@company), class: 'btn btn-primary btn-block' if user_signed_in? && current_user.company_ids[0] != @company.id && current_user.reviews.where(company_id: @company.id).count < 1 %>
+    <%= link_to "Review this Company", new_company_review_path(@company), class: 'btn btn-primary btn-block' %>
   </div>
 
   <div class="col-md-9">

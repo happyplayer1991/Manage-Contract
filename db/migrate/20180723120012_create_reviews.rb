@@ -12,7 +12,12 @@ class CreateReviews < ActiveRecord::Migration[5.1]
       t.integer :question3
       t.integer :question4
       t.integer :question5
-      t.text :description
+      t.text    :description
+      t.string  :name
+      t.string  :job_title
+      t.string  :location
+      t.date    :start_date
+      t.date    :end_date
 
       t.timestamps
     end

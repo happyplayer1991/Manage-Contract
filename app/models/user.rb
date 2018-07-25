@@ -23,7 +23,6 @@ class User < ApplicationRecord
   has_many :bookmarked_by_user_jobs, through: :bookmarked_jobs, source: :job
 
   has_many :keyword
-  has_many :reviews
 
   enum interface: { recruiter: 0, jobseeker: 1 }
 
