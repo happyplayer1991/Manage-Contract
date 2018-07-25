@@ -1,7 +1,22 @@
-<%= review.id %>
+<div class="row">
+<div class="col-md-1"><%= review.average %></div>
+<div align="left" class="star-rating col-md-2" data-score= <%= review.average %> ></div>
+<div class="col-md-9">
+  </div>
+</div>
 <em><%= review.name %><%= review.job_title %> - <%= review.location %> - <%= review.start_date.strftime("%B %d, %Y") %> - <%= review.end_date.strftime("%B %d, %Y") %></em>
 <br>
 <%= review.description %>
 <%= link_to '', company_review_path(@company, review.id), class: 'fa fa-eye fa-lg' %>
 <hr>
 <br>
+
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>
