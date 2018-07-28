@@ -1,4 +1,26 @@
 <h1 align="center">Job Listing</h1>
+<div class="row justify-content-center custom-home">
+	<div class="col-md-6">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="btn-group" role="group" aria-label="Basic example">
+				  <%= link_to 'Find Job', alljobs_path, class: 'btn btn-warning' %>
+				  <%= link_to 'Find Resume', allresumes_path, class: 'btn btn-info' %>
+				</div>
+			</div>
+			<div class="col-md-6 text-right"><%= link_to 'Find Company', allcompanies_path, class: 'btn btn-success btn-block' %></div>
+		</div>
+		<%= form_with method: :get, local: true, url: alljobs_path do |f| %>
+			<div class="input-group mb-3">
+				<%= f.text_field :q, class: "form-control", placeholder: "Job title, Skills", value: nil %>
+				<%= f.text_field :city, class: "form-control", placeholder: "City, Country", value: nil  %>
+			  <div class="input-group-append">
+					<%= f.submit "Search", class: "btn btn-primary", name: nil %>
+			  </div>
+			</div>
+		<% end %>
+	</div>
+</div>
 <div class="row">
 	<div class="col-md-3">
 	</div>

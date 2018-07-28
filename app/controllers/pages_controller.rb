@@ -1,18 +1,23 @@
 class PagesController < ApplicationController
-  access all: {except: [:settings]}, user: {except: [:settings]}, superadmin: :all
+  access all: { except: [:settings] }, user: { except: [:settings] }, superadmin: :all
 
-	def index
-	end
+  def index; end
 
-	def alljobs
-		@all_jobs = Job.all
-	end
+  def alljobs
+    if search_params.present?
+      query = params[:q].presence || '*'
+      @all_jobs = Job.search(query, Job.prepare_search(search_params))
+      @filter_active = true
+    else
+      @all_jobs = Job.search('*', Job.prepare_search(search_params))
+    end
+  end
 
-	def allcompanies
-		@all_companies = Company.all
-	end
+  def allcompanies
+    @all_companies = Company.all
+  end
 
-  def allresumes
+  def allresumess
     @all_resumes = Resume.public_resume
   end
 
@@ -40,5 +45,9 @@ class PagesController < ApplicationController
       @parameter = @keywords[0].title.downcase
       @results = Job.all.where("lower(title) LIKE :search", search: "%#{@parameter}%")
     end
+  end
+
+  def search_params
+    params.permit(:q, :address, :sort_by, experience: [], job_type: [], education: [], job_title: [], city: [])
   end
 end

@@ -5,6 +5,7 @@ class Job < ApplicationRecord
   belongs_to :job_area
   belongs_to :job_type
   belongs_to :education
+  has_many :companies, through: :user
 
   has_many :bookmarked_jobs, dependent: :destroy
   has_many :bookmarked_by_users, through: :bookmarked_jobs, source: :user
@@ -13,4 +14,7 @@ class Job < ApplicationRecord
   has_many :resumes, through: :applied_jobs, source: :resume
 
   scope :posts_by, ->(user) { where(user_id: user.id) }
+
+  include JobSearch
 end
+

@@ -1,0 +1,14 @@
+<div>
+<% if arr.present? && arr['buckets'].size > 0 %>
+  <%= title %><br />
+  <% arr['buckets'].each do |item| %>
+    <% next unless item['key'].present? %>
+    <div class="form-check">
+    <%= form.check_box name_inp, { multiple: true, checked: (true if params[name_inp]&.include?(item['key'])), id: item['key'].parameterize, class: "form-check-input"}, item['key'], false %>
+    <%= form.label name_inp, for: item['key'].parameterize, class: "form-check-label" do %>
+        <%= item['key'].capitalize %> (<%= item['doc_count'] %>)
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+</div>
