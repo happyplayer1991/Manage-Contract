@@ -70,7 +70,7 @@ module JobSearch
         experience: experience,
         job_type: job_type,
         education: education,
-        city: companies.first.city.downcase
+        city: companies&.first&.city&.downcase || "Other"
       }
     end
 
