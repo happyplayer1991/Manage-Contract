@@ -26,7 +26,6 @@ module CompanySearch
       #exp_ranges = EXPERIENCE_LEVELS.values.collect { |i| i[:range] }
       {
         fields: [:title, :industry],
-        misspellings: {below: 3},
         where: where_condition(params),
         order: get_order(params[:sort_by]),
         aggs: {
@@ -49,7 +48,7 @@ module CompanySearch
       filter[:_and] << Company.build_industries(params[:industry]) if params[:industry].present?
       #filter[:_and] << Resume.build_experience(params[:experience]) if params[:experience].present?
       #filter[:_and] << Resume.build_education(params[:education]) if params[:education].present?
-      #filter[:_and] << { title: params[:job_title] } if params[:job_title].present?
+      filter[:_and] << { title: params[:title] } if params[:title].present?
       filter
     end
 
@@ -75,7 +74,7 @@ module CompanySearch
       result = { _or: [] }
       cities.each do |city|
         next unless city.present?
-        result[:_or] << {city: city.downcase }
+        result[:_or] << { city: city.downcase }
       end
       result
     end
