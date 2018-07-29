@@ -11,4 +11,11 @@ class Company < ApplicationRecord
   mount_uploader :logo,   CompanyUploader
 
   scope :setup_by, ->(user) { where(user_id: user.id) }
+
+
+  after_commit :reindex_jobs
+
+  def reindex_jobs
+    user.jobs&.reindex
+  end
 end

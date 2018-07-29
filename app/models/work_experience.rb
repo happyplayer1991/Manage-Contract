@@ -3,4 +3,10 @@ class WorkExperience < ApplicationRecord
   belongs_to :resume
 
   validates_presence_of :job_title
+
+  after_commit :reindex_resume
+
+  def reindex_resume
+    resume.reindex
+  end
 end
