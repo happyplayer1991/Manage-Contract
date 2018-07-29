@@ -1,7 +1,7 @@
 <div class="row">
 <div class="col-md-3">
   <div class="sidebar">
-    <%= form_with method: :get, local: true, url: alljobs_path, id: "alljobs" do |f| %>
+    <%= form_with method: :get, local: true, url: alljobs_path, id: "filter-auto" do |f| %>
       <h5>Sort:</h5>
       <div class="form-group">
       <%= f.select :sort_by, options_for_select(Job::SORT_PARAMS.keys.collect{ |t| [t.humanize, t] }, params[:sort_by]), {}, class: "form-control" %>
@@ -16,7 +16,7 @@
         <% end %>
       </h5>
 
-      <%= render "filter", arr: @all_jobs.aggs['title'], form: f, title: "Job title", name_inp: :job_title %>
+      <%= render "pages/partials/filter", arr: @all_jobs.aggs['title'], form: f, title: "Job title", name_inp: :job_title %>
       <br />
       <div>
       Experience level <br />
@@ -32,15 +32,14 @@
       </div>
       <br />
 
-      <%= render "filter", arr: @all_jobs.aggs['education.title'], form: f, title: "Education", name_inp: :education, more_btn: false %>
+      <%= render "pages/partials/filter", arr: @all_jobs.aggs['education.title'], form: f, title: "Education", name_inp: :education, more_btn: false %>
       <br />
-      <%= render "filter", arr: @all_jobs.aggs['job_type.title'], form: f, title: "Job type", name_inp: :job_type %>
+      <%= render "pages/partials/filter", arr: @all_jobs.aggs['job_type.title'], form: f, title: "Job type", name_inp: :job_type %>
         <br />
-      <%= render "filter", arr: @all_jobs.aggs['city'], form: f, title: "City", name_inp: :city %>
+      <%= render "pages/partials/filter", arr: @all_jobs.aggs['city'], form: f, title: "City", name_inp: :city %>
 
 
       <%= f.hidden_field :q, value: params[:q] %>
-      <%= f.hidden_field :address, value: params[:address] %>
       <!--<%= f.submit "Update", class: "btn btn-primary", name: nil %>-->
     <% end %>
 

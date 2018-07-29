@@ -94,30 +94,30 @@ module JobSearch
     end
 
     def self.build_cities(cities)
-      result = { _or: [] }
+      result = []
       cities.each do |city|
         next unless city.present?
-        result[:_or] << {city: city.downcase }
+        result << city.downcase
       end
-      result
+      { city: result }
     end
 
     def self.build_experience(exp_params)
       result = { _or: [] }
       exp_params.each do |exp|
         val = EXPERIENCE_LEVELS[exp]
-        result[:_or] << { experience: val[:where] } if val
+        result << { experience: val[:where] } if val
       end
       result
     end
 
     def self.build_job_types(exp_params)
-      result = { _or: [] }
+      result = []
       exp_params.each do |exp|
         next unless exp.present?
-        result[:_or] << { 'job_type.title' => exp }
+        result << exp
       end
-      result
+      {'job_type.title' => result}
     end
 
     def self.build_education(exp_params)

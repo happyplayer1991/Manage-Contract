@@ -1,4 +1,4 @@
-module JobSearch
+module ResumeSearch
   extend ActiveSupport::Concern
 
   #Note that this aggregation includes the from value and excludes the to value for each range.
@@ -22,31 +22,31 @@ module JobSearch
     searchkick
 
     def self.prepare_search(params)
+      exp_ranges = EXPERIENCE_LEVELS.values.collect { |i| i[:range] }
       {
-        fields: [:q],
+        fields: [:title, :field_of_study, :job_titles, :skills],
+        misspellings: {below: 3},
         where: where_condition(params),
         order: get_order(params[:sort_by]),
-        body_options: { aggs: aggs },
         aggs: {
-          title: { limit: 15 },
-          'education.title': {},
-          'job_type.title': {},
-          city: { limit: 15 }
+          title: { limit: 15, where: {status: "public_resume"} },
+          education: { where: {status: "public_resume"} },
+          city: { limit: 15, where: {status: "public_resume"}  },
+          experience: { ranges: exp_ranges, where: {status: "public_resume"}}
         },
         smart_aggs: false,
         page: params[:page],
-        per_page: Job::JOBS_PER_PAGE
+        per_page: Resume::RESUMES_PER_PAGE
       }
     end
 
     def self.where_condition(params = nil)
       filter = {}
       return filter unless params
-      filter[:_and] = []
-      filter[:_and] << Job.build_cities(params[:city]) if params[:city].present?
-      filter[:_and] << Job.build_experience(params[:experience]) if params[:experience].present?
-      filter[:_and] << Job.build_job_types(params[:job_type]) if params[:job_type].present?
-      filter[:_and] << Job.build_education(params[:education]) if params[:education].present?
+      filter[:_and] = [{status: 'public_resume'}]
+      filter[:_and] << Resume.build_cities(params[:city]) if params[:city].present?
+      filter[:_and] << Resume.build_experience(params[:experience]) if params[:experience].present?
+      filter[:_and] << Resume.build_education(params[:education]) if params[:education].present?
       filter[:_and] << { title: params[:job_title] } if params[:job_title].present?
       filter
     end
@@ -57,28 +57,17 @@ module JobSearch
       selected || SORT_PARAMS[DEFAULT_SORT]
     end
 
-    def self.aggs
-      exp_ranges = EXPERIENCE_LEVELS.values.collect { |i| i[:range] }
-      {
-        experience: {
-          range: {
-              field: "experience",
-              ranges: exp_ranges
-          }
-        }
-      }
-    end
-
     def search_data
       {
-        q: [title, description].join(' '),
-        title: title,
-        address: address.downcase,
+        title: desired_job_title,
+        first_of_study: field_of_study,
+        job_titles: work_experiences.pluck(:job_title),
+        skills: skills.pluck(:title),
+        experience: work_experiences&.pluck(:job_type_work_exp)&.sum.to_i,
         updated_at: updated_at,
-        experience: experience,
-        job_type: job_type,
-        education: education,
-        city: companies&.first&.city&.downcase || "Other"
+        education: degree,
+        status: status,
+        city: city&.downcase || "other"
       }
     end
 
@@ -107,15 +96,6 @@ module JobSearch
       exp_params.each do |exp|
         val = EXPERIENCE_LEVELS[exp]
         result[:_or] << { experience: val[:where] } if val
-      end
-      result
-    end
-
-    def self.build_job_types(exp_params)
-      result = { _or: [] }
-      exp_params.each do |exp|
-        next unless exp.present?
-        result[:_or] << { 'job_type.title' => exp }
       end
       result
     end

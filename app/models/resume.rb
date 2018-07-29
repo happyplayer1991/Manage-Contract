@@ -2,6 +2,11 @@ class Resume < ApplicationRecord
   enum employment_eligibility:  { authorized: 0, sponsorship: 1 }
   enum status:                  { private_resume: 0, public_resume: 1 }
 
+  RESUMES_PER_PAGE = 20
+  paginates_per RESUMES_PER_PAGE
+
+  include ResumeSearch
+
   validates_presence_of :first_name, :last_name
   validates :first_name, uniqueness: true
   validates :last_name, uniqueness: true

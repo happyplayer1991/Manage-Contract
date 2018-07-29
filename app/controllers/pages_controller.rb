@@ -17,9 +17,19 @@ class PagesController < ApplicationController
     @all_companies = Company.all
   end
 
-  def allresumess
-    @all_resumes = Resume.public_resume
+  def allresumes
+    if search_params.present?
+      query = params[:q].presence || '*'
+      @all_resumes = Resume.search(query, Resume.prepare_search(search_params))
+      @filter_active = true
+    else
+      @all_resumes = Resume.search('*', Resume.prepare_search(search_params))
+    end
   end
+
+  def find_resume; end
+
+  def find_company; end
 
   def admin
     if !user_signed_in?

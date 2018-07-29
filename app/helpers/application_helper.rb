@@ -48,7 +48,6 @@ module ApplicationHelper
 
   #check is filter param is hidden
   def is_hidden?(checked, i)
-    #binding.pry
     count_show ||= 5
     !checked && ((i + 1) > count_show)
   end

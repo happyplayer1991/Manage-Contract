@@ -1,4 +1,4 @@
-<h1 align="center">Job Listing</h1>
+<h1 align="center">Find Company</h1>
 <div class="row justify-content-center custom-home">
 	<div class="col-md-6">
 		<div class="row">
@@ -10,9 +10,9 @@
 			</div>
 			<div class="col-md-6 text-right"><%= link_to 'Find Company', find_company_path, class: 'btn btn-success btn-block' %></div>
 		</div>
-		<%= form_with method: :get, local: true, url: alljobs_path do |f| %>
+		<%= form_with method: :get, local: true, url: allresumes_path do |f| %>
 			<div class="input-group mb-3">
-				<%= f.text_field :q, class: "form-control", placeholder: "Job title, Skills", value: nil %>
+				<%= f.text_field :q, class: "form-control", placeholder: "Company name, Industry", value: nil %>
 				<%= f.text_field :city, multiple: true, class: "form-control", placeholder: "City, Country", value: nil  %>
 			  <div class="input-group-append">
 					<%= f.submit "Search", class: "btn btn-primary", name: nil %>
@@ -21,5 +21,4 @@
 		<% end %>
 	</div>
 </div>
-
 <%= render "pages/partials/main_links" %>

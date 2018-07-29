@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="col-md-3">
+	</div>
+	<div class="col-md-6 custom-home">
+		<% if !user_signed_in? %>
+			<div class="row">
+				<div class="col-md-6">
+					<h4 align="center">I am a Recruiter</h4>
+					<%= link_to 'Sign up', new_user_with_interface_path(:initial_interface => 'recruiter'), class: 'btn btn-primary btn-block' %>
+				</div>
+				<div class="col-md-6">
+					<h4 align="center">I am a Jobseeker</h4>
+					<%= link_to 'Sign up', new_user_with_interface_path(:initial_interface => 'jobseeker'), class: 'btn btn-primary btn-block' %>
+				</div>
+			</div>
+			<br>
+			<%= link_to 'Log in', new_user_session_path, class: 'btn btn-primary btn-block' %>
+			<hr>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
+		<%= link_to 'Browse Jobs', alljobs_path, class: 'btn btn-warning btn-block' %><br>
+		<%= link_to 'Browse Companies', allcompanies_path, class: 'btn btn-info btn-block' %><br>
+		<%= link_to 'Browse Resumes', allresumes_path, class: 'btn btn-success btn-block' %>
+	</div>
+</div>

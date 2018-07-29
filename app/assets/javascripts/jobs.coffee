@@ -3,8 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on "turbolinks:load", ->
-  $("form#alljobs select, form#alljobs input").on "change", (event) ->
-    $("form#alljobs").submit();
+  $("form#filter-auto select, form#filter-auto input").on "change", (event) ->
+    $("form#filter-auto").submit();
 
 
   $(".filter-block__bottom a.show-more").on "click", (event) ->
