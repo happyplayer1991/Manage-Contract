@@ -103,8 +103,8 @@ module JobSearch
     def self.build_job_types(exp_params)
       result = { _or: [] }
       exp_params.each do |exp|
-        val = JobType.find_by(id: exp)
-        result[:_or] << { job_type: val.id } if val
+        next unless exp.present?
+        result[:_or] << { 'job_type.title': exp }
       end
       result
     end
