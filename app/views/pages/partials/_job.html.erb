@@ -1,0 +1,82 @@
+<div class="modal-header">
+  <%= link_to '< back to list', "javascript:void(0)", data: {dismiss: "modal"}, class: "modal-title btn btn-outline-primary" %>
+  <%= link_to 'show more', job_path(job), class: "btn btn-primary btn-sm"%>
+</div>
+<div class="modal-body">
+
+  <div class="row">
+  <div class="col-md-3">
+    <%= image_tag placeholder_img(job.user.companies[0].logo, 'logo'), width: '100%' %>
+    <br>
+    <br>
+  </div>
+
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-10">
+        <h1><%= job.title %></h1>
+      </div>
+      <div class="col-md-2">
+        <% if user_signed_in? && job.user_id != current_user.id %>
+          <% if current_user.bookmark_job?(job) %>
+            <%= link_to '', unbookmark_job_path(job_id: job.id), class: 'fa fa-star fa-2x unbookmark', title: 'Unbookmark!', method: :delete %>
+          <% else %>
+            <%= link_to '', bookmark_job_path(job_id: job.id), class: 'fa fa-star fa-2x bookmark', title: 'Bookmark!' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Company Name:</th>
+          <td><%= link_to job.user.companies[0].title, company_path(job.user.companies[0]) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Date Posted:</th>
+          <td><%= job.created_at.strftime("%B %d, %Y") %></td>
+        </tr>
+        <tr>
+          <th scope="row">Type of Job</th>
+          <td><%= job.job_type.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">Job Area</th>
+          <td><%= job.job_area.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">Years of experience:</th>
+          <td><%= job.experience %></td>
+        </tr>
+        <tr>
+          <th scope="row">Salary range USD</th>
+          <td><%= job.salary_min %> - <%= job.salary_max %></td>
+        </tr>
+        <tr>
+          <th scope="row">Number of hires for this position</th>
+          <td><%= job.hires %></td>
+        </tr>
+        <tr>
+          <th scope="row">Requires level of Education</th>
+          <td><%= job.education.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">Expiry Date</th>
+          <td><%= job.expiry_date.strftime("%B %d, %Y") if !job.expiry_date.blank? %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <strong>Description: </strong><%= job.description %>
+  </div>
+</div>
+
+
+
+
+</div>
+
