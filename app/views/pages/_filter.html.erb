@@ -14,7 +14,8 @@
     <div class="form-check <% if is_hidden %>hidden-filter<% end %>">
     <%= form.check_box name_inp, { multiple: true, checked: (true if is_checked), id: item['key'].parameterize, class: "form-check-input"}, item['key'], false %>
     <%= form.label name_inp, for: item['key'].parameterize, class: "form-check-label" do %>
-        <%= item['key'].capitalize %> (<%= item['doc_count'] %>)
+
+        <%= item['key'].upcase_first %> (<%= item['doc_count'] %>)
       <% end %>
     </div>
   <% end %>
