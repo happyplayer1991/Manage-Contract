@@ -1,13 +1,27 @@
-<div>
+<% more_btn = true if more_btn.nil? %>
+<div class="filter-block">
 <% if arr.present? && arr['buckets'].size > 0 %>
   <%= title %><br />
-  <% arr['buckets'].each do |item| %>
+  <% hidden_counter = 0 %>
+
+  <% arr['buckets'].each_with_index do |item, i| %>
+
     <% next unless item['key'].present? %>
-    <div class="form-check">
-    <%= form.check_box name_inp, { multiple: true, checked: (true if params[name_inp]&.include?(item['key'])), id: item['key'].parameterize, class: "form-check-input"}, item['key'], false %>
+    <% is_checked = params[name_inp]&.include?(item['key']) %>
+    <% is_hidden = is_hidden?(is_checked, i) && more_btn %>
+    <% hidden_counter += 1 if is_hidden %>
+
+    <div class="form-check <% if is_hidden %>hidden-filter<% end %>">
+    <%= form.check_box name_inp, { multiple: true, checked: (true if is_checked), id: item['key'].parameterize, class: "form-check-input"}, item['key'], false %>
     <%= form.label name_inp, for: item['key'].parameterize, class: "form-check-label" do %>
         <%= item['key'].capitalize %> (<%= item['doc_count'] %>)
       <% end %>
+    </div>
+  <% end %>
+  <div class="showed-block"></div>
+  <% unless hidden_counter.zero? %>
+    <div class="filter-block__bottom">
+      <a href="javascript:void(0)" class="show-more">show more</a>
     </div>
   <% end %>
 <% end %>

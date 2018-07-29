@@ -6,6 +6,6 @@ module JobsHelper
       bucketed_item['to'] == exp[:to]&.to_f &&
       bucketed_item['from'] == exp[:from]&.to_f
     end
-    elem['doc_count']
+    elem ? elem['doc_count'] : 0
   end
 end

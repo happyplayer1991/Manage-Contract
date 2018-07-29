@@ -46,6 +46,13 @@ module ApplicationHelper
     status_span_generator status
   end
 
+  #check is filter param is hidden
+  def is_hidden?(checked, i)
+    #binding.pry
+    count_show ||= 5
+    !checked && ((i + 1) > count_show)
+  end
+
   private
 
     def status_span_generator status

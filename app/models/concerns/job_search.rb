@@ -1,13 +1,14 @@
 module JobSearch
   extend ActiveSupport::Concern
 
+  #Note that this aggregation includes the from value and excludes the to value for each range.
   EXPERIENCE_LEVELS = {
     'less_than_1_year' => { where: { lt: 1 }, range: { to: 1 } },
-    '1-2_years' => { where: 1..2, range: { from: 1, to: 2 } },
-    '3-5_years' => { where: 3..5, range: { from: 3, to: 5 } },
-    '6-10_years' => { where: 6..10, range: { from: 6, to: 10 } },
-    '11-15_years' => { where: 11..15, range: { from: 11, to: 15 } },
-    '15+_years' => { where: { gt: 15 }, range: { from: 15 } }
+    '1-2_years' => { where: 1..2, range: { from: 1, to: 3 } },
+    '3-5_years' => { where: 3..5, range: { from: 3, to: 6 } },
+    '6-10_years' => { where: 6..10, range: { from: 6, to: 11 } },
+    '11-15_years' => { where: 11..15, range: { from: 11, to: 16 } },
+    '15+_years' => { where: { gt: 15 }, range: { from: 16 } }
   }.freeze
 
   SORT_PARAMS = {
@@ -25,7 +26,13 @@ module JobSearch
         fields: [:q],
         where: where_condition(params),
         order: get_order(params[:sort_by]),
-        aggs: aggs,
+        body_options: { aggs: aggs },
+        aggs: {
+          title: { limit: 15 },
+          'education.title': {},
+          'job_type.title': {},
+          city: { limit: 15 }
+        },
         smart_aggs: false
       }
     end
@@ -51,13 +58,12 @@ module JobSearch
     def self.aggs
       exp_ranges = EXPERIENCE_LEVELS.values.collect { |i| i[:range] }
       {
-        title: { limit: 15 },
-        'education.title': {},
-        'job_type.title': {},
         experience: {
-          ranges: exp_ranges
-        },
-        city: { limit: 15 }
+          range: {
+              field: "experience",
+              ranges: exp_ranges
+          }
+        }
       }
     end
 

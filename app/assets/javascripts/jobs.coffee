@@ -3,7 +3,30 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on "turbolinks:load", ->
-  console.log('loaded')
   $("form#alljobs select, form#alljobs input").on "change", (event) ->
-    console.log('ttt');
     $("form#alljobs").submit();
+
+
+  $(".filter-block__bottom a.show-more").on "click", (event) ->
+    #find all hidden filters
+    filters = $(this).closest('.filter-block').find('.hidden-filter')
+    return if(!filters.length)
+    #find block where we will store opened filters
+    showed_bl = $(this).closest('.filter-block').find('.showed-block');
+
+    #if we don't have more filters, hide "show more"
+    if(filters.length <= 5)
+      $(this).closest('.filter-block__bottom').hide();
+
+    #show only 5 filters
+    count = if filters.length < 5 then filters.length else 5
+    console.log(count)
+    for i in [0...count]
+      showed_bl.append($(filters[i]).removeClass('hidden-filter'))
+
+
+
+
+
+
+

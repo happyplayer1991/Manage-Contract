@@ -1,6 +1,6 @@
 <div class="row">
 <div class="col-md-3">
-  <div class="sidebar" style="background: #f5f5f5; font-size: 14px; padding: 5px; margin-bottom: 30px;">
+  <div class="sidebar">
     <%= form_with method: :get, local: true, url: alljobs_path, id: "alljobs" do |f| %>
       <h5>Sort:</h5>
       <div class="form-group">
@@ -32,7 +32,7 @@
       </div>
       <br />
 
-      <%= render "filter", arr: @all_jobs.aggs['education.title'], form: f, title: "Education", name_inp: :education %>
+      <%= render "filter", arr: @all_jobs.aggs['education.title'], form: f, title: "Education", name_inp: :education, more_btn: false %>
       <br />
       <%= render "filter", arr: @all_jobs.aggs['job_type.title'], form: f, title: "Job type", name_inp: :job_type %>
         <br />

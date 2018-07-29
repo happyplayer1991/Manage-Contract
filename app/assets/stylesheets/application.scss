@@ -35,3 +35,17 @@
 .admin_icons:hover {
 	text-decoration: none;
 }
+
+.sidebar {
+	background: #f5f5f5;
+	font-size: 14px;
+	padding: 5px;
+	margin-bottom: 30px;
+}
+
+.filter-block {
+	.hidden-filter {
+		display: none;
+	}
+}
+
