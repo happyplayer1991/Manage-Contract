@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get     '/alljobs',           to: 'pages#alljobs'
   get     '/allcompanies',      to: 'pages#allcompanies'
   get     '/allresumes',        to: 'pages#allresumes'
+  get     '/find_resume',       to: 'pages#find_resume'
+  get     '/find_company',      to: 'pages#find_company'
   get     '/admin',             to: 'pages#admin'
   get     '/settings',          to: 'pages#settings'
   get     '/alert',             to: 'pages#alert'
