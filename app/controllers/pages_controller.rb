@@ -48,6 +48,6 @@ class PagesController < ApplicationController
   end
 
   def search_params
-    params.permit(:q, :address, :sort_by, experience: [], job_type: [], education: [], job_title: [], city: [])
+    params.permit(:q, :address, :sort_by, :page, experience: [], job_type: [], education: [], job_title: [], city: [])
   end
 end

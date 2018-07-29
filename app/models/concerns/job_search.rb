@@ -33,7 +33,9 @@ module JobSearch
           'job_type.title': {},
           city: { limit: 15 }
         },
-        smart_aggs: false
+        smart_aggs: false,
+        page: params[:page],
+        per_page: Job::JOBS_PER_PAGE
       }
     end
 
