@@ -1,5 +1,42 @@
+<div class="row">
+<div class="col-md-3">
+  <div class="sidebar">
+    <%= form_with method: :get, local: true, url: allcompanies_path, id: "filter-auto" do |f| %>
+      <h5>Sort:</h5>
+      <div class="form-group">
+      <%= f.select :sort_by, options_for_select(Company::SORT_PARAMS.keys.collect{ |t| [t.humanize, t] }, params[:sort_by]), {}, class: "form-control" %>
+      </div>
+
+      <hr />
+      <h5>Filter:
+        <% if @filter_active %>
+          <span style="font-size: 15px;">
+            <%= link_to "(clear)", allcompanies_path %>
+          </span>
+        <% end %>
+      </h5>
+
+      <%= render "pages/partials/filter", arr: @all_companies.aggs['title'], form: f, title: "Job title", name_inp: :job_title %>
+      <br />
+
+
+      <%= render "pages/partials/filter", arr: @all_companies.aggs['industry'], form: f, title: "Industry", name_inp: :industry %>
+
+        <br />
+      <%= render "pages/partials/filter", arr: @all_companies.aggs['city'], form: f, title: "City", name_inp: :city %>
+
+
+      <%= f.hidden_field :q, value: params[:q] %>
+    <% end %>
+
+  </div>
+</div>
+<div class="col-md-9">
+  <% if params[:q].present? %><h6>Results for: <i><%= params[:q] %></i></h6><% end %>
+
 <h2>Companies List</h2>
 <table class="table table-striped">
+  <% if @all_companies.size > 0 %>
   <thead>
     <tr>
       <th scope="col">Company name</th>
@@ -12,4 +49,11 @@
   <tbody id="jobs">
     <%= render partial: 'all_company', collection: @all_companies %>
   </tbody>
+  <% else %>
+    <tr><td>No results</td></tr>
+  <% end %>
 </table>
+<%= paginate @all_companies %>
+
+</div>
+

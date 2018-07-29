@@ -10,7 +10,7 @@
 			</div>
 			<div class="col-md-6 text-right"><%= link_to 'Find Company', find_company_path, class: 'btn btn-success btn-block' %></div>
 		</div>
-		<%= form_with method: :get, local: true, url: allresumes_path do |f| %>
+		<%= form_with method: :get, local: true, url: allcompanies_path do |f| %>
 			<div class="input-group mb-3">
 				<%= f.text_field :q, class: "form-control", placeholder: "Company name, Industry", value: nil %>
 				<%= f.text_field :city, multiple: true, class: "form-control", placeholder: "City, Country", value: nil  %>

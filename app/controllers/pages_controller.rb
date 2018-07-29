@@ -14,7 +14,14 @@ class PagesController < ApplicationController
   end
 
   def allcompanies
-    @all_companies = Company.all
+    if search_params.present?
+      query = params[:q].presence || '*'
+      @all_companies = Company.search(query, Company.prepare_search(search_params))
+      @filter_active = true
+    else
+      @all_companies = Company.search('*', Company.prepare_search(search_params))
+    end
+    #@all_companies = Company.all
   end
 
   def allresumes
@@ -58,6 +65,6 @@ class PagesController < ApplicationController
   end
 
   def search_params
-    params.permit(:q, :address, :sort_by, :page, experience: [], job_type: [], education: [], job_title: [], city: [])
+    params.permit(:q, :address, :sort_by, :page, experience: [], job_type: [], education: [], job_title: [], city: [], industry: [], reviews: [], title: [])
   end
 end

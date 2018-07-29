@@ -73,15 +73,6 @@ module ResumeSearch
 
     private
 
-    def self.build_titles(params)
-      result = []
-      params.each do |title|
-        next unless title.present?
-        result << title
-      end
-      { title: result }
-    end
-
     def self.build_cities(cities)
       result = { _or: [] }
       cities.each do |city|
