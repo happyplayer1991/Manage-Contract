@@ -24,6 +24,9 @@ $(document).on "turbolinks:load", ->
     for i in [0...count]
       showed_bl.append($(filters[i]).removeClass('hidden-filter'))
 
+  $("a[data-remote]").on "ajax:error", (event) ->
+    alert('Couldn\'t load, redirecting...')
+    location = $(this).attr('href');
 
 
 

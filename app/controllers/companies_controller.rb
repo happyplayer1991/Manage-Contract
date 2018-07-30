@@ -51,6 +51,11 @@ class CompaniesController < ApplicationController
     else
       @company.reviews.average(:average).round(2)
     end
+
+    respond_to do |format|
+      format.html {}
+      format.js
+    end
   end
 
   private
