@@ -1,6 +1,7 @@
 <div class="modal-header">
-  <%= link_to '< back to list', "javascript:void(0)", data: {dismiss: "modal"}, class: "modal-title btn btn-outline-primary" %>
-  <%= link_to 'show more', job_path(job), class: "btn btn-primary btn-sm"%>
+  <button data-dismiss="modal" aria-hidden="true" class="modal-title btn btn-outline-primary">< back to list</button>
+
+  <%= link_to 'Show more in a new window', job_path(job), class: "btn btn-primary btn-sm", target: "_blank" %>
 </div>
 <div class="modal-body">
 
