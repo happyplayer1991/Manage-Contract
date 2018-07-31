@@ -48,30 +48,15 @@
   <% if params[:q].present? %><h6>Results for: <i><%= params[:q] %></i></h6><% end %>
 
 <h2>All Resumes List</h2>
-<table class="table table-striped">
+<div class="info-cards">
   <% if @all_resumes.size > 0 %>
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Current Job Title</th>
-      <th scope="col">Education Level</th>
-      <th scope="col">Desired Job Title</th>
-      <th scope="col">Posted at</th>
-      <th></th>
-      <% if user_signed_in? %>
-      <th></th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody id="jobs">
     <%= render partial: 'all_resume', collection: @all_resumes %>
-  </tbody>
   <% else %>
-    <tr><td>No results</td></tr>
+    No results
   <% end %>
-</table>
-<%= paginate @all_resumes %>
+</div>
 
+<%= paginate @all_resumes %>
 </div>
 
 <%= render "pages/partials/job_modal" %>

@@ -19,5 +19,9 @@ class Job < ApplicationRecord
   scope :posts_by, ->(user) { where(user_id: user.id) }
 
   include JobSearch
+
+  def first_company
+    companies.first
+  end
 end
 

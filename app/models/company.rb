@@ -22,4 +22,9 @@ class Company < ApplicationRecord
   def reindex_jobs
     user.jobs&.reindex
   end
+
+  def avg_rating
+    return 0 if reviews.blank?
+    reviews.average(:average).round(2)
+  end
 end

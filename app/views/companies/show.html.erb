@@ -126,13 +126,3 @@
 <br>
 <%= link_to 'Edit Company', edit_company_path(@company), class: 'btn btn-primary' if user_signed_in? && current_user.company_ids[0] == @company.id %>
 <hr>
-
-<script>
-    $('.star-rating').raty({
-      path: '/assets/',
-      readOnly: true,
-      score: function() {
-            return $(this).attr('data-score');
-    }
-  });
-</script>

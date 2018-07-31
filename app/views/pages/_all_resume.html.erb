@@ -1,17 +1,38 @@
-<tr>
-  <td><%= link_to all_resume.first_name + " " + all_resume.last_name, all_resume, remote: true %></td>
-  <td><%= all_resume.work_experiences[0].job_title if all_resume.work_experiences.count > 0 %></td>
-  <td><%= all_resume.degree %></td>
-  <td><%= all_resume.desired_job_title %></td>
-  <td><%= all_resume.created_at.strftime("%B %d, %Y") %></td>
-  <td><%= link_to '', all_resume, class: 'fa fa-eye fa-lg' %></td>
-	<% if user_signed_in? %>
-    <td>
-      <% if current_user.bookmark_resume?(all_resume) %>
-        <%= link_to '', unbookmark_resume_path(resume_id: all_resume.id), class: 'fa fa-star fa-2x unbookmark', title: 'Unbookmark!', method: :delete %>
-      <% else %>
-        <%= link_to '', bookmark_resume_path(resume_id: all_resume.id), class: 'fa fa-star fa-2x bookmark', alt: 'Bookmark!', title: 'Bookmark!' %>
+<div class="row">
+  <div class="col-7">
+    <div class="info-cards__card">
+    <div class="row">
+      <div class="col-10">
+        <% if all_resume.work_experiences.size > 0 %>
+        <b class="card__title">Current/Last job title: <u><%= link_to all_resume.work_experiences.first.job_title, all_resume, { remote: true } %></u></b>
+        <% else %>
+          <b class="card__title">Desire job title: <u><%= link_to all_resume.desired_job_title, all_resume, { remote: true } %></u></b>
+        <% end %>
+      </div>
+      <div class="col" style="text-align: right;">
+        <% if user_signed_in? %>
+          <% if current_user&.bookmark_resume?(all_resume) %>
+          <%= link_to '', unbookmark_resume_path(resume_id: all_resume.id), class: 'fa fa-star fa-2x unbookmark small', title: 'Unbookmark!', method: :delete %>
+        <% else %>
+          <%= link_to '', bookmark_resume_path(resume_id: all_resume.id), class: 'fa fa-star fa-2x bookmark small', alt: 'Bookmark!', title: 'Bookmark!' %>
+          <% end %>
+        <% end %>
+    </div>
+    </div>
+    <div class="row">
+      <% if all_resume.work_experiences.size > 0 %>
+        <div class="col">Current/Last company: <%= all_resume.work_experiences.first.company %></div>
+        <div class="w-100"></div>
       <% end %>
-    </td>
-	<% end %>
-</tr>
+      <div class="col">
+        Education: <%= all_resume.field_of_study %>, <%= all_resume.degree %>
+      </div>
+      <div class="w-100"></div>
+      <div class="col">
+        Last updated: <%= all_resume.updated_at.strftime("%B %d, %Y") %>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="col"></div>
+</div>

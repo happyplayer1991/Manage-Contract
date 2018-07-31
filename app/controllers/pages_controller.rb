@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     else
       @all_jobs = Job.search('*', Job.prepare_search(search_params))
     end
+    #binding.pry
   end
 
   def allcompanies
@@ -21,7 +22,6 @@ class PagesController < ApplicationController
     else
       @all_companies = Company.search('*', Company.prepare_search(search_params))
     end
-    #@all_companies = Company.all
   end
 
   def allresumes

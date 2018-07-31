@@ -18,6 +18,11 @@
 	color: gray;
 }
 
+.bookmark.small, .unbookmark.small {
+	font-size: 20px;
+	padding-right: 10px;
+}
+
 .bookmark:hover {
 	color: #ff9900;
 	text-decoration: none;
@@ -49,3 +54,21 @@
 	}
 }
 
+.info-cards {
+	margin-top: 25px;
+	hr {
+		margin: 6px auto;
+	}
+	.info-cards__card {
+		padding-top: 17px;
+		padding-bottom: 17px;
+		font-size: 14px;
+		.selected {
+			padding-left: 10px;
+			border: 3px #000 solid;
+		}
+		.card__title {
+			font-size: 16px;
+		}
+	}
+}

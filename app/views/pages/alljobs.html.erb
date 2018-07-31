@@ -48,32 +48,24 @@
 <div class="col-md-9">
   <% if params[:q].present? %><h6>Results for: <i><%= params[:q] %></i></h6><% end %>
 <h2>All Jobs List</h2>
-<table class="table table-striped">
-  <% if @all_jobs.size > 0 %>
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Company</th>
-      <th scope="col">Type of Job</th>
-      <th scope="col">Job Area</th>
-      <th scope="col">Pay range USD</th>
-      <th scope="col">Posted at</th>
-      <th scope="col">Expiry Date</th>
-      <% if user_signed_in? %>
-        <th></th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody id="jobs">
-    <%= render partial: 'all_job', collection: @all_jobs %>
-  </tbody>
-  <% else %>
-    <tr><td>No results</td></tr>
-  <% end %>
-</table>
-<%= paginate @all_jobs %>
-
+	<div class="info-cards">
+		<% if @all_jobs.size > 0 %>
+			<%= render partial: 'all_job', collection: @all_jobs %>
+		<% else %>
+		  No results
+		<% end %>
+	</div>
+	<%= paginate @all_jobs %>
 </div>
 
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>
 
 <%= render "pages/partials/job_modal" %>
