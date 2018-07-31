@@ -62,6 +62,15 @@
 	.info-cards__card {
 		padding-top: 17px;
 		padding-bottom: 17px;
+		&.company {
+			padding-top: 14px;
+			padding-bottom: 14px;
+			.star-rating {
+				margin-top: -2px;
+				float: left;
+				padding-right: 5px;
+			}
+		}
 		font-size: 14px;
 		.selected {
 			padding-left: 10px;

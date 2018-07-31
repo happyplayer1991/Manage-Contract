@@ -1,7 +1,27 @@
-<tr>
-  <td><%= link_to all_company.title, all_company, remote: true %></td>
-  <td><%= all_company.industry %></td>
-  <td><%= all_company.country %></td>
-  <td><%= all_company.city %></td>
-  <td><%= all_company.number_of_employee %></td>
-</tr>
+<div class="row">
+  <div class="col-7">
+    <div class="info-cards__card company">
+    <div class="row">
+      <div class="col"><b><u><%= link_to all_company.title, all_company, { remote: true, class: "card__title" } %></u></b>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        Industry: <%= all_company.industry %>
+      </div>
+      <div class="w-100"></div>
+      <div class="col">
+        <div>
+        	<div class="star-rating" data-score="<%= all_company.avg_rating %>"></div>
+        	<span> - <%= pluralize(all_company.reviews.size, 'review') %></span>
+        </div>
+      </div>
+      <div class="w-100"></div>
+      <div class="col">
+        <%= pluralize(all_company.user.jobs.size, 'Job')%> available
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="col"></div>
+</div>

@@ -35,26 +35,25 @@
   <% if params[:q].present? %><h6>Results for: <i><%= params[:q] %></i></h6><% end %>
 
 <h2>Companies List</h2>
-<table class="table table-striped">
+
+<div class="info-cards">
   <% if @all_companies.size > 0 %>
-  <thead>
-    <tr>
-      <th scope="col">Company name</th>
-      <th scope="col">Industry</th>
-      <th scope="col">Country</th>
-      <th scope="col">City</th>
-      <th scope="col">Number of employee</th>
-    </tr>
-  </thead>
-  <tbody id="jobs">
     <%= render partial: 'all_company', collection: @all_companies %>
-  </tbody>
   <% else %>
-    <tr><td>No results</td></tr>
+    No results
   <% end %>
-</table>
+</div>
 <%= paginate @all_companies %>
 
 </div>
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>
 
 <%= render "pages/partials/job_modal" %>
