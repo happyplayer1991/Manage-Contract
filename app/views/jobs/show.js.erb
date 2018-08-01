@@ -1,2 +1,18 @@
-$('#job_container').html('<%= escape_javascript(render(partial: "pages/partials/job", locals: {job: @job})) %>')
-$('#job_modal').modal('show')
+if($(document).width() < 992){
+	location = '<%= job_path(@job) %>';
+}
+$('#job_info').html('<%= escape_javascript(render(partial: "pages/partials/job", locals: {job: @job})) %>').show();
+
+var offset = $('.info-cards .info-cards__card:first').offset()
+if(typeof offset != 'undefined')
+{
+	if($(document).scrollTop() > offset.top){
+	  $("#job_info").addClass("fix-block");
+	} else {
+	  $("#job_info").removeClass("fix-block");
+	}
+}
+
+
+
+

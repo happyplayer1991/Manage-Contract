@@ -81,3 +81,23 @@
 		}
 	}
 }
+
+#job_info {
+	margin-top: 80px;
+	top: 0px;
+	padding: 0px;
+	&.fix-block {
+		padding: auto;
+		position: fixed;
+		margin-top: 20px;
+	}
+}
+
+.job-info__head {
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+}
+.job-info__body {
+	height: 100%;
+
+}

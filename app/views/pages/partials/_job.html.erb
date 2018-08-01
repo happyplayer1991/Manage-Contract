@@ -1,83 +1,29 @@
-<div class="modal-header">
-  <button data-dismiss="modal" aria-hidden="true" class="modal-title btn btn-outline-primary">< back to list</button>
-
-  <%= link_to 'Show more in a new window', job_path(job), class: "btn btn-primary btn-sm", target: "_blank" %>
-</div>
-<div class="modal-body">
-
-  <div class="row">
-  <div class="col-md-3">
-    <%= image_tag placeholder_img(job.user.companies[0].logo, 'logo'), width: '100%' %>
-    <br>
-    <br>
+<div id="main-job-container">
+  <div class="job-info__head">
+    <span style="font-weight: bold; font-size: 24px; line-height: 0px;"><%= job.title %></span>
+    <br />Company: <%= link_to job.user.companies[0].title, company_path(job.user.companies[0]) %>
+    <p style="margin: 10px 0;"><%= link_to 'Show more about job', job_path(job), class: "btn btn-success", target: "_blank" %></p>
+    <hr />
   </div>
+  <div class="job-info__body">
+    <div><b>Number of hires for this position:</b> <%= job.hires %></div>
+    <div><b>Requires level of Education:</b> <br />
+        <%= job.education.title %>
+      </div>
+    <% unless job.expiry_date.blank? %>
+      <div><b>Expiry Date:</b> <%= job.expiry_date.strftime("%B %d, %Y") %></div>
+    <% end %>
 
-  <div class="col-md-9">
-    <div class="row">
-      <div class="col-md-10">
-        <h1><%= job.title %></h1>
-      </div>
-      <div class="col-md-2">
-        <% if user_signed_in? && job.user_id != current_user.id %>
-          <% if current_user.bookmark_job?(job) %>
-            <%= link_to '', unbookmark_job_path(job_id: job.id), class: 'fa fa-star fa-2x unbookmark', title: 'Unbookmark!', method: :delete %>
-          <% else %>
-            <%= link_to '', bookmark_job_path(job_id: job.id), class: 'fa fa-star fa-2x bookmark', title: 'Bookmark!' %>
-          <% end %>
-        <% end %>
-      </div>
+    <div><b>Salary:</b> USD<%= job.salary_min %>-<%= job.salary_max %></div>
+    <div><b>Date Posted:</b> <%= job.created_at.strftime("%B %d, %Y") %></div>
+    <div><b>Type of Job:</b> <%= job.job_type.title %></div>
+    <div><b>Years of experience:</b> <%= job.experience %></div>
+    <div>
+      <hr />
+      <strong>Description:</b> </strong><%= job.description %>
     </div>
-    <table class="table">
-      <tbody>
-        <tr>
-          <th scope="row">Company Name:</th>
-          <td><%= link_to job.user.companies[0].title, company_path(job.user.companies[0]) %></td>
-        </tr>
-        <tr>
-          <th scope="row">Date Posted:</th>
-          <td><%= job.created_at.strftime("%B %d, %Y") %></td>
-        </tr>
-        <tr>
-          <th scope="row">Type of Job</th>
-          <td><%= job.job_type.title %></td>
-        </tr>
-        <tr>
-          <th scope="row">Job Area</th>
-          <td><%= job.job_area.title %></td>
-        </tr>
-        <tr>
-          <th scope="row">Years of experience:</th>
-          <td><%= job.experience %></td>
-        </tr>
-        <tr>
-          <th scope="row">Salary range USD</th>
-          <td><%= job.salary_min %> - <%= job.salary_max %></td>
-        </tr>
-        <tr>
-          <th scope="row">Number of hires for this position</th>
-          <td><%= job.hires %></td>
-        </tr>
-        <tr>
-          <th scope="row">Requires level of Education</th>
-          <td><%= job.education.title %></td>
-        </tr>
-        <tr>
-          <th scope="row">Expiry Date</th>
-          <td><%= job.expiry_date.strftime("%B %d, %Y") if !job.expiry_date.blank? %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-body">
-    <strong>Description: </strong><%= job.description %>
   </div>
 </div>
 
 
-
-
-</div>
 

@@ -2,6 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+adjustWidth = ->
+  parentWidth = $('#job_info').closest('.col').width()
+  $('#job_info').width parentWidth
+  return
+
+
+
 $(document).on "turbolinks:load", ->
   $("form#filter-auto select, form#filter-auto input").on "change", (event) ->
     $("form#filter-auto").submit();
@@ -27,6 +34,22 @@ $(document).on "turbolinks:load", ->
   $("a[data-remote]").on "ajax:error", (event) ->
     alert('Couldn\'t load, redirecting...')
     location = $(this).attr('href');
+
+  $(document).on "scroll", ->
+    if $('#job_info:visible').length > 0
+      offset = $('.info-cards .info-cards__card:first').offset()
+      return if typeof offset == 'undefined'
+      if $(document).scrollTop() > offset.top
+        $("#job_info").addClass("fix-block");
+        adjustWidth()
+      else
+        $("#job_info").removeClass("fix-block");
+        adjustWidth()
+
+  $('.closeInfo').on "click", ->
+    $('#job_info').hide()
+
+
 
 
 

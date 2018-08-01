@@ -45,7 +45,7 @@
 
   </div>
 </div>
-<div class="col-md-9">
+<div class="col-md-5">
   <% if params[:q].present? %><h6>Results for: <i><%= params[:q] %></i></h6><% end %>
 <h2>All Jobs List</h2>
 	<div class="info-cards">
@@ -57,7 +57,9 @@
 	</div>
 	<%= paginate @all_jobs %>
 </div>
-
+<div class="col d-none d-lg-block">
+	<div id="job_info"></div>
+</div>
 <script>
     $('.star-rating').raty({
       path: '/assets/',
@@ -68,4 +70,3 @@
   });
 </script>
 
-<%= render "pages/partials/job_modal" %>
