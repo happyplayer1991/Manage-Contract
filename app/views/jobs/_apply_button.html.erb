@@ -1,4 +1,4 @@
-<% if !current_user.applied_job?(@job) %>
+<% unless current_user&.applied_job?(@job) %>
 <%= link_to 'Apply Job', apply_by_self_job_path(job_id: @job.id), class: 'btn btn-primary btn-block', data: { confirm: 'Do you want to submit your resume?' } %>
 <% end %>
 

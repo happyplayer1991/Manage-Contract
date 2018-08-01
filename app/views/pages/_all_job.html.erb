@@ -2,7 +2,7 @@
   <div class="col">
     <div class="info-cards__card">
     <div class="row">
-      <div class="col-10"><b><u><%= link_to all_job.title, all_job, { remote: true, class: "card__title" } %></u></b></div>
+      <div class="col-10"><b><u><%= link_to all_job.title, job_url(all_job), { remote: true, class: "card__title" } %></u></b></div>
       <div class="col" style="text-align: right;">
         <% if all_job.user_id != current_user&.id %>
           <% if current_user&.bookmark_job?(all_job) %>

@@ -7,8 +7,6 @@ adjustWidth = ->
   $('#job_info').width parentWidth
   return
 
-
-
 $(document).on "turbolinks:load", ->
   $("form#filter-auto select, form#filter-auto input").on "change", (event) ->
     $("form#filter-auto").submit();
@@ -32,8 +30,8 @@ $(document).on "turbolinks:load", ->
       showed_bl.append($(filters[i]).removeClass('hidden-filter'))
 
   $("a[data-remote]").on "ajax:error", (event) ->
-    alert('Couldn\'t load, redirecting...')
-    location = $(this).attr('href');
+    #alert('Couldn\'t load, redirecting...' + $(this).attr('href'));
+    window.location = $(this).attr('href');
 
   $(document).on "scroll", ->
     if $('#job_info:visible').length > 0

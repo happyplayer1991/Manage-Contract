@@ -23,7 +23,9 @@
       <hr />
       <strong>Description:</b> </strong><%= job.description %>
       <br /><br />
-      <%= render 'jobs/apply_button' %>
+        <% unless current_user&.applied_job?(job) %>
+        <%= link_to 'Apply Job', apply_by_self_job_path(job_id: job.id), class: 'btn btn-primary btn-block', data: { confirm: 'Do you want to submit your resume?' } %>
+        <% end %>
     </div>
   </div>
 </div>
