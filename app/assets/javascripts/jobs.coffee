@@ -7,6 +7,10 @@ adjustWidth = ->
   $('#job_info').width parentWidth
   return
 
+#$(document).on "turbolinks:before-cache", ->
+  #$("[data-chosen]").chosen("destroy")
+
+
 $(document).on "turbolinks:load", ->
   $("form#filter-auto select, form#filter-auto input").on "change", (event) ->
     $("form#filter-auto").submit();

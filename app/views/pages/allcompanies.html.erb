@@ -47,13 +47,15 @@
 
 </div>
 <script>
-    $('.star-rating').raty({
+$(document).on("turbolinks:load", function(){
+  $('.star-rating').raty({
       path: '/assets/',
       readOnly: true,
       score: function() {
             return $(this).attr('data-score');
     }
   });
+})
 </script>
 
 <%= render "pages/partials/job_modal" %>
