@@ -10,17 +10,20 @@
     <div><b>Requires level of Education:</b> <br />
         <%= job.education.title %>
       </div>
+    <div><b>Salary:</b> USD<%= job.salary_min %>-<%= job.salary_max %></div>
+
+    <div><b>Type of Job:</b> <%= job.job_type.title %></div>
+
+    <div><b>Years of experience:</b> <%= pluralize(job.experience, 'year') %></div>
+    <div><b>Date Posted:</b> <%= job.created_at.strftime("%B %d, %Y") %></div>
     <% unless job.expiry_date.blank? %>
       <div><b>Expiry Date:</b> <%= job.expiry_date.strftime("%B %d, %Y") %></div>
     <% end %>
-
-    <div><b>Salary:</b> USD<%= job.salary_min %>-<%= job.salary_max %></div>
-    <div><b>Date Posted:</b> <%= job.created_at.strftime("%B %d, %Y") %></div>
-    <div><b>Type of Job:</b> <%= job.job_type.title %></div>
-    <div><b>Years of experience:</b> <%= job.experience %></div>
     <div>
       <hr />
       <strong>Description:</b> </strong><%= job.description %>
+      <br /><br />
+      <%= render 'jobs/apply_button' %>
     </div>
   </div>
 </div>
