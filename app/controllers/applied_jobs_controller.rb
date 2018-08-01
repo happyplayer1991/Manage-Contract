@@ -1,7 +1,15 @@
 class AppliedJobsController < ApplicationController
-	before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def apply_by_self_job
+    unless user_signed_in?
+      redirect_to new_user_session_path, alert: 'Log in and build your resume now'
+      return
+    end
+    unless current_user.can_apply_job?
+      redirect_to resumes_path, alert: 'Build your resume now to apply for job'
+      return
+    end
     @user = current_user
     @job = Job.find(params[:job_id])
     @user.apply_by_self_job!(@job)
@@ -40,4 +48,5 @@ class AppliedJobsController < ApplicationController
       redirect_to resume_path(@resume), notice: 'Invite to Job was send'
     end
   end
+
 end

@@ -105,11 +105,16 @@ class User < ApplicationRecord
   end
 
   def applied_job?(job)
-    self.resumes[0].applied_jobs.find_by_job_id(job.id).present?
+    self.resumes&.first&.applied_jobs&.find_by_job_id(job.id)&.present?
   end
 
 
   def has_invites?
     self.resumes[0].applied_jobs.submitted.count > 0
+  end
+
+  def can_apply_job?
+    return if self.resumes.size.zero? && self.jobseeker?
+    true
   end
 end
