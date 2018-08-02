@@ -83,21 +83,32 @@
 }
 
 #job_info {
+	height: calc(100% - 50px);
+	position: absolute;
 	margin-top: 80px;
+	margin-bottom: 20px;
 	top: 0px;
 	padding: 0px;
 	&.fix-block {
 		padding: auto;
 		position: fixed;
 		margin-top: 20px;
+		height: calc(100vh - 60px);
+
 	}
+}
+#main-job-container {
+	height: inherit;
 }
 
 .job-info__head {
 	padding-bottom: 5px;
 	margin-bottom: 10px;
+	height: 140px;
 }
 .job-info__body {
-	height: 100%;
+	height: calc(100% - 140px);
+	overflow-x: auto;
+	margin-bottom: 20px;
 
 }
