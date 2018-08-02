@@ -12,7 +12,7 @@ class Company < ApplicationRecord
 
   scope :setup_by, ->(user) { where(user_id: user.id) }
 
-  COMPANIES_PER_PAGE = 20
+  COMPANIES_PER_PAGE = 10
   paginates_per COMPANIES_PER_PAGE
 
   include CompanySearch
