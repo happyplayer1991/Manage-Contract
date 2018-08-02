@@ -1,250 +1,41 @@
-<div class="modal-header">
-  <button data-dismiss="modal" aria-hidden="true" class="modal-title btn btn-outline-primary">< back to list</button>
-
-  <%= link_to 'Show more in a new window', resume_path(resume), class: "btn btn-primary btn-sm", target: "_blank" %>
-</div>
-<div class="modal-body">
-
-
-<div class="row">
-  <div class="col-md-11">
-    <h1><%= resume.first_name %> <%= resume.last_name %></h1>
+<div id="main-job-container">
+  <div class="job-info__head">
+    <span style="font-weight: bold; font-size: 24px; line-height: 0px;"><%= resume.first_name %> <%= resume.last_name %></span>
+    <p style="margin: 10px 0;"><%= link_to 'Show more', resume_path(resume), class: "btn btn-success", target: "_blank" %></p>
+    <hr />
   </div>
-  <% if user_signed_in? && resume.user_id != current_user.id %>
-    <div class="col-md-1" align="center">
-      <% if current_user.bookmark_resume?(resume) %>
-        <%= link_to '', unbookmark_resume_path(resume_id: resume.id), class: 'fa fa-star fa-2x unbookmark', title: 'Unbookmark!', method: :delete %>
-      <% else %>
-        <%= link_to '', bookmark_resume_path(resume_id: resume.id), class: 'fa fa-star fa-2x bookmark', alt: 'Bookmark!', title: 'Bookmark!' %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-<div class="row">
-  <div class="col-md-9">
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <th scope="row">City:</th>
-          <td><%= resume.city %></td>
-        </tr>
-        <tr>
-          <th scope="row">Country:</th>
-          <td><%= resume.country %></td>
-        </tr>
-        <tr>
-          <th scope="row">Contact information:</th>
-          <td><%= resume.contact_information %></td>
-        </tr>
-        <tr>
-          <th scope="row">Phone:</th>
-          <td><%= resume.phone %></td>
-        </tr>
-        <tr>
-          <th scope="row">Resume privacy:</th>
-            <% if resume.status == "private_resume" %>
-              <td>Privat Resume</td>
+  <div class="job-info__body">
+    <div><b>City:</b> <%= resume.city %></div>
+    <div><b>Country:</b> <%= resume.country %></div>
+    <div><b>Contact information:</b> <%= resume.contact_information %></div>
+    <div><b>Phone:</b> <%= resume.phone %></div>
+    <div><b>Resume privacy:</b>
+      <% if resume.status == "private_resume" %>
+              Privat Resume
             <% else %>
-              <td>Public Resume</td>
-            <% end %>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="col-md-3">
-    <%= image_tag placeholder_img(resume.profile_pic, 'logo'), width: '100%' %><br><br>
-  </div>
-</div>
-
-<hr>
-
-<h2>Additional information</h2>
-<div class="row">
-  <div class="col-md-6">
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <th scope="row">Desired Job Title:</th>
-          <td><%= resume.desired_job_title %></td>
-        </tr>
-        <tr>
-          <th scope="row">Desired Job Types:</th>
-          <td>
-            <% resume.job_type_ids.each do |j| %>
-              <%= JobType.find_by_id(j).title %><br>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Desired salary per month USD:</th>
-          <td><%= resume.desired_salary_per_month %></td>
-        </tr>
-        <tr>
-          <th scope="row">Desired salary per year USD:</th>
-          <td><%= resume.desired_salary_per_year %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="col-md-6">
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <th scope="row">I am willing to relocate:</th>
-          <td><%= resume.relocation ? 'Yes' : 'No' %></td>
-        </tr>
-        <tr>
-          <th scope="row">Employment eligibility:</th>
-          <% if resume.employment_eligibility == "authorized" %>
-            <td>Authorized to work in the country where you located</td>
-          <% else %>
-            <td>Sponsorship required to work in the country</td>
-          <% end %>
-        </tr>
-        <tr>
-          <th scope="row">Additional information (text):</th>
-          <td><%= resume.additional_information_step_4 %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<hr>
-
-<h3>Skills</h3>
-<div class="row">
-  <% resume.skills.each do |s| %>
-    <div class="col-md-6">
-      <table class="table table-striped">
-        <tbody>
-          <tr>
-            <th scope="row">Title:</th>
-            <td><%= s.title %></td>
-          </tr>
-
-          <tr>
-            <th scope="row">Years of experience:</th>
-            <td><%= s.experience %></td>
-          </tr>
-        </tbody>
-      </table>
+              Public Resume
+            <% end %></div>
+            <hr />
+    <h5>Additional information</h5>
+    <div><b>Desired Job Title:</b> <%= resume.desired_job_title %></div>
+    <div><b>Desired Job Types:</b>
+        <% resume.job_type_ids.each do |j| %>
+          <%= JobType.find_by_id(j).title %><br>
+        <% end %>
     </div>
-  <% end %>
-</div>
+    <div><b>Desired salary per month USD:</b>
+          <%= resume.desired_salary_per_month %></div>
+    <div><b>Desired salary per year USD:</b>
+          <%= resume.desired_salary_per_year %></div>
+          <br />
+    <h5>Work Experience</h5>
+    <% resume.work_experiences.each do |w| %>
+    <div><%= w.job_title %> - <%= w.company %> (<%= w.country %>, <%= w.city %>)<br />
 
-<hr>
-
-<h2>Education</h2>
-<div class="row">
-  <div class="col-md-6">
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <th scope="row">Degree:</th>
-          <td><%= resume.degree %></td>
-        </tr>
-        <tr>
-          <th scope="row">School:</th>
-          <td><%= resume.school %></td>
-        </tr>
-        <tr>
-          <th scope="row">Fields of study:</th>
-          <td><%= resume.field_of_study %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="col-md-6">
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <th scope="row">Country:</th>
-          <td><%= resume.education_country %></td>
-        </tr>
-        <tr>
-          <th scope="row">City:</th>
-          <td><%= resume.education_city %></td>
-        </tr>
-        <tr>
-          <th scope="row">Time Period:</th>
-          <td><%= resume.education_start_date.strftime("%B %d, %Y") if resume.education_start_date.present? %><br><%= resume.education_end_date.strftime("%B %d, %Y") if resume.education_end_date.present? %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<hr>
-
-<h2>Work Experience</h2>
-<% resume.work_experiences.each do |w| %>
-  <div class="row">
-    <div class="col-md-6">
-      <table class="table table-striped">
-        <tbody>
-          <tr>
-            <th scope="row">Job title:</th>
-            <td><%= w.job_title %></td>
-          </tr>
-          <tr>
-            <th scope="row">Company:</th>
-            <td><%= w.company %></td>
-          </tr>
-          <tr>
-            <th scope="row">Country:</th>
-            <td><%= w.country %></td>
-          </tr>
-          <tr>
-            <th scope="row">City:</th>
-            <td><%= w.city %></td>
-          </tr>
-
-          <% if w.less_than_one_year == false %>
-          <tr>
-            <th scope="row">Years of experience:</th>
-            <td><%= w.years_of_experience %></td>
-          </tr>
-          <% else %>
-          <tr>
-            <th scope="row">Less then one year:</th>
-            <td>Yes</td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+          <b>Years of experience:</b> <% if w.less_than_one_year == false %>
+          <%= pluralize(w.years_of_experience, 'year') %><% else %> Less then one year<%end %>
+    <br />
     </div>
-
-    <div class="col-md-6">
-      <table class="table table-striped">
-        <tbody>
-          <tr>
-            <th scope="row">Time Period:</th>
-            <td><%= w.start_date.strftime("%B %d, %Y") if w.start_date.present? %><br><%= w.end_date.strftime("%B %d, %Y") if w.end_date.present? %></td>
-          </tr>
-          <tr>
-            <th scope="row">Job description:</th>
-            <td><%= w.job_description %></td>
-          </tr>
-          <tr>
-            <th scope="row">Salaries USD:</th>
-            <td><%= w.salary if w.salary_status == 'show' %></td>
-          </tr>
-          <tr>
-            <th scope="row">I currently work here:</th>
-            <td><%= w.i_currently_work_here ? 'Yes' : 'No' %></td>
-          </tr>
-          <tr>
-            <th scope="row">Job Type:</th>
-            <td><%= JobType.find_by_id(w.job_type_work_exp).title %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <% end %>
   </div>
-<% end %>
-
-
 </div>

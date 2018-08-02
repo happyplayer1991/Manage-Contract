@@ -1,2 +1,14 @@
-$('#job_container').html('<%= escape_javascript(render(partial: "pages/partials/company", locals: {company: @company, avg_rating: @avg_rating})) %>')
-$('#job_modal').modal('show')
+if($(document).width() < 992){
+	location = '<%= company_path(@company) %>';
+}
+$('#job_info').html('<%= escape_javascript(render(partial: "pages/partials/company", locals: {company: @company, avg_rating: @avg_rating})) %>')
+
+var offset = $('.info-cards .info-cards__card:first').offset()
+if(typeof offset != 'undefined')
+{
+	if($(document).scrollTop() > offset.top){
+	  $("#job_info").addClass("fix-block");
+	} else {
+	  $("#job_info").removeClass("fix-block");
+	}
+}

@@ -1,90 +1,26 @@
-<div class="modal-header">
-  <button data-dismiss="modal" aria-hidden="true" class="modal-title btn btn-outline-primary">< back to list</button>
+<div id="main-job-container">
+  <div class="job-info__head company">
+    <span style="font-weight: bold; font-size: 24px; line-height: 0px;"><%= company.title %></span>
+    <p style="margin: 10px 0;"><%= link_to 'Show more about company', company_path(company), class: "btn btn-success", target: "_blank" %></p>
+    <hr />
+  </div>
+  <div class="job-info__body">
+    <div><b>Hires per year:</b> <%= company.hires_per_year %></div>
+    <div><b>Name:</b> <%= company.name %></div>
+    <div><b>Phone number:</b> <%= company.phone %></div>
+    <div><b>Country:</b> <%= company.country %></div>
+    <div><b>City / postal code:</b> <%= company.city %> / <%= company.postal_code %></div>
+    <div><b>Payment info:</b> <%= company.payment_info %></div>
+    <div><b>Website:</b> <%= company.website %></div>
+    <div><b>Industry:</b> <%= company.industry %></div>
+    <div><b>Number of employee:</b> <%= company.number_of_employee %></div>
 
-  <%= link_to 'Show more in a new window', company_path(company), class: "btn btn-primary btn-sm", target: "_blank" %>
-</div>
-<div class="modal-body">
-
-
-<div class="row">
-  <div class="col-md-3">
-    <%= image_tag placeholder_img(company.logo, 'logo'), width: '100%' %><br><br>
-
-    <div class="reviews" align="center">
-      <div class="row">
-        <div class="col-md-5" align="right"><h4><%= avg_rating %></h4></div>
-        <div class="star-rating col-md-7" data-score= <%= avg_rating %> align="left"></div>
-      </div>
+    <div>
+      <hr />
+      <strong>Why join us:</b> </strong><%= company.why_join_us %>
+    </div>
+    <div>
+      <strong>About us:</b> </strong><%= company.about %>
     </div>
   </div>
-
-  <div class="col-md-9">
-    <h1><%= company.title %></h1>
-    <table class="table">
-      <tbody>
-        <tr>
-          <th scope="row">Hires per year</th>
-          <td><%= company.hires_per_year %></td>
-        </tr>
-        <tr>
-          <th scope="row">Name</th>
-          <td><%= company.name %></td>
-        </tr>
-        <tr>
-          <th scope="row">Phone number</th>
-          <td><%= company.phone %></td>
-        </tr>
-        <tr>
-          <th scope="row">Country</th>
-          <td><%= company.country %></td>
-        </tr>
-        <tr>
-          <th scope="row">City / postal code</th>
-          <td><%= company.city %> / <%= company.postal_code %></td>
-        </tr>
-        <tr>
-          <th scope="row">Payment info</th>
-          <td><%= company.payment_info %></td>
-        </tr>
-        <tr>
-          <th scope="row">Website</th>
-          <td><%= company.website %></td>
-        </tr>
-        <tr>
-          <th scope="row">Industry</th>
-          <td><%= company.industry %></td>
-        </tr>
-        <tr>
-          <th scope="row">Number of employee</th>
-          <td><%= company.number_of_employee %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<h4>Why join us:</h4>
-<div class="card">
-  <div class="card-body">
-    <%= company.why_join_us %>
-  </div>
-</div>
-<br>
-<h4>About us:</h4>
-<div class="card">
-  <div class="card-body">
-    <%= company.about %>
-  </div>
-</div>
-
-
-<script>
-    $('.star-rating').raty({
-      path: '/assets/',
-      readOnly: true,
-      score: function() {
-            return $(this).attr('data-score');
-    }
-  });
-</script>
 </div>

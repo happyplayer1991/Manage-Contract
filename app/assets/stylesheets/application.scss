@@ -84,6 +84,7 @@
 
 #job_info {
 	height: calc(100% - 50px);
+	width: calc(100% - 30px);
 	position: absolute;
 	margin-top: 80px;
 	margin-bottom: 20px;
@@ -105,6 +106,9 @@
 	padding-bottom: 5px;
 	margin-bottom: 10px;
 	height: 140px;
+	&.company {
+		height: 130px;
+	}
 }
 .job-info__body {
 	height: calc(100% - 140px);

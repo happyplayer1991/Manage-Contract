@@ -31,7 +31,7 @@
 
   </div>
 </div>
-<div class="col-md-9">
+<div class="col-md-5">
   <% if params[:q].present? %><h6>Results for: <i><%= params[:q] %></i></h6><% end %>
 
 <h2>Companies List</h2>
@@ -44,7 +44,10 @@
   <% end %>
 </div>
 <%= paginate @all_companies %>
+</div>
 
+<div class="col d-none d-lg-block">
+  <div id="job_info"></div>
 </div>
 <script>
 $(document).on("turbolinks:load", function(){
@@ -58,4 +61,3 @@ $(document).on("turbolinks:load", function(){
 })
 </script>
 
-<%= render "pages/partials/job_modal" %>
