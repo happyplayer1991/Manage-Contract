@@ -7,28 +7,29 @@
     </ul>
   <% end %>
 
+  <h3>Rate this company:</h3>
   <div class="form-group row">
-    <%= form.label :balance, class: 'col-sm-2 form-control-label' %>
+    <%= form.label :"Job work / Life Balance", class: 'col-sm-3 form-control-label' %>
     <div class="col-sm-6" id="balance"></div>
   </div>
 
-   <div class="form-group row">
-    <%= form.label :benefits, class: 'col-sm-2 form-control-label' %>
+  <div class="form-group row">
+    <%= form.label :"Compensation / Benefits", class: 'col-sm-3 form-control-label' %>
     <div class="col-sm-6" id="benefits"></div>
   </div>
 
-   <div class="form-group row">
-    <%= form.label :advancement, class: 'col-sm-2 form-control-label' %>
+  <div class="form-group row">
+    <%= form.label :"Job Security / Advancement", class: 'col-sm-3 form-control-label' %>
     <div class="col-sm-6" id="advancement"></div>
   </div>
 
-   <div class="form-group row">
-    <%= form.label :management, class: 'col-sm-2 form-control-label' %>
+  <div class="form-group row">
+    <%= form.label :management, class: 'col-sm-3 form-control-label' %>
     <div class="col-sm-6" id="management"></div>
   </div>
 
-   <div class="form-group row">
-    <%= form.label :culture, class: 'col-sm-2 form-control-label' %>
+  <div class="form-group row">
+    <%= form.label :"Job Culture", class: 'col-sm-3 form-control-label' %>
     <div class="col-sm-6" id="culture"></div>
   </div>
 
@@ -109,6 +110,39 @@
   <div class="form-group">
     <%= form.label :"Write your review:" %>
     <%= form.text_area :description, rows:3, class: 'form-control' %>
+  </div>
+
+  <h3>Tell us about you:</h3>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :job_title %>
+        <%= form.text_field :job_title, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :location %>
+        <%= form.text_field :location, class: 'form-control' %>
+      </div>
+
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= form.label :start_date %>
+        <%= form.date_field :start_date, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :end_date %>
+        <%= form.date_field :end_date, class: 'form-control' %>
+      </div>
+    </div>
   </div>
 
   <div class="form-group">

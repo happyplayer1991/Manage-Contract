@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  access all: [:show, :index], user: :all, superadmin: :all
+  access all: [:show, :index, :new, :create], user: :all, superadmin: :all
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
   def index
@@ -10,18 +10,14 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    if user_signed_in?
-      @review = Review.new
-      @company = Company.find(params[:company_id])
-    else
-      redirect_to allcompanies_path, notice: 'You do not have permission for this action!'
-    end
+    @review = Review.new
+    @company = Company.find(params[:company_id])
   end
 
   def create
     @company = Company.find(params[:company_id])
     @review = Review.new(review_params)
-    @review.user_id = current_user.id
+    #@review.user_id = current_user.id
     @review.company_id = @company.id
     @review.average = ((@review.balance.to_f + @review.benefits.to_f + @review.advancement.to_f + @review.management.to_f + @review.culture.to_f) / 5).round(2)
 
@@ -85,6 +81,11 @@ class ReviewsController < ApplicationController
                                   :question3,
                                   :question4,
                                   :question5,
-                                  :description)
+                                  :description,
+                                  :name,
+                                  :job_title,
+                                  :location,
+                                  :start_date,
+                                  :end_date)
     end
 end

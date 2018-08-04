@@ -1,2 +1,5 @@
 <h2>Edit Review</h2>
 <%= render 'form', review: @review %>
+<%= link_to "Back to #{@company.title}", company_path(@company), class: 'btn btn-primary' %>
+<br>
+<br>
