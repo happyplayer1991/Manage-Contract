@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'faq/new'
+
+  get 'faq/edit'
+
+  get 'blogs_controller/new'
+
+  get 'blogs_controller/create'
+
   resources :resumes
   resources :users do
     member do
@@ -25,10 +33,24 @@ Rails.application.routes.draw do
   get     '/alljobs',           to: 'pages#alljobs'
   get     '/allcompanies',      to: 'pages#allcompanies'
   get     '/allresumes',        to: 'pages#allresumes'
+# show fag and blogs
+  get     '/allfaqs',           to: 'pages#allfaqs'
+  get     '/allblogs',          to: 'pages#allblogs'
+
   get     '/find_resume',       to: 'pages#find_resume'
   get     '/find_company',      to: 'pages#find_company'
   get     '/admin',             to: 'pages#admin'
   get     '/settings',          to: 'pages#settings'
+# Add Jobseeker, Recruiter, Blog, FAQ for admin
+  get     '/manage_jobseeker',  to: 'pages#manage_jobseeker'
+  get     '/manage_recruiter',  to: 'pages#manage_recruiter'
+  get     '/blogs',             to: 'pages#blogs'
+  get     '/faqs',              to: 'pages#faqs'
+
+# Add Fag page
+  get     '/add_faq',           to: 'pages#add_faq'
+  get     '/add_blog',          to: 'pages#add_blog'
+
   get     '/alert',             to: 'pages#alert'
   get     '/subscribed_jobs',   to: 'pages#subscribed_jobs'
 

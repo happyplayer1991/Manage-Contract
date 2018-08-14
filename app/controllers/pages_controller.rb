@@ -33,6 +33,12 @@ class PagesController < ApplicationController
       @all_resumes = Resume.search('*', Resume.prepare_search(search_params))
     end
   end
+# Add FAQs and Blogs
+  def allfaqs
+  end
+
+  def allblogs
+  end
 
   def find_resume; end
 
@@ -49,7 +55,22 @@ class PagesController < ApplicationController
     @job_types = JobType.all
     @job_areas = JobArea.all
   end
+# Show Jobseeker, Recruiter, Blog, FAQ for admin  
+  def manage_jobseeker
+  end
 
+  def manage_recruiter
+  end
+
+  def blogs
+  end
+
+  def faqs
+  end
+# Add FAQ
+  def add_faq
+  end
+  
   def alert
     @keywords = Keyword.set_by(current_user)
   end

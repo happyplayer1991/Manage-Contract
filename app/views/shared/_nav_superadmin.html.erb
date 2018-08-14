@@ -6,6 +6,22 @@
   <li class="nav-item">
     <%= link_to 'Job Posting Settings', settings_path, class: "nav-link #{active? settings_path}" %>
   </li>
+<%# Add Jobseeker, Recruiter, Blog, FAQ for admin %>
+  <li class="nav-item">
+    <%= link_to 'Manage Job Seeker', manage_jobseeker_path, class: "nav-link #{active? manage_jobseeker_path}" %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to 'Manage Recruiter', manage_recruiter_path, class: "nav-link #{active? manage_recruiter_path}" %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to 'Blog', blogs_path, class: "nav-link #{active? blogs_path}" %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to 'FAQ', faqs_path, class: "nav-link #{active? faqs_path}" %>
+  </li>
 
   <li class="nav-item dropdown ml-auto">
     <a class="nav-link  fa fa-cog fa-lg" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>

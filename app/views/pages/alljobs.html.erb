@@ -47,7 +47,7 @@
 </div>
 <div class="col-md-5">
   <% if params[:q].present? %><h6>Results for: <i><%= params[:q] %></i></h6><% end %>
-<h2>All Jobs List</h2>
+  <h2>All Jobs List</h2>
 	<div class="info-cards">
 		<% if @all_jobs.size > 0 %>
 			<%= render partial: 'all_job', collection: @all_jobs %>

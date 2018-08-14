@@ -48,6 +48,13 @@
     <li class="nav-item">
       <%= link_to 'Browse Resumes', allresumes_path, class: "nav-link #{active? allresumes_path}" %>
     </li>
+<%# Add Blog and FAQ link %>
+    <li class="nav-item">
+      <%= link_to 'Blog', allblogs_path, class: "nav-link #{active? allblogs_path}" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'FAQ', allfaqs_path, class: "nav-link #{active? allfaqs_path}" %>
+    </li>
 
     <li class="nav-item ml-auto">
       <%= link_to 'Login / Sign up', new_user_session_path, class: "nav-link #{active? new_user_session_path}" %>
