@@ -53,13 +53,13 @@ class ResumesController < ApplicationController
   end
 
   def show
-    if @resume.public_resume? || @resume.user_id == current_user.id || !((@resume.job_ids & current_user.job_ids).empty?)
+    if @resume.public_resume? || @resume.user_id == current_user.id || !((@resume.job_ids & current_user.job_ids).empty?) || (current_user.has_roles?(:superadmin))
       respond_to do |format|
         format.html {}
         format.js
       end
     else
-      redirect_to root_path, notice: 'This is privat Resume'
+      redirect_to root_path, notice: 'This is private Resume'
     end
   end
 

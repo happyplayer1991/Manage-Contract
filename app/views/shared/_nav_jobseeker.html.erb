@@ -9,12 +9,12 @@
     </li>
   <% else %>
     <li class="nav-item">
-      <%= link_to 'View your Resume', resume_path(current_user.resumes.ids), class: "nav-link #{active? resume_path(current_user.resumes)}" %>
+      <%= link_to 'View your Resume', resume_path(current_user.resumes.ids), class: "nav-link #{active? resume_path(current_user.resumes.ids)}" %>
     </li>
   <% end %>
 
   <li class="nav-item">
-    <%= link_to 'Applied Jobs', applied_jobs_path, class: "nav-link #{active? applied_jobs_path}" %>
+    <%= link_to 'Applied Jobs', applied_jobs_path(current_user.id), class: "nav-link #{active? applied_jobs_path(current_user.id)}" %>
   </li>
 
   <li class="nav-item">

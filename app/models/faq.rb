@@ -1,3 +1,3 @@
 class Faq < ApplicationRecord
-    enum status: { active: 0, non_active: 1}
+    enum status: { active: 1, non_active: 0}
 end

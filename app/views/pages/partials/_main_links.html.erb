@@ -28,7 +28,19 @@
 		<%= link_to 'Browse Companies', allcompanies_path, class: 'btn btn-success btn-block' %><br>
 		<%= link_to 'Browse Resumes', allresumes_path, class: 'btn btn-info btn-block' %><br>
 	<%# add	FAQ and Blog %>
-		<%= link_to 'Frequently Asked Questions', allfaqs_path, class: 'btn btn-primary btn-block' %><br>
-		<%= link_to 'Blog', allblogs_path, class: 'btn btn-danger btn-block' %><br>
+		
+		<% if current_user.nil? %>
+			<%= link_to 'Frequently Asked Questions', allfaqs_path, class: 'btn btn-primary btn-block' %><br>
+			<%= link_to 'Blog', allblogs_path, class: 'btn btn-danger btn-block' %><br>
+		<% elsif current_user.has_roles?(:user) %>
+			<% if current_user.has_roles?(:superadmin) %>
+				<%= link_to 'Frequently Asked Questions', faqs_path, class: 'btn btn-primary btn-block' %><br>
+				<%= link_to 'Blog', blogs_path, class: 'btn btn-danger btn-block' %><br>
+			<% else %>
+				<%= link_to 'Frequently Asked Questions', allfaqs_path, class: 'btn btn-primary btn-block' %><br>
+				<%= link_to 'Blog', allblogs_path, class: 'btn btn-danger btn-block' %><br>
+			<% end %>
+		<% end %>
+		
 	</div>
 </div>

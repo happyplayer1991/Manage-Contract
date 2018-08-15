@@ -18,6 +18,8 @@ class JobsController < ApplicationController
   end
 
   def applied_jobs
+    current_user = User.find(params[:id])
+    puts current_user.email
     if user_signed_in? && current_user.resumes.count > 0
       @applied_jobs = current_user.resumes[0].jobs
     else

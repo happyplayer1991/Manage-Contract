@@ -1,1 +1,34 @@
-<h2>Manage JobSeeker</h2>
+<div class="pl-3">
+    <h2>Manage JobSeeker</h2>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col" class="text-center" >Name</th>
+        <th scope="col" class="text-center">Joined_Date</th>
+        <th scope="col" class="text-center">Resume Last Updated Date</th>
+        <th scope="col" class="text-center">Number of Jobs Applied</th>
+        <th scope="col" class="text-center">Status</th>
+        <th scope="col" class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody id="job_seekers">
+        <% @job_seekers.each.with_index(1) do |job_seeker, key| %>
+            <tr>
+                <th scope="row"><%= key %></th>
+                <td class="text-center"><%= link_to job_seeker.name, resume_path(job_seeker.id) %></td>
+                <td class="text-center"><%= job_seeker.created_at.to_date %></td>
+                <td class="text-center"><%= job_seeker.created_at.to_date %></td>
+                <td class="text-center">
+                </td>
+                <td class="text-center">
+                    <%= job_seeker.status == 'active' ? 'Active' : 'Suspended' %>
+                </td>
+                <td class="text-center">
+                    <%# <%= select_tag "status", options_from_collection_for_select(job_seeker.status, "id", "status") %> 
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+    </table>
+</div>

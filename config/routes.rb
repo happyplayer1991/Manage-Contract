@@ -67,7 +67,7 @@ Rails.application.routes.draw do
   get     'jobs/:id/decline_job',        to: 'applied_jobs#declined_job',  as: :decline_job
   post    '/resumes/:id/invite_to_job/', to: 'applied_jobs#invite_to_job', as: :invite_to_job
 
-  get     'applied_jobs',         to: 'jobs#applied_jobs'
+  get     'applied_jobs/:id',         to: 'jobs#applied_jobs', as: 'applied_jobs'
   get     'jobs/:id/applicants/', to: 'jobs#applicants', as: 'job_applicants'
   get     'jobs/:id/invites/',    to: 'jobs#invites', as: 'job_invites'
 

@@ -1,0 +1,29 @@
+<div class="pl-3">
+    <h2>Manage Recruiter</h2>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col" class="text-center" >Name</th>
+        <th scope="col" class="text-center">Company Name</th>
+        <th scope="col" class="text-center">Joined Date</th>
+        <th scope="col" class="text-center">Number of Job Posts</th>
+        <th scope="col" class="text-center">Status</th>
+        <th scope="col" class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody id="job_seekers">
+        <% @jobs_recruiters.each.with_index(1) do |jobs_recruiter, key| %>
+            <tr>
+                <th scope="row"><%= key %></th>
+                <td class="text-center"><%= link_to jobs_recruiter.name, '' %></td>
+                <td class="text-center"><%=  %></td>
+                <td class="text-center"><%= jobs_recruiter.created_at.to_date %></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+            </tr>
+        <% end %>
+    </tbody>
+    </table>
+</div>

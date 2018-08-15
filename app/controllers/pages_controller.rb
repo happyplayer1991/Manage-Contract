@@ -57,9 +57,11 @@ class PagesController < ApplicationController
   end
 # Show Jobseeker, Recruiter, Blog, FAQ for admin  
   def manage_jobseeker
+    @job_seekers = User.where(interface: 1).order(created_at: :DESC).all
   end
 
   def manage_recruiter
+    @jobs_recruiters = User.where(interface: 0).order(created_at: :DESC).all
   end
 
   def blogs

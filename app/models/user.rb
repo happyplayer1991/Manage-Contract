@@ -25,6 +25,7 @@ class User < ApplicationRecord
   has_many :keyword
 
   enum interface: { recruiter: 0, jobseeker: 1 }
+  enum status: { active: 1, suspended: 0}
 
   # Start. Link to sign up with interface
   attr_accessor :initial_interface
