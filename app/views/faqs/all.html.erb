@@ -12,23 +12,23 @@
                 <div class="faq-section pl-3">
                     <% @faqs.each.with_index(1) do |faq, key| %>
                         <div class="row">
-                            <div class="col-md-2 border border-primary">
+                            <div class="col-md-2 border border-primary border-right-0">
                                 <span class="faq-index"><%= key %>.</span>
                                 Questions?
                             </div>
-                            <div class="col-md-8 border border-primary">
+                            <div class="col-md-8 border border-primary border-right-0">
                                 <%= faq.question %>
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-1 border border-primary">
                                 <%= link_to '', edit_faq_path(faq), class: 'fa fa-edit fa-lg admin_icons' %>
                                 <%= link_to '', faq_path(faq), method: :delete, class: 'fa fa-trash fa-lg admin_icons', data: { confirm: 'Are you sure?' } %>
                             </div>
                         </div>
                         <div class="row ">
-                            <div class="col-md-2 answer-section border border-primary">
+                            <div class="col-md-2 answer-section border border-primary border-right-0">
                                 Answer.
                             </div>
-                            <div class="col-md-8 border border-primary">
+                            <div class="col-md-9 border border-primary">
                                 <%= faq.answer %>
                             </div>
                         </div>
