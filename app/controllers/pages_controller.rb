@@ -35,9 +35,15 @@ class PagesController < ApplicationController
   end
 # Add FAQs and Blogs
   def allfaqs
+    @faqs = Faq.getActiveFaqs.order(created_at: :ASC).all()
+    @role = user_signed_in? ? (current_user.interface.nil? ? 'admin' : 'user') : 'user'
+
+    render :template => 'faqs/all', :locals => {:faqs => @faqs, :role => @role}
   end
 
   def allblogs
+    @blogs = Blog.order(created_at: :ASC).all()
+    render :template => 'blogs/all', :locals => {:blogs => @blogs}
   end
 
   def find_resume; end
@@ -66,11 +72,6 @@ class PagesController < ApplicationController
     @recruiters = User.recruiters
   end
 
-  def blogs
-  end
-
-  def faqs
-  end
 # Add FAQ
   def add_faq
   end

@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   resources :job_areas, except: :index
   resources :keywords,  except: :index
 
+# FAQ and Blog
+  resources :faqs
+  resources :blogs
+
   get     '/alljobs',           to: 'pages#alljobs'
   get     '/allcompanies',      to: 'pages#allcompanies'
   get     '/allresumes',        to: 'pages#allresumes'
@@ -44,8 +48,6 @@ Rails.application.routes.draw do
 # Add Jobseeker, Recruiter, Blog, FAQ for adminshow_jobs
   get     '/manage_jobseeker',  to: 'pages#manage_jobseeker'
   get     '/manage_recruiter',  to: 'pages#manage_recruiter'
-  get     '/blogs',             to: 'pages#blogs'
-  get     '/faqs',              to: 'pages#faqs'
 
 # Add Fag page
   get     '/add_faq',           to: 'pages#add_faq'

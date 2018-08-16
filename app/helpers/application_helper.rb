@@ -51,6 +51,10 @@ module ApplicationHelper
     count_show ||= 5
     !checked && ((i + 1) > count_show)
   end
+  
+  # For comment
+  def comment 
+  end
 
   private
 
