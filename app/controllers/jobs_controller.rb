@@ -13,6 +13,7 @@ class JobsController < ApplicationController
     if user_signed_in?
       user = User.find(params[:id])
       @jobs = Job.posts_by(user)
+      render :template => 'jobs/index', :locals => {:jobs => @jobs}
     else
       redirect_to root_path, notice: 'You do not have permission for this action!'
     end

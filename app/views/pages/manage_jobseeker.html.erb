@@ -23,7 +23,7 @@
                     <td class="text-center"><%= job_seeker.created_at.to_date %></td>
                     <td class="text-center"><%= job_seeker.resume_last_update %></td>
                     <td class="text-center">
-                        <%= link_to_if job_applied >0 , job_applied, applied_jobs(job_seeker.id) do %>
+                        <%= link_to_if job_applied >0 , job_applied, applied_jobs_path(job_seeker.id) do %>
                             0
                         <% end %>
                     </td> 
