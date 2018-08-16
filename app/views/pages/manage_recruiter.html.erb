@@ -24,7 +24,7 @@
                 <td class="text-center">
                     <%= link_to_if recruiter.resume_exist?, recruiter.number_of_jobs_post, show_jobs_path(recruiter.id) %>
                 </td>
-                <td class="text-center"><%= recruiter.status == 'active' ? 'Active' : 'Suspended' %></td>
+                <td class="text-center"></td>
                 <td class="text-center">
                     <% if recruiter.status == 'active' %>
                         <%= select("status", "", ["Suspend", "Delete"], { include_blank: true }) %>
