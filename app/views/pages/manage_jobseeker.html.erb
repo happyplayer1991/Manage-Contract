@@ -3,29 +3,43 @@
     <table class="table table-striped">
     <thead>
         <tr>
-        <th scope="col">#</th>
-        <th scope="col" class="text-center" >Name</th>
-        <th scope="col" class="text-center">Joined_Date</th>
-        <th scope="col" class="text-center">Resume Last Updated Date</th>
-        <th scope="col" class="text-center">Number of Jobs Applied</th>
-        <th scope="col" class="text-center">Status</th>
-        <th scope="col" class="text-center">Action</th>
+            <th scope="col">#</th>
+            <th scope="col" class="text-center" >Name</th>
+            <th scope="col" class="text-center">Joined_Date</th>
+            <th scope="col" class="text-center">Resume Last Updated Date</th>
+            <th scope="col" class="text-center">Number of Jobs Applied</th>
+            <th scope="col" class="text-center">Status</th>
+            <th scope="col" class="text-center">Action</th>
         </tr>
     </thead>
     <tbody id="job_seekers">
         <% @job_seekers.each.with_index(1) do |job_seeker, key| %>
             <tr>
                 <th scope="row"><%= key %></th>
-                <td class="text-center"><%= link_to job_seeker.name, resume_path(job_seeker.id) %></td>
-                <td class="text-center"><%= job_seeker.created_at.to_date %></td>
-                <td class="text-center"><%= job_seeker.created_at.to_date %></td>
+                <% if job_seeker.resumes.count > 0 
+                    job_applied = job_seeker.number_of_jobs_applied;
+                %>
+                    <td class="text-center"><%= link_to job_seeker.name, resume_path(job_seeker.resumes.ids) %></td>
+                    <td class="text-center"><%= job_seeker.created_at.to_date %></td>
+                    <td class="text-center"><%= job_seeker.resume_last_update %></td>
+                    <td class="text-center">
+                        <%= link_to_if job_applied >0 , job_applied, applied_jobs(job_seeker.id) do %>
+                            0
+                        <% end %>
+                    </td> 
+                <% else %>
+                    <td class="text-center"><%= job_seeker.name %></td>
+                    <td class="text-center"><%= job_seeker.created_at.to_date %></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"> 0 </td>
+                <% end %>
+                <td class="text-center"><%= job_seeker.status == 'active' ? 'Active' : 'Suspended' %></td>
                 <td class="text-center">
-                </td>
-                <td class="text-center">
-                    <%= job_seeker.status == 'active' ? 'Active' : 'Suspended' %>
-                </td>
-                <td class="text-center">
-                    <%# <%= select_tag "status", options_from_collection_for_select(job_seeker.status, "id", "status") %> 
+                    <% if job_seeker.status == 'active' %>
+                        <%= select("status", "", ["Suspend", "Delete"], { include_blank: true }) %>
+                    <% else %>
+                        <%= select("status", "", ["Lift suspension", "Delete"], { include_blank: true }) %>
+                    <% end %>
                 </td>
             </tr>
         <% end %>

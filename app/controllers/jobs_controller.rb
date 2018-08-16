@@ -8,7 +8,16 @@ class JobsController < ApplicationController
       redirect_to root_path, notice: 'You do not have permission for this action!'
     end
   end
-
+# show jobs
+  def show_jobs
+    if user_signed_in?
+      user = User.find(params[:id])
+      @jobs = Job.posts_by(user)
+    else
+      redirect_to root_path, notice: 'You do not have permission for this action!'
+    end
+  end
+  
   def bookmarked_jobs
     if user_signed_in?
       @bookmarked_jobs = current_user.bookmarked_by_user_jobs

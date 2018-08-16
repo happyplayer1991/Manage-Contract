@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get     '/find_company',      to: 'pages#find_company'
   get     '/admin',             to: 'pages#admin'
   get     '/settings',          to: 'pages#settings'
-# Add Jobseeker, Recruiter, Blog, FAQ for admin
+# Add Jobseeker, Recruiter, Blog, FAQ for adminshow_jobs
   get     '/manage_jobseeker',  to: 'pages#manage_jobseeker'
   get     '/manage_recruiter',  to: 'pages#manage_recruiter'
   get     '/blogs',             to: 'pages#blogs'
@@ -50,7 +50,10 @@ Rails.application.routes.draw do
 # Add Fag page
   get     '/add_faq',           to: 'pages#add_faq'
   get     '/add_blog',          to: 'pages#add_blog'
-
+# show jobs
+  get     '/jobs/show_jobs/:id',     to: 'jobs#show_jobs',  as: :show_jobs
+# change status
+  # get     '/users/change_status/:status', to: 'users/'
   get     '/alert',             to: 'pages#alert'
   get     '/subscribed_jobs',   to: 'pages#subscribed_jobs'
 

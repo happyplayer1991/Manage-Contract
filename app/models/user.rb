@@ -87,6 +87,22 @@ class User < ApplicationRecord
   def bookmark_job?(job)
     self.bookmarked_jobs.find_by_job_id(job.id)
   end
+# Last updated date of resume
+  def resume_last_update
+    self.resumes.first.updated_at.to_date
+  end
+  
+  def company_name
+    self.companies.first.title
+  end
+
+  def number_of_jobs_applied 
+    self.resumes.first.applied_jobs.count
+  end
+
+  def number_of_jobs_post
+    self.jobs.count
+  end
 
   def apply_by_self_job!(job)
     apply_job = self.resumes[0].applied_jobs.create(job_id: job.id, status: 0)
@@ -118,4 +134,9 @@ class User < ApplicationRecord
     return if self.resumes.size.zero? && self.jobseeker?
     true
   end
+  
+# add scope
+  scope :job_seekers,  -> { where(interface: 1).order(created_at: :DESC) }
+  scope :recruiters, -> { where(interface: 0).order(created_at: :DESC) }
+  # scope :user_by_interface ->(interface) { where("interface = ", interface)}
 end
