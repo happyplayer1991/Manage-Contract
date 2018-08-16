@@ -91,13 +91,16 @@ class User < ApplicationRecord
   def resume_last_update
     self.resumes.first.updated_at.to_date
   end
-  
+# Get company name of recruiter
   def company_name
-    self.companies.first.title
+    self.companies.count > 0 ? self.companies.first.title : ''
   end
 
+  def resume_exist?
+    self.resumes.count > 0
+  end
   def number_of_jobs_applied 
-    self.resumes.first.applied_jobs.count
+    self.resume_exist? ? self.resumes.first.applied_jobs.count : 0 
   end
 
   def number_of_jobs_post

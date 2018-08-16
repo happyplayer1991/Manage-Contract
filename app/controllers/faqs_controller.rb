@@ -37,7 +37,7 @@ class FaqsController < ApplicationController
   def destroy
     @faq.destroy
     respond_to do |format|
-      format.html { redirect_to allfaqs_path, notice: 'Your Faq was created.' }
+      format.html { redirect_to allfaqs_path, notice: 'Your Faq was removed.' }
     end
   end
 
