@@ -2,7 +2,7 @@
 @import "gritter";
 @import "font-awesome";
 
-@import "faqs";
+// @import "faqs";
 
 .custom-nav {
 	margin-bottom: 20px;
@@ -117,4 +117,23 @@
 	overflow-x: auto;
 	margin-bottom: 20px;
 
+}
+
+
+/*
+ ===================================
+	Manage JobSeekers and Recruiter 
+ ===================================
+ */
+select.change-action {
+	width: 150px;
+}
+
+/*
+ ===================================
+	Manage JobSeekers and Recruiter 
+ ===================================
+ */
+.faq-section {
+	font-size: 17px;
 }

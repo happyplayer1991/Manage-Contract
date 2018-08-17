@@ -1,4 +1,9 @@
-<h2>Your Jobs List</h2>
+<% if defined?(:company)  %>
+  <h2><span class="text-primary"><%= @company %></span>'s Jobs List</h2>
+<% else %>
+  <h2><% Your Jobs List %></h2>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>

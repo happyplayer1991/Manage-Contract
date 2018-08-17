@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  access all: { except: [:settings] }, user: { except: [:settings] }, superadmin: :all
+  access all: { except: [:settings, :manage_jobseeker, :manage_recruiter] }, user: { except: [:settings, :manage_jobseeker, :manage_recruiter] }, superadmin: :all
 
   def index; end
 
@@ -67,11 +67,13 @@ class PagesController < ApplicationController
   def manage_jobseeker
     # @job_seekers = User.where(interface: 1).order(created_at: :DESC).all
     @job_seekers = User.job_seekers
+    @type = 'JobSeeker'
   end
 
   def manage_recruiter
     # @recruiters = User.where(interface: 0).order(created_at: :DESC).all
     @recruiters = User.recruiters
+    @type = 'Recruiter'
   end
 
 # Add FAQ

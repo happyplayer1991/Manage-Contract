@@ -35,24 +35,22 @@
                 <% end %>
                 <td class="text-center"><%= job_seeker.status == 'active' ? 'Active' : 'Suspended' %></td>
                 <td class="text-center">
-                    <% if job_seeker.status == 'active' %>
-                        <%#= select("status", "", ["Suspend", "Delete"], { include_blank: true }) %>
-                        <select class="change-action">
-                            <option value=""></option>
+                    <%#= select("status", "", ["Suspend", "Delete"], { include_blank: true }) %>
+                    <%#= select("status", "", ["Lift suspension", "Delete"], { include_blank: true }) %>
+                    <select class="change-action" data-user-type="<%= @type %>">
+                        <option value=""></option>
+                        <% if job_seeker.status == 'active' %>
                             <option value="<%= change_action_path(:id => job_seeker.id, :status => 'suspend') %>">Suspend</option>
-                            <option value="<%= change_action_path(:id => job_seeker.id, :status => 'delete') %>">Delete</option>
-                        </select>
-                    <% else %>
-                        <%#= select("status", "", ["Lift suspension", "Delete"], { include_blank: true }) %>
-                        <select class="change-action">
-                            <option value=""></option>
+                        <% else %>
                             <option value="<%= change_action_path(:id => job_seeker.id, :status => 'lift_suspend') %>">Lift suspension</option>
-                            <option value="<%= change_action_path(:id => job_seeker.id, :status => 'delete') %>">Delete</option>
-                        </select>
-                    <% end %>
+                        <% end %>
+                        <option value="<%= change_action_path(:id => job_seeker.id, :status => 'delete') %>">Delete</option>
+                    </select>
                 </td>
             </tr>
         <% end %>
     </tbody>
     </table>
 </div>
+
+<%= render 'pages/partials/modal' %>

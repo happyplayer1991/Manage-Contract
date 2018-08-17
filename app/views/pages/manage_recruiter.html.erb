@@ -26,22 +26,20 @@
                 </td>
                 <td class="text-center"><%= recruiter.status == 'active' ? 'Active' : 'Suspended' %></td>
                 <td class="text-center">
-                    <% if recruiter.status == 'active' %>
-                        <select class="change-action">
-                            <option value=""></option>
+                    <select class="change-action" data-user-type="<%= @type %>">
+                        <option value=""></option>
+                        <% if recruiter.status == 'active' %>
                             <option value="<%= change_action_path(:id => recruiter.id, :status => 'suspend') %>">Suspend</option>
-                            <option value="<%= change_action_path(:id => recruiter.id, :status => 'delete') %>">Delete</option>
-                        </select>
-                    <% else %>
-                        <select class="change-action">
-                            <option value=""></option>
+                        <% else %>
                             <option value="<%= change_action_path(:id => recruiter.id, :status => 'lift_suspend') %>">Lift suspension</option>
-                            <option value="<%= change_action_path(:id => recruiter.id, :status => 'delete') %>">Delete</option>
-                        </select>
-                    <% end %>
+                        <% end %>
+                        <option value="<%= change_action_path(:id => recruiter.id, :status => 'delete') %>">Delete</option>
+                    </select>
                 </td>
             </tr>
         <% end %>
     </tbody>
     </table>
 </div>
+
+<%= render 'pages/partials/modal' %>
