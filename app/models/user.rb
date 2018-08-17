@@ -96,11 +96,8 @@ class User < ApplicationRecord
     self.companies.count > 0 ? self.companies.first.title : ''
   end
 
-  def resume_exist?
-    self.resumes.count > 0
-  end
   def number_of_jobs_applied 
-    self.resume_exist? ? self.resumes.first.applied_jobs.count : 0 
+    self.resumes.count >0 ? self.resumes.first.applied_jobs.count : 0 
   end
 
   def number_of_jobs_post

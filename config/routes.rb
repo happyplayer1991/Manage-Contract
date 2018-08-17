@@ -52,10 +52,12 @@ Rails.application.routes.draw do
 # Add Fag page
   get     '/add_faq',           to: 'pages#add_faq'
   get     '/add_blog',          to: 'pages#add_blog'
-# show jobs
+# Show jobs
   get     '/jobs/show_jobs/:id',     to: 'jobs#show_jobs',  as: :show_jobs
-# change status
+# Shange status
   # get     '/users/change_status/:status', to: 'users/'
+# Change user action
+  get     '/change_action/:id/:status/:path', to: 'users#change_action', as: :change_action
   get     '/alert',             to: 'pages#alert'
   get     '/subscribed_jobs',   to: 'pages#subscribed_jobs'
 

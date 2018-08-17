@@ -43,7 +43,9 @@ class PagesController < ApplicationController
 
   def allblogs
     @blogs = Blog.order(created_at: :ASC).all()
-    render :template => 'blogs/all', :locals => {:blogs => @blogs}
+    @role = user_signed_in? ? (current_user.interface.nil? ? 'admin' : 'user') : 'user'
+
+    render :template => 'blogs/all', :locals => {:blogs => @blogs, :role => @role}
   end
 
   def find_resume; end

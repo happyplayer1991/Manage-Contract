@@ -9,4 +9,31 @@ class UsersController < ApplicationController
 
     redirect_to root_path, notice: 'User interface has been changed.'
   end
+
+  def change_action
+    @user = User.find(params[:id])
+    @status = params[:status]
+    @path = params[:path]
+    if @status == 'delete'
+      @user.destroy
+      @notice = 'The User was removed.'
+    elsif @status == 'suspend'
+      if @user.update(:status => 'suspended')
+        @notice = 'The User was suspended.'
+      else
+        @notice = 'The User status is not updated.'
+      end
+    elsif @status == 'lift_suspend'
+      if @user.update(:status => 'active')
+        @notice = 'The User was active.'
+      else
+        @notice = 'The User status is not updated.'
+      end
+    end
+
+    respond_to do |format|
+      format.js { render inline: "location.reload();", notice: @notice }
+    end
+
+  end
 end
