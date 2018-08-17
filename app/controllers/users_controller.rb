@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   def change_action
     @user = User.find(params[:id])
     @status = params[:status]
-    @path = params[:path]
+
+    # change action
     if @status == 'delete'
       @user.destroy
       @notice = 'The User was removed.'
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
       end
     end
 
+    #refresh page
     respond_to do |format|
       format.js { render inline: "location.reload();", notice: @notice }
     end

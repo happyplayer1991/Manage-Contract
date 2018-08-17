@@ -23,7 +23,7 @@ class FaqsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @faq.save
+      if @faq.update(faq_params)
         format.html { redirect_to allfaqs_path, notice: 'Your Faq was successfully updated.' }
       else
         format.html { render :edit}

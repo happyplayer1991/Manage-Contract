@@ -57,7 +57,7 @@ Rails.application.routes.draw do
 # Shange status
   # get     '/users/change_status/:status', to: 'users/'
 # Change user action
-  get     '/change_action/:id/:status/:path', to: 'users#change_action', as: :change_action
+  get     '/change_action/:id/:status', to: 'users#change_action', as: :change_action
   get     '/alert',             to: 'pages#alert'
   get     '/subscribed_jobs',   to: 'pages#subscribed_jobs'
 

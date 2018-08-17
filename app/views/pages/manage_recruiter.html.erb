@@ -29,14 +29,14 @@
                     <% if recruiter.status == 'active' %>
                         <select class="change-action">
                             <option value=""></option>
-                            <option value="<%= change_action_path(:id => recruiter.id, :status => 'suspend', :path => 'recruiter') %>">Suspend</option>
-                            <option value="<%= change_action_path(:id => recruiter.id, :status => 'delete', :path => 'recruiter') %>">Delete</option>
+                            <option value="<%= change_action_path(:id => recruiter.id, :status => 'suspend') %>">Suspend</option>
+                            <option value="<%= change_action_path(:id => recruiter.id, :status => 'delete') %>">Delete</option>
                         </select>
                     <% else %>
                         <select class="change-action">
                             <option value=""></option>
-                            <option value="<%= change_action_path(:id => recruiter.id, :status => 'lift_suspend', :path => 'recruiter') %>">Lift suspension</option>
-                            <option value="<%= change_action_path(:id => recruiter.id, :status => 'delete', :path => 'recruiter') %>">Delete</option>
+                            <option value="<%= change_action_path(:id => recruiter.id, :status => 'lift_suspend') %>">Lift suspension</option>
+                            <option value="<%= change_action_path(:id => recruiter.id, :status => 'delete') %>">Delete</option>
                         </select>
                     <% end %>
                 </td>

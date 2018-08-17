@@ -39,15 +39,15 @@
                         <%#= select("status", "", ["Suspend", "Delete"], { include_blank: true }) %>
                         <select class="change-action">
                             <option value=""></option>
-                            <option value="<%= change_action_path(:id => job_seeker.id, :status => 'suspend', :path => 'job_seeker') %>">Suspend</option>
-                            <option value="<%= change_action_path(:id => job_seeker.id, :status => 'delete', :path => 'job_seeker') %>">Delete</option>
+                            <option value="<%= change_action_path(:id => job_seeker.id, :status => 'suspend') %>">Suspend</option>
+                            <option value="<%= change_action_path(:id => job_seeker.id, :status => 'delete') %>">Delete</option>
                         </select>
                     <% else %>
                         <%#= select("status", "", ["Lift suspension", "Delete"], { include_blank: true }) %>
                         <select class="change-action">
                             <option value=""></option>
-                            <option value="<%= change_action_path(:id => job_seeker.id, :status => 'lift_suspend', :path => 'job_seeker') %>">Lift suspension</option>
-                            <option value="<%= change_action_path(:id => job_seeker.id, :status => 'delete', :path => 'job_seeker') %>">Delete</option>
+                            <option value="<%= change_action_path(:id => job_seeker.id, :status => 'lift_suspend') %>">Lift suspension</option>
+                            <option value="<%= change_action_path(:id => job_seeker.id, :status => 'delete') %>">Delete</option>
                         </select>
                     <% end %>
                 </td>
