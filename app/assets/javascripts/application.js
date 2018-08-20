@@ -11,6 +11,9 @@
 // about supported directives.
 //
 //= require jquery3
+
+//= require ckeditor/init
+
 //= require rails-ujs
 //= require popper
 //= require gritter
@@ -18,6 +21,11 @@
 //= require cocoon
 //= require jquery.raty
 //= require turbolinks
+
+//= require select2-full
+//= require social-share-button
+
 //= require_tree .
+
 
 

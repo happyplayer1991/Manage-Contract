@@ -1,69 +1,106 @@
 <div class="row">
     <div class="col-md-12">
-        <%= form_for(blog) do |form| %>
+        <%#= show published or draft %>
+        <% if !@blog.new_record? %>
+            <% if @blog.status == 1 %>
+                <span class="badge badge-primary">Published</span>
+            <% else %>
+                <span class="badge badge-danger">Draft</span>
+            <% end %>
+        <% end %>
 
+        <br>
+        <%= form_for @blog do |form| %>
+            <% if @blog.errors.full_messages.any? %>
+                <div class="alert alert-danger" role="alert">
+                    <% @blog.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </div>
+            <% end %>
+            
             <div class="form-group">
                 <%= form.label :Title %>
-                <%= form.text_field :title, class: 'form-control' %>
+                <%= form.text_field :title, class: 'form-control', placeholder: 'Title' %>
             </div>
             
             <div class="form-group">
                 <%= form.label :Content %>
-                <%= form.text_area :content, rows: 10, class: 'form-control' %>
-            </div>
-            
-            <div class="form-group">
-                <%= form.label :Publish %>
-            </div>
-            
-            <div class="form-group">
-                <%= form.label :Publish %>
+                <%= form.cktext_area :content, class: 'form-control', ckeditor: { language: 'en'}, placeholder: 'Content' %>
             </div>
 
             <div class="form-group">
-                <%= form.label :Categories %>
-
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">All</th>
-                            <th scope="col" class="text-center" >Category Name</th>
-                            <th scope="col" class="text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            
-            <div class="form-group">
-                <%= button_tag 'Add New Category', class: 'btn btn-primary' %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <%= form.label :Publish %>
+                    </div>
+                    <div class="col-md-2">
+                        <%= radio_button_tag 'publish_type', '1' %>
+                        <span class="badge badge-primary">Immmediately</span>
+                            <br>
+                        <%= radio_button_tag 'publish_type', '0', true %>
+                        <span class="badge badge-success">Edit</span>
+                    </div>
+                    <div class="col-md-4">
+                        <%= form.datetime_field :published_at, 
+                            value: (@blog.published_at.nil? ? convert_time(Time.zone.now): convert_time(@blog.published_at)), 
+                            class: 'form-control publish-date' %>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
-                <%= form.label :Tags %>
-                <%= form.text_field :title, class: 'form-control' %>
+                <%= render 'categories/list', categories: @categories %>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= form.label :Tags %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= form.label "Featured" %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <%#= text_field_tag 'tag[]', '', class: 'form-control tags_added', placeholder: 'Show Tags added'  %>
+                        <%= form.text_field :tag_ids, :class => 'multiple-input form-control tag-ids', :multiple => "multiple"  %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= form.file_field :featured_image, class: 'form-control' %>
+                    </div>
+                </div>
             </div> 
             
             <div class="form-group">
-                <%= form.text_field :title, class: 'form-control' %>
-                <%= button_tag 'Add New Tag', class: 'btn btn-primary' %>
-            </div>
-            
-            <div class="form-group">
-                <%= form.label "Featured" %>
-                <%= form.file_field :profile_pic, class: 'form-control' %>
+                <div class = "row">
+                    
+                    <% comment do %>
+                        <div class="col-md-4">
+                            <%= text_field :tag, :name, class: 'form-control', placeholder: 'New Tag Name' %>
+                        </div>
+
+                        <div class="col-md-2">
+                            <%= link_to '', class:'btn btn-primary float-right add-new-tag' do %>
+                                <i class="fa fa-plus"></i> Add New Tag
+                            <% end %>
+                        </div>
+                    <% comment end %>
+
+                    <div class="col-md-6 offset-md-6">
+                        <% if @blog.featured_image? %>
+                            <%= image_tag @blog.featured_image.url %>
+                            <%= form.label :remove_image %>
+                            <%= form.check_box :remove_featured_image %>
+                        <% end %>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group float-right">
-                <%= form.submit "Publish", class: 'btn btn-primary' %> 
-                <%= form.submit "Save Draft", class: 'btn btn-primary' %> 
+                <%= form.submit "Publish", class: 'btn btn-success' %> 
+                <%= form.submit "Save as Draft", class: 'btn btn-danger' %> 
             </div>
         <% end %>
     </div>

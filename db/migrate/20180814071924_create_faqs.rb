@@ -5,7 +5,7 @@ class CreateFaqs < ActiveRecord::Migration[5.1]
       t.string :question
       t.string :answer
       t.integer :status, default: 1
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

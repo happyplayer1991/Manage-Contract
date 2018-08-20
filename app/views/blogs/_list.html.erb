@@ -1,0 +1,34 @@
+<div class="blog-section pl-3">
+<% @blogs.each do |blog| %>
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-primary"><%= blog.title %></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>Posted on <span class="text-danger"><%= blog.created_at.to_date %></span></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <% if blog.featured_image? %>
+                    <%= image_tag blog.featured_image.url, width: '100%' %>
+                <% else %>
+                    <%= image_tag image_generator(height: '300', width: '300'), width: '100%' %>
+                <% end %>
+            </div>
+            <div class="col-md-9">
+                <div class="blog-content">
+                    <%#= link_to truncate(blog.content.html_safe, :length => 1000), '' %>
+                    <%= truncate(blog.content.html_safe, :length => 500, :escape => false, :separator => ' ') %>
+                    <br>
+                    <%= link_to "View Details", blog_path(blog) %>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+<% end %>
+</div>

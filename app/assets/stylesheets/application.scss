@@ -2,6 +2,10 @@
 @import "gritter";
 @import "font-awesome";
 
+@import "select2";
+@import "social-share-button";
+
+@import "variables";
 // @import "faqs";
 
 .custom-nav {
@@ -137,3 +141,23 @@ select.change-action {
 .faq-section {
 	font-size: 17px;
 }
+
+/*
+ ===================================
+	Blog
+ ===================================
+ */
+
+ .blog-content p {
+	 margin-bottom: 0;
+ }
+
+ .blog .social-share-button {
+	 float: right;
+	 .ssb-icon {
+		 background-size: $social-share-button-size, $social-share-button-size;
+		 height: $social-share-button-size;
+		 width: $social-share-button-size;
+	 }
+ }
+

@@ -29,6 +29,7 @@ module ApplicationHelper
         image_generator(height: '300', width: '300')
       end
     end
+   
   end
 
   # Count of jobs that applies by jobseeker (from invite or by self)
@@ -56,6 +57,18 @@ module ApplicationHelper
   def comment 
   end
 
+  def convert_time time
+    time.strftime("%Y-%m-%dT%H:%M")
+  end
+  
+  # def previous_url
+  #   URI(request.referer || '').path
+  # end
+
+  # def save_my_previous_url
+  #   session[:my_previous_url] = URI(request.referer || '').path
+  # end
+
   private
 
     def status_span_generator status
@@ -70,4 +83,5 @@ module ApplicationHelper
         content_tag(:span, status.titleize, class: 'badge badge-warning')
       end
     end
+
 end

@@ -42,7 +42,7 @@ class PagesController < ApplicationController
   end
 
   def allblogs
-    @blogs = Blog.order(created_at: :ASC).all()
+    @blogs = Blog.all()
     @role = user_signed_in? ? (current_user.interface.nil? ? 'admin' : 'user') : 'user'
 
     render :template => 'blogs/all', :locals => {:blogs => @blogs, :role => @role}

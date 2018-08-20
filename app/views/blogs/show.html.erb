@@ -1,0 +1,38 @@
+<div class="blog">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-primary"><%= @blog.title %></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <% @blog.categories.each do |c| %>
+                <span class="badge badge-primary"><%= c.name %></span>
+            <% end %>
+        </div>
+    </div>
+    <div class="row py-1">
+        <div class="col-md-10">
+            <p class="m-0">Posted on <span class="text-danger"><%= @blog.created_at.to_date %></span></p>
+        </div>
+        <div class="col-md-2">
+            <%= social_share_button_tag(@blog.title) %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="blog-content border border-primary p-3">
+                <%= @blog.content.html_safe %>
+            </div>
+        </div>
+    </div>
+    <div class="row py-1">
+        <div class="col-md-12">
+            <% @blog.tags.each do |t| %>
+                <span class="badge badge-success"><%= t.name %></span>
+            <% end %>
+        </div>
+    </div>
+</div>
+<br>
+<%= link_to 'Back', allblogs_path, class: '' %>

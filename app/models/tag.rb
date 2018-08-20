@@ -1,3 +1,3 @@
 class Tag < ApplicationRecord
-    belongs_to :blogs
+    has_and_belongs_to_many :blogs
 end

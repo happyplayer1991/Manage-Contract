@@ -1,7 +1,7 @@
-<% if defined?(:company)  %>
+<% if current_user.has_roles?(:superadmin) %>
   <h2><span class="text-primary"><%= @company %></span>'s Jobs List</h2>
 <% else %>
-  <h2><% Your Jobs List %></h2>
+  <h2>Your Jobs List</h2>
 <% end %>
 
 <table class="table table-striped">

@@ -1,5 +1,5 @@
 class FaqsController < ApplicationController
-  # access all:[], user:[], superadmin: :all
+  access all: { except: [:new] }, user: { except: [:new] }, superadmin: :all
   before_action :set_faq, only: [:edit, :show, :update, :destroy]
 
   def new

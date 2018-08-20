@@ -36,6 +36,16 @@ User.create!(name:"test5", email: "test31@test.com", password: "123123", passwor
 User.create!(name:"admin", email: "admin@test.com", password: "123123", password_confirmation: "123123", interface: nil, role: 'superadmin')
 User.create!(name:"recruiter2", email: "recruiter2@gmail.com", password: "123123", password_confirmation: "123123", interface: 0)
 
+#
+Category.create(name:'Service')
+Category.create(name:'Payment')
+Category.create(name:'Job_Seeker')
+Category.create(name:'Recruiter')
+
+Tag.create(name:'Interesting')
+Tag.create(name:'Popular')
+Tag.create(name:'Important')
+
 JobArea.create!(title: "Engineering")
 JobArea.create!(title: "Sales and Marketing")
 JobArea.create!(title: "Accounting and Finance")

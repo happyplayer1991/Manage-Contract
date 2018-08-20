@@ -1,0 +1,28 @@
+<div class="panel panel-primary">
+<div class="panel-body">
+    <div class="faq-section pl-3">
+        <% @faqs.each.with_index(1) do |faq, key| %>
+            <div class="row">
+                <div class="col-md-2 text-right">
+                    <span class="faq-index"><%= key %>. Questions?</span>
+                </div>
+                <div class="col-md-8">
+                    <%= faq.question %>
+                </div>
+                <div class="col-md-1">
+                    <%= link_to '', edit_faq_path(faq), class: 'fa fa-edit fa-lg text-success' %>
+                    <%= link_to '', faq_path(faq), method: :delete, class: 'fa fa-trash fa-lg text-danger', data: { confirm: 'Are you sure?' } %>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-2 answer-section text-right">
+                    Answer.
+                </div>
+                <div class="col-md-9">
+                    <%= faq.answer %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+</div>

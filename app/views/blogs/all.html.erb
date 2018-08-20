@@ -3,50 +3,14 @@
     <% if @role == 'admin' %>
         <div class="row">
             <div class="col-md-3">
-                <%= link_to 'Add New Blog', new_blog_path, class: 'btn btn-success btn-block' %>
+                <%= link_to new_blog_path, class: 'btn btn-primary btn-block' do %>
+                    <i class="fa fa-plus"></i> Add New Blog    
+                <% end %>
             </div>
         </div>
         <br>
-        <div class="panel panel-primary">
-            <div class="panel-body">
-                <div class="blog-section pl-3">
-                    <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center" >Title</th>
-                            <th scope="col" class="text-center">Category</th>
-                            <th scope="col" class="text-center">Tags</th>
-                            <th scope="col" class="text-center">Published Date</th>
-                            <th scope="col" class="text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="blogs">
-                        <% @blogs.each do |blog| %>
-                            <tr>
-                                <td class="text-center"><%= blog.title %></td>
-                                <td class="text-center"><%=  %></td>
-                                <td class="text-center"><%= %></td>
-                                <td class="text-center">
-                                    <%= blog.created_at %>
-                                </td>
-                                <td class="text-center">
-                                    <%= link_to '', edit_blog_path(blog), class: 'fa fa-edit fa-lg admin_icons' %>
-                                    <%= link_to '', blog_path(blog), method: :delete, class: 'fa fa-trash fa-lg admin_icons', data: { confirm: 'Are you sure?' } %>
-                                </td>  
-                            </tr>
-                        <% end %>
-                    </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <%= render 'blogs/list_table', blogs: @blogs %>
     <% else %>
-        <div class="blog-section pl-3">
-            <% @blogs.each do |blog| %>
-                <h2><%= blog.title %></h3>
-                <h3>Posted on <%= blog.created_at %></h3>
-                <h3></h3>
-            <% end %>
-        </div>
+        <%= render 'blogs/list', blogs: @blogs %>
     <% end %>
 </div>
