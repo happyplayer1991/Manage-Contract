@@ -8,6 +8,8 @@ end
 gem 'rails', '~> 5.1.5'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
+
+gem 'rails_12factor'
 # add for boostrap modal
 #gem 'bootstrap-sass', '~> 4.1', '>= 4.1.1'
 
