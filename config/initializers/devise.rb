@@ -282,4 +282,6 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :facebook, ENV["FACEBOOK_API_KEY"], ENV["FACEBOOK_API_SECRET"], callback_url: "https://ror-listing-app.herokuapp.com/auth/facebook/callback"
   config.omniauth :google_oauth2, ENV["GOOGLE_OAUTH2_API_KEY"], ENV["GOOGLE_OAUTH2_API_SECRET"], {}
+  #set secret key
+  config.secret_key = '1e618c129885356baa742110459cc6537112013693e444ee84d2e187c55c1e8937d425b98d335120c43a8687758e7bdc05929eddc143c44aa3eca98fe18eb32c'
 end
