@@ -18,11 +18,15 @@
                 <th scope="row"><%= key %></th>
                 <td class="text-center"><%= recruiter.name %></td>
                 <td class="text-center">
-                    <%= link_to_if recruiter.companies.count > 0, recruiter.company_name, companies_path(recruiter.companies.ids[0]) %>
+                    <% if recruiter.companies.count > 0 %>
+                        <%= link_to recruiter.company_name, company_path(recruiter.companies.first) %>
+                    <% end %>
                 </td>
                 <td class="text-center"><%= recruiter.created_at.to_date %></td>
                 <td class="text-center">
-                    <%= link_to_if recruiter.jobs.count > 0 , recruiter.number_of_jobs_post, show_jobs_path(recruiter.id) %>
+                    <% if recruiter.jobs.count > 0 %>
+                        <%= link_to recruiter.number_of_jobs_post, show_jobs_path(recruiter.id) %>
+                    <% end %>
                 </td>
                 <td class="text-center"><%= recruiter.status == 'active' ? 'Active' : 'Suspended' %></td>
                 <td class="text-center">
