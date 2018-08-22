@@ -5,6 +5,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col" class="text-center" >Name</th>
+            <th scope="col" class="text-center" >Email</th>
             <th scope="col" class="text-center">Joined_Date</th>
             <th scope="col" class="text-center">Resume Last Updated Date</th>
             <th scope="col" class="text-center">Number of Jobs Applied</th>
@@ -20,6 +21,7 @@
                     job_applied = job_seeker.number_of_jobs_applied
                 %>
                     <td class="text-center"><%= link_to job_seeker.name, resume_path(job_seeker.resumes.ids) %></td>
+                    <th scope="col" class="text-center" ><%= job_seeker.email %></th>
                     <td class="text-center"><%= job_seeker.created_at.to_date %></td>
                     <td class="text-center"><%= job_seeker.resume_last_update %></td>
                     <td class="text-center">
@@ -29,6 +31,7 @@
                     </td> 
                 <% else %>
                     <td class="text-center"><%= job_seeker.name %></td>
+                    <th scope="col" class="text-center" ><%= job_seeker.email %></th>
                     <td class="text-center"><%= job_seeker.created_at.to_date %></td>
                     <td class="text-center"></td>
                     <td class="text-center">0</td>

@@ -15,8 +15,18 @@
             <% @blogs.each do |blog| %>
                 <tr>
                     <td class="text-left"><%= blog.title %></td>
-                    <td class="text-center"><%= blog.categories.map {|c| c.name}.join(', ') %></td>
-                    <td class="text-center"><%= blog.tags.map {|t| t.name}.join(', ') %></td>
+                    <td class="text-center">
+                        <%#= blog.categories.map {|c| c.name}.join(', ') %>
+                        <% blog.categories.each do |t| %>
+                            <span class="badge badge-primary"><%= t.name %></span>
+                        <% end %>
+                    </td>
+                    <td class="text-center">
+                        <%#= blog.tags.map {|t| t.name}.join(', ') %>
+                        <% blog.tags.each do |t| %>
+                            <span class="badge badge-success"><%= t.name %></span>
+                        <% end %>
+                    </td>
                     <td class="text-center">
                         <%= blog.published_at.to_date if blog.published_at? %>
                     </td>

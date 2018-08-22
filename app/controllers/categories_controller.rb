@@ -35,12 +35,20 @@ class CategoriesController < ApplicationController
 
     def add
         @category = Category.new(category_post_parmas)
-        respond_to do |format|
-            if @category.save
-                format.html
-                format.json {render json: @category}
-            else
+        if @category.save
+            @categories = Category.all
+            respond_to do |format|
+                # format.js
+                # format.html { render :partial => 'categories/list', :locals => { categories: @categories } }
+                # format.json { render :json => 'categories/list', :locals => { categories: @categories } }
+                # format.json { 
+                #     render :json => { :attachmentPartial => render_to_string('categories/list', :layout => false, :locals => { :categories => @categories }) }
+                # }
+                format.json {
+                    render :json => @category
+                }
             end
+        else
         end
 
     end

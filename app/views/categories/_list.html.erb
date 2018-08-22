@@ -1,43 +1,25 @@
-
-<div class = "row">
-    <div class="col-md-12">
-        <%= label_tag :Categories, "Categories" %>
-    </div>
-    <div class = "col-md-6">
-        <% if @categories.any? %>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col" class="text-center">All</th>
-                        <th scope="col" class="text-center">Category Name</th>
-                        <th scope="col" class="text-center">Action</th>
-                    </tr>
-                </thead>
-                <tbody class="category-list">
-                    <% @categories.each do |category| %> 
-                        <tr>
-                            <td class="text-center">
-                                <%#= check_box_tag "category[checked][]", category.id, category.checked?(@blog), { :multiple => true} %>
-                                <%= check_box_tag "blog[category_ids][]", category.id, category.checked?(@blog), { :multiple => true} %>
-                            </td>
-                            <td class="text-center"><%= category.name %></td>
-                            <td class="text-center">
-                                <%= link_to '', edit_category_path(category), class: 'fa fa-edit fa-lg text-success' %>
-                                <%= link_to '', category_path(category), method: :delete, class: 'fa fa-trash fa-lg text-danger', data: { confirm: 'Are you sure?' } %>
-                            </td>
-                        </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        <% end %>
-    </div>
-        
-    <div class = "col-md-3">
-        <%= text_field :category, :name, class: 'form-control', placeholder: 'New Category Name' %>
-    </div>
-    <div class="col-md-3">
-        <%= link_to '', class:'btn btn-primary float-right add-new-category' do %>
-            <i class="fa fa-plus"></i> Add New Category
-        <% end %>
-    </div>
-</div>
+<% if @categories.any? %>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">All</th>
+                <th scope="col" class="text-center">Category Name</th>
+                <th scope="col" class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody class="cat-list">
+            <% @categories.each do |category| %> 
+                <tr>
+                    <td class="text-center">
+                        <%= check_box_tag "blog[category_ids][]", category.id, category.checked?(@blog), { :multiple => true} %>
+                    </td>
+                    <td class="text-center"><%= category.name %></td>
+                    <td class="text-center">
+                        <%= link_to '', edit_category_path(category), class: 'fa fa-edit fa-lg text-success' %>
+                        <%= link_to '', category_path(category), method: :delete, class: 'fa fa-trash fa-lg text-danger', data: { confirm: 'Are you sure?' } %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>

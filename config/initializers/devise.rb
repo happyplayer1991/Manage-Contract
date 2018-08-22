@@ -9,7 +9,8 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '8081975d7050f5f23720a19b3fb465ca2d99e5cfe63f2c59e2bd40cc18f55f18eb80943fab9a18f568d7af66899180b8efb57a1049020f9a2c1183dc35315c37'
-
+  config.secret_key = 'ee7b53bd442670ecdc963a1e8d5928341aaa824ec6c58bce88f83544e7411fdce7a6a342b1526e5fbcf12ee63dae7c709fc4d7efb1c9d915e5d013b7fd997687'
+  
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -282,6 +283,4 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :facebook, ENV["FACEBOOK_API_KEY"], ENV["FACEBOOK_API_SECRET"], callback_url: "https://ror-listing-app.herokuapp.com/auth/facebook/callback"
   config.omniauth :google_oauth2, ENV["GOOGLE_OAUTH2_API_KEY"], ENV["GOOGLE_OAUTH2_API_SECRET"], {}
-  #set secret key
-  config.secret_key = '1e618c129885356baa742110459cc6537112013693e444ee84d2e187c55c1e8937d425b98d335120c43a8687758e7bdc05929eddc143c44aa3eca98fe18eb32c'
 end

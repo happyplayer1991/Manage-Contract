@@ -56,21 +56,58 @@ $(document).on "turbolinks:load", ->
                 category: {
                     name: $('#category_name').val()
                 }
-            }, 
+            },
             complete: () -> 
                     
             success: (data, textStatus, xhr) ->
-                $(".category-list").append('<tr><td>1</td>
-                                                <td>1</td>
-                                                <td>1</td></tr>')
+                ele = '<tr>'
+                #
+                ele += "<td class='text-center'>"
+                ele += "<input type='checkbox' name='blog[category_ids][]'' id='blog_category_ids_' value='" + data.id + "' multiple='multiple'>"
+                ele += '</td>'
+                #
+                ele += "<td class='text-center'>"
+                ele += data.name
+                ele += '</td>'
+                #
+                ele += "<td class='text-center'>"
+                ele += "<a class='fa fa-edit fa-lg text-success' href='/categories/" + data.id + "/edit'></a>"
+                ele += "<a class='fa fa-trash fa-lg text-danger' data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='/categories/" + data.id + "'></a>"
+                ele += '</td>'
+
+                ele += '</tr>'
+
+                $(".cat-list").append(ele)
+
             error: () -> 
-                
         })
         
+    #add new tag
+    $(".add-new-tag").on "click", (e) ->
+        e.preventDefault()
+        tag_name = $('#tag_name').val()
+        if tag_name!= null
+            $.ajax({
+                url: '/tags/add', 
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    tag: {
+                        name: tag_name
+                    }
+                },
+                complete: () -> 
+                        
+                success: (data, textStatus, xhr) ->
+                    ele  = "<span class='badge badge-success mr-1'>" + data.name + "</span>"
+                    ele += "<input type='hidden' name='blog[tag_ids][]'' id='blog_tag_ids_' value='" + data.id + "' multiple='multiple'>"
+                    $('.tags-list').append(ele)
+                error: () -> 
+            })
 
-    $('.tag-ids').select2({
-      tags: true,
-      tokenSeparators: [','],
-      placeholder: 'Separated by comma',
-      data: ["most","popular"]
-    });
+    # $('.tag-ids').select2({
+    #   tags: true,
+    #   tokenSeparators: [','],
+    #   placeholder: 'Separated by comma',
+    #   data: ["most","popular"]
+    # });

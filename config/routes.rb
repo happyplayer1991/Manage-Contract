@@ -84,6 +84,9 @@ Rails.application.routes.draw do
 
   #
   post    '/categories/add',      to: 'categories#add'
+  #
+  post    '/tags/add',            to: 'tags#add'
+
   root to: 'pages#index'
 
 end
